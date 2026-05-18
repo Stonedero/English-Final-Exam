@@ -1077,15 +1077,16 @@ function refreshDropdownDots(){
 }
 
 function toggleCat(id){
-  const isOpen=openCat===id;
-  $('catRead').classList.remove('expanded');
-  $('catMatch').classList.remove('expanded');
-  openCat=null;
-  if(!isOpen){
-    openCat=id;
-    const bar=id==='read'?$('catRead'):$('catMatch');
-    bar.classList.add('expanded');
-    if(id==='read')buildReadDrop();else buildMatchDrop();
+  const isOpen=$('catRead').classList.contains('expanded');
+  if(isOpen){
+    $('catRead').classList.remove('expanded');
+    $('catMatch').classList.remove('expanded');
+    openCat=null;
+  } else {
+    buildReadDrop();buildMatchDrop();
+    $('catRead').classList.add('expanded');
+    $('catMatch').classList.add('expanded');
+    openCat='both';
   }
 }
 function closeCats(){
