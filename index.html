@@ -582,12 +582,11 @@ body::after {
     <div class="s-instr rise d3">
       <div class="s-instr-title">📋 تعليمات الامتحان</div>
       <ul class="s-instr-list">
-        <li><b>لا تُعرض الإجابات</b> أثناء الامتحان — النتائج التفصيلية تظهر بعد الإنهاء فقط</li>
+        <li><b>WH:</b> اكتب جوابك — يُقيَّم تلقائياً بعد الإنهاء</li>
         <li><b>T/F:</b> اضغط True أو False — يُحفظ اختيارك فوراً</li>
-        <li><b>WH:</b> اكتب جوابك — يُقيَّم تلقائياً بالذكاء الاصطناعي بعد الإنهاء</li>
-        <li><b>التوصيلات:</b> اضغط كلمة من A ثم كلمة من B لربطهما</li>
-        <li><b>🌐 الترجمة:</b> 5 ترجمات لكامل الامتحان — للقطعة أو للسؤال (30 ثانية)</li>
-        <li>استخدم <b>شريطي التنقل</b> للانتقال بين الأسئلة بحرية</li>
+        <li><b>لا تُعرض الإجابات</b> أثناء الامتحان — النتائج بعد الإنهاء</li>
+        <li><b>التوصيلات:</b> اضغط كلمة من A ثم كلمة من B للربط</li>
+        <li><b>الترجمة:</b> 5 ترجمات لكامل الامتحان لمدة 30 ثانية</li>
       </ul>
     </div>
     <button class="s-btn-start rise d4" onclick="startExam()">
@@ -1078,14 +1077,18 @@ function refreshDropdownDots(){
 }
 
 function toggleCat(id){
-  if(openCat===id){closeCats();return;}
-  closeCats();openCat=id;
-  const bar=id==='read'?$('catRead'):$('catMatch');
-  bar.classList.add('expanded');
-  if(id==='read')buildReadDrop();else buildMatchDrop();
+  const isOpen=openCat===id;
+  $('catRead').classList.remove('expanded');
+  $('catMatch').classList.remove('expanded');
+  openCat=null;
+  if(!isOpen){
+    openCat=id;
+    const bar=id==='read'?$('catRead'):$('catMatch');
+    bar.classList.add('expanded');
+    if(id==='read')buildReadDrop();else buildMatchDrop();
+  }
 }
 function closeCats(){
-  if(!openCat)return;
   $('catRead').classList.remove('expanded');
   $('catMatch').classList.remove('expanded');
   openCat=null;
