@@ -5,386 +5,1322 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Exam · الثالث المتوسط</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900&family=Cairo:wght@400;600;700;900&family=IBM+Plex+Mono:wght@400;500&family=Tajawal:wght@400;500;700;900&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
-
-:root {
-  --bg: #060b18;
-  --bg2: #0c1228;
-  --bg3: #111a32;
-  --s0: rgba(255,255,255,.03);
-  --s1: rgba(255,255,255,.05);
-  --s2: rgba(255,255,255,.08);
-  --s3: rgba(255,255,255,.12);
-  --b1: rgba(245,181,60,.16);
-  --b2: rgba(255,255,255,.09);
-  --b3: rgba(255,255,255,.14);
-  --gold: #f5b53c;
-  --gold2: #c48a18;
-  --gold3: rgba(245,181,60,.1);
-  --gold4: rgba(245,181,60,.06);
-  --indigo: #8b7cf8;
-  --indigo2: rgba(139,124,248,.12);
-  --cyan: #22d3ee;
-  --cream: #ede5d6;
-  --txt: #cac1b0;
-  --muted: rgba(202,193,176,.44);
-  --ok: #10b981;
-  --ok2: rgba(16,185,129,.12);
-  --ok3: rgba(16,185,129,.22);
-  --ng: #ef4444;
-  --ng2: rgba(239,68,68,.12);
-  --ng3: rgba(239,68,68,.22);
-  --r: 14px;
-  --r2: 10px;
-  --r3: 8px;
-  --shadow: 0 4px 24px rgba(0,0,0,.4);
-  --shadow2: 0 8px 40px rgba(0,0,0,.5);
-  --fa: 'Tajawal', sans-serif;
-  --fe: 'Playfair Display', serif;
-  --fb: 'Outfit', sans-serif;
-  --fm: 'IBM Plex Mono', monospace;
+:root{
+  --bg:#07080f;--s1:rgba(255,255,255,.04);--s2:rgba(255,255,255,.07);
+  --border:rgba(232,180,50,.16);--b2:rgba(255,255,255,.09);
+  --gold:#e8b432;--gold2:#b88a18;--glow:rgba(232,180,50,.12);
+  --cream:#f0e6cc;--txt:#c4bcac;--dim:rgba(196,188,172,.42);
+  --ok:#22d3a0;--ng:#f87171;--blue:#60a5fa;--purple:#c084fc;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Cairo',sans-serif;--fm:'IBM Plex Mono',monospace;
 }
-*, ::before, ::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  font-family: var(--fb);
-  background: var(--bg);
-  color: var(--txt);
-  min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-body::before {
-  content:''; position:fixed; top:-30%; left:-20%; width:70%; height:70%;
-  background: radial-gradient(ellipse, rgba(245,181,60,.05) 0%, transparent 60%);
-  pointer-events:none; z-index:0;
-}
-body::after {
-  content:''; position:fixed; bottom:-20%; right:-15%; width:55%; height:55%;
-  background: radial-gradient(ellipse, rgba(139,124,248,.04) 0%, transparent 60%);
-  pointer-events:none; z-index:0;
-}
-::-webkit-scrollbar { width:4px; height:4px; }
-::-webkit-scrollbar-track { background:transparent; }
-::-webkit-scrollbar-thumb { background:rgba(245,181,60,.2); border-radius:4px; }
-::-webkit-scrollbar-thumb:hover { background:rgba(245,181,60,.38); }
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-thumb{background:rgba(232,180,50,.2);border-radius:4px;}
 
-.scr { display:none; min-height:100vh; position:relative; z-index:1; }
-.scr.on { display:block; }
+/* ── screens ── */
+.scr{display:none;min-height:100vh;}
+.scr.on{display:block;}
 
-/* ── Animations ── */
-@keyframes rise { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
-@keyframes slideR { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
-@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.3; } }
-@keyframes pop { 0% { transform:scale(.9); } 65% { transform:scale(1.03); } 100% { transform:scale(1); } }
-@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-@keyframes glow { 0%,100% { box-shadow:0 0 0 rgba(245,181,60,0); } 50% { box-shadow:0 0 22px rgba(245,181,60,.3); } }
-.rise { animation: rise .6s cubic-bezier(.16,1,.3,1) both; }
-.d1{animation-delay:.07s} .d2{animation-delay:.14s} .d3{animation-delay:.21s} .d4{animation-delay:.28s}
+/* ── animations ── */
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(.92)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.up{animation:up .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}
 
-/* ══════════════════════════════
-   START SCREEN
-══════════════════════════════ */
-#sStart.on { display:flex; align-items:center; justify-content:center; padding:48px 20px; }
-.sw { max-width:580px; width:100%; }
+/* ════════════ START SCREEN ════════════ */
+#sStart.on{display:flex;align-items:center;justify-content:center;padding:40px 20px;}
+.sw{max-width:600px;width:100%;}
 
-.exam-kicker {
-  display:inline-flex; align-items:center; gap:8px;
-  background: linear-gradient(135deg, rgba(245,181,60,.12), rgba(245,181,60,.04));
-  border: 1px solid rgba(245,181,60,.3);
-  border-radius:50px; padding:6px 18px;
-  font-size:.62rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
-  color: var(--gold); margin-bottom:24px;
+.badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--glow),transparent);border:1px solid rgba(232,180,50,.3);border-radius:50px;padding:5px 16px;font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:22px;}
+.badge::before{content:'◈';}
+.sh1{font-family:var(--fe);font-size:clamp(2rem,6vw,3.6rem);font-weight:900;color:var(--cream);line-height:1.05;margin-bottom:6px;}
+.sh1 em{color:var(--gold);font-style:italic;}
+.sar{font-family:var(--fa);font-size:.92rem;color:var(--dim);direction:rtl;margin-bottom:26px;line-height:1.8;}
+.gl{width:48px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:24px;}
+
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;}
+.sbox{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px 8px;text-align:center;position:relative;overflow:hidden;}
+.sbox::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.sn{font-family:var(--fe);font-size:2rem;font-weight:900;color:var(--gold);line-height:1;}
+.sl{font-family:var(--fa);font-size:.6rem;color:var(--dim);margin-top:3px;text-transform:uppercase;letter-spacing:1px;}
+
+.icard{background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:18px 22px;margin-bottom:20px;direction:rtl;}
+.ititle{font-family:var(--fa);font-weight:900;color:var(--gold);font-size:.92rem;margin-bottom:12px;}
+.ilist{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.ilist li{font-family:var(--fa);font-size:.83rem;color:var(--txt);line-height:1.7;padding-right:18px;position:relative;}
+.ilist li::before{content:'›';position:absolute;right:0;color:var(--gold);font-size:1.1rem;font-weight:700;line-height:1.5;}
+.ilist b{color:var(--gold);}
+
+.btn-start{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;border:none;border-radius:12px;padding:17px;font-family:var(--fe);font-size:1.1rem;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.btn-start::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.14),transparent);}
+.btn-start:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(232,180,50,.28);}
+
+/* ════════════ EXAM SCREEN ════════════ */
+#sExam.on{display:flex;flex-direction:column;}
+
+/* top bar */
+.tbar{position:sticky;top:0;z-index:400;background:rgba(7,8,15,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.tbar-inner{max-width:1240px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:14px;}
+.timer-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.timer{font-family:var(--fm);font-size:1.05rem;font-weight:500;background:var(--glow);border:1px solid rgba(232,180,50,.28);border-radius:9px;padding:7px 16px;color:var(--gold);min-width:86px;text-align:center;transition:all .4s;}
+.timer.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer.danger{color:var(--ng);background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.3);animation:blink .7s infinite;}
+.tprog{flex:1;display:flex;flex-direction:column;gap:5px;}
+.tprog-track{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.tprog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .4s;}
+.tprog-info{display:flex;justify-content:space-between;font-size:.63rem;font-family:var(--fm);color:var(--dim);}
+.btn-sub{background:linear-gradient(135deg,var(--ok),#17a882);color:#06090f;border:none;border-radius:9px;padding:9px 18px;font-family:var(--fa);font-size:.82rem;font-weight:900;cursor:pointer;flex-shrink:0;transition:all .2s;}
+.btn-sub:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,211,160,.28);}
+
+/* question navigator */
+.qnav{max-width:1240px;margin:0 auto;padding:10px 22px;border-bottom:1px solid rgba(255,255,255,.05);}
+.qnav-lbl{font-size:.58rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:7px;font-family:var(--fm);}
+.dots{display:flex;flex-wrap:wrap;gap:5px;}
+.dot{width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--dim);font-family:var(--fm);font-size:.6rem;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;}
+.dot:hover{border-color:rgba(232,180,50,.4);color:var(--gold);transform:scale(1.1);}
+.dot.answered{background:rgba(232,180,50,.12);border-color:rgba(232,180,50,.38);color:var(--gold);}
+.dot.cur{background:var(--gold);border-color:var(--gold);color:#06090f;font-weight:700;}
+.dot.section-match{border-color:rgba(192,132,252,.35);background:rgba(192,132,252,.07);}
+.dot.section-match.answered{background:rgba(192,132,252,.2);}
+.dot.section-match.cur{background:var(--purple);border-color:var(--purple);color:#fff;}
+
+/* main exam body */
+.ebody{max-width:1240px;margin:0 auto;padding:22px 22px 60px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+
+/* passage col */
+.pcol{position:sticky;top:108px;}
+.pbox{background:rgba(255,245,210,.023);border:1px solid rgba(232,180,50,.1);border-radius:16px;overflow:hidden;}
+.pbox-head{padding:14px 18px;border-bottom:1px solid rgba(232,180,50,.08);}
+.plbl{font-size:.57rem;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);font-weight:700;margin-bottom:3px;}
+.ptitle-en{font-family:var(--fe);font-size:.98rem;font-weight:700;color:var(--cream);}
+.ptitle-ar{font-family:var(--fa);font-size:.75rem;color:var(--dim);direction:rtl;text-align:right;margin-top:2px;}
+.pbody{padding:18px;max-height:calc(100vh - 220px);overflow-y:auto;}
+.pbody p{font-family:'Crimson Pro',serif;font-size:1.1rem;line-height:1.95;color:rgba(240,228,200,.85);margin-bottom:.9em;}
+.pbody p:last-child{margin-bottom:0;}
+.pinstr{background:var(--glow);border:1px solid rgba(232,180,50,.2);border-radius:9px;padding:9px 14px;margin-top:10px;font-family:var(--fa);font-size:.78rem;color:rgba(232,180,50,.8);direction:rtl;text-align:right;line-height:1.65;}
+.pinstr::before{content:'📋 ';}
+
+/* question col */
+.qcol{}
+.qcard{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:26px;position:relative;overflow:hidden;}
+.qcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),transparent 75%);}
+.qhead{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:18px;}
+.qnum{font-family:var(--fm);font-size:.65rem;color:var(--gold);background:var(--glow);border:1px solid rgba(232,180,50,.22);border-radius:6px;padding:3px 10px;}
+.pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:6px;font-size:.6rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.p-tf{background:rgba(192,132,252,.12);color:var(--purple);border:1px solid rgba(192,132,252,.28);}
+.p-wh{background:rgba(96,165,250,.12);color:var(--blue);border:1px solid rgba(96,165,250,.28);}
+.p-mt{background:rgba(232,180,50,.12);color:var(--gold);border:1px solid rgba(232,180,50,.28);}
+.qsec{font-size:.6rem;color:var(--dim);font-style:italic;margin-left:auto;}
+.qtxt{font-family:var(--fe);font-size:1.05rem;font-weight:700;color:var(--cream);line-height:1.55;margin-bottom:8px;}
+.qar{font-family:var(--fa);font-size:.8rem;color:var(--dim);direction:rtl;text-align:right;margin-bottom:16px;line-height:1.65;}
+
+/* T/F buttons — NO colors during exam */
+.tf-row{display:flex;gap:10px;}
+.tf-btn{flex:1;padding:13px;border-radius:10px;border:1.5px solid var(--b2);background:transparent;font-family:var(--fe);font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;color:var(--dim);position:relative;}
+.tf-btn:hover{border-color:rgba(232,180,50,.4);color:var(--cream);background:var(--glow);}
+.tf-btn.sel{border-color:var(--gold);color:var(--gold);background:var(--glow);}
+.tf-btn.sel::after{content:'✓';position:absolute;top:5px;right:8px;font-size:.65rem;}
+
+/* WH input */
+.wh-area{width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--b2);border-radius:10px;padding:12px 15px;color:var(--cream);font-family:var(--fb);font-size:.9rem;line-height:1.65;resize:vertical;outline:none;transition:all .2s;min-height:60px;}
+.wh-area:focus{border-color:var(--gold);background:rgba(232,180,50,.04);box-shadow:0 0 0 3px rgba(232,180,50,.07);}
+.wh-area::placeholder{color:rgba(255,255,255,.15);}
+.wh-hint{font-family:var(--fa);font-size:.72rem;color:var(--dim);margin-top:6px;direction:rtl;text-align:right;}
+
+/* nav row */
+.nav-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:20px;}
+.btn-nav{padding:11px 24px;border-radius:9px;border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.btn-prev{background:rgba(255,255,255,.07);border:1px solid var(--b2);color:var(--dim);}
+.btn-prev:hover{background:rgba(255,255,255,.12);color:var(--txt);}
+.btn-next{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(232,180,50,.28);}
+.qpos{font-family:var(--fm);font-size:.72rem;color:var(--dim);}
+
+/* MATCHING during exam */
+.match-instr{font-family:var(--fa);font-size:.8rem;color:var(--dim);direction:rtl;text-align:right;margin-bottom:14px;line-height:1.65;background:var(--glow);border:1px solid rgba(232,180,50,.15);border-radius:8px;padding:10px 12px;}
+.match-instr::before{content:'💡 ';}
+.match-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.match-col-lbl{font-family:var(--fm);font-size:.58rem;font-weight:700;color:var(--dim);letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:7px;}
+.mitem{background:rgba(255,255,255,.04);border:1.5px solid var(--b2);border-radius:8px;padding:9px 12px;font-size:.82rem;cursor:pointer;transition:all .18s;margin-bottom:5px;display:flex;align-items:center;gap:8px;user-select:none;}
+.mitem:hover{border-color:rgba(232,180,50,.4);background:var(--glow);color:var(--cream);}
+.mitem.sel{border-color:var(--gold);background:var(--glow);color:var(--gold);}
+.mitem.paired{border-color:rgba(96,165,250,.45);background:rgba(96,165,250,.08);color:var(--blue);}
+.midx{font-family:var(--fm);font-size:.63rem;color:var(--dim);flex-shrink:0;width:16px;}
+.mpair-tag{margin-left:auto;font-family:var(--fm);font-size:.6rem;color:var(--blue);display:none;}
+.mitem.paired .mpair-tag{display:inline;}
+.match-status{font-family:var(--fa);font-size:.75rem;color:var(--dim);text-align:center;margin-top:8px;}
+
+/* Confirm dialog */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0e111c;border:1px solid var(--border);border-radius:18px;padding:32px;max-width:440px;width:100%;animation:pop .3s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.88rem;color:var(--dim);direction:rtl;line-height:1.7;margin-bottom:22px;}
+.dialog-btns{display:flex;gap:10px;}
+.btn-confirm{flex:1;padding:13px;border-radius:10px;border:none;font-family:var(--fa);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-do{background:linear-gradient(135deg,var(--ok),#17a882);color:#06090f;}
+.btn-do:hover{transform:translateY(-2px);}
+.btn-cancel{background:rgba(255,255,255,.07);border:1px solid var(--b2);color:var(--txt);}
+.btn-cancel:hover{background:rgba(255,255,255,.12);}
+
+/* ════════════ RESULTS SCREEN ════════════ */
+#sResults{padding:40px 20px 80px;}
+.rwrap{max-width:780px;margin:0 auto;}
+
+/* hero */
+.rhero{text-align:center;margin-bottom:36px;}
+.rbadge{display:inline-block;padding:4px 16px;border-radius:50px;font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);margin-bottom:16px;}
+.rtitle{font-family:var(--fe);font-size:2.1rem;font-weight:900;color:var(--cream);margin-bottom:4px;}
+.rsub{font-family:var(--fa);font-size:.86rem;color:var(--dim);direction:rtl;}
+
+/* ring */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;margin:18px 0 12px;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(232,180,50,.18));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.6rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-lbl{font-family:var(--fm);font-size:.6rem;color:var(--dim);margin-top:2px;}
+.grade-tag{display:inline-block;padding:8px 30px;border-radius:50px;font-family:var(--fa);font-weight:900;font-size:1rem;margin-bottom:5px;}
+.grade-note{font-family:var(--fa);font-size:.82rem;color:var(--dim);direction:rtl;margin-bottom:26px;}
+
+/* stats */
+.rstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;}
+.rstat{background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:16px 8px;text-align:center;}
+.rn{font-family:var(--fe);font-size:2rem;font-weight:900;line-height:1;}
+.rn.ok{color:var(--ok)}.rn.ng{color:var(--ng)}.rn.sk{color:var(--gold)}.rn.tot{color:var(--blue)}
+.rl{font-family:var(--fa);font-size:.62rem;color:var(--dim);margin-top:3px;}
+
+/* action buttons */
+.rbtns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+.rbtn{padding:12px 22px;border-radius:11px;border:none;font-family:var(--fa);font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.rbtn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;}
+.rbtn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(232,180,50,.28);}
+.rbtn-red{background:linear-gradient(135deg,rgba(248,113,113,.2),rgba(248,113,113,.1));border:1px solid rgba(248,113,113,.35);color:var(--ng);}
+.rbtn-red:hover{background:linear-gradient(135deg,rgba(248,113,113,.3),rgba(248,113,113,.15));transform:translateY(-2px);}
+.rbtn-ghost{background:rgba(255,255,255,.07);border:1px solid var(--b2);color:var(--txt);}
+.rbtn-ghost:hover{background:rgba(255,255,255,.12);}
+
+/* divider */
+.rdiv{text-align:center;margin:24px 0 18px;position:relative;}
+.rdiv::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.rdiv span{position:relative;background:var(--bg);padding:0 14px;font-size:.62rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);}
+
+/* filter */
+.frow{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap;}
+.fbtn{padding:6px 14px;border-radius:7px;border:1px solid var(--b2);background:transparent;color:var(--dim);font-size:.74rem;font-weight:600;cursor:pointer;transition:all .15s;font-family:var(--fb);}
+.fbtn.on,.fbtn:hover{background:var(--glow);border-color:rgba(232,180,50,.38);color:var(--gold);}
+.fbtn.fok.on{background:rgba(34,211,160,.1);border-color:rgba(34,211,160,.38);color:var(--ok);}
+.fbtn.fng.on{background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.38);color:var(--ng);}
+.fbtn.fsk.on{background:rgba(232,180,50,.12);border-color:rgba(232,180,50,.38);color:var(--gold);}
+
+/* review cards */
+.rlist{display:flex;flex-direction:column;gap:12px;}
+.rc{border-radius:13px;padding:20px 22px;border-left:4px solid;background:var(--s1);animation:up .3s ease both;}
+.rc.ok{border-color:var(--ok);}
+.rc.ng{border-color:var(--ng);}
+.rc.sk{border-color:var(--gold);}
+.rc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;gap:10px;}
+.rc-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.rc-num{font-family:var(--fm);font-size:.62rem;color:var(--dim);}
+.rc-sec{font-size:.6rem;color:var(--dim);font-style:italic;}
+.rc-badge{font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:6px;white-space:nowrap;flex-shrink:0;}
+.rc-badge.ok{background:rgba(34,211,160,.12);color:var(--ok);border:1px solid rgba(34,211,160,.3);}
+.rc-badge.ng{background:rgba(248,113,113,.12);color:var(--ng);border:1px solid rgba(248,113,113,.3);}
+.rc-badge.sk{background:rgba(232,180,50,.12);color:var(--gold);border:1px solid rgba(232,180,50,.3);}
+.rc-q{font-family:var(--fe);font-size:.94rem;font-weight:700;color:var(--cream);margin-bottom:10px;line-height:1.5;}
+.rc-qar{font-family:var(--fa);font-size:.77rem;color:var(--dim);direction:rtl;text-align:right;margin-bottom:10px;}
+.rc-ans{font-size:.82rem;display:flex;flex-direction:column;gap:4px;}
+.your{color:var(--dim);}
+.your span.ng{color:var(--ng);font-weight:700;}
+.your span.ok{color:var(--ok);font-weight:700;}
+.correct-ans{color:var(--ok);font-weight:700;}
+.rc-exp{background:rgba(232,180,50,.05);border:1px solid rgba(232,180,50,.12);border-radius:8px;padding:9px 12px;margin-top:10px;font-family:var(--fa);font-size:.78rem;color:rgba(232,180,50,.8);direction:rtl;text-align:right;line-height:1.6;}
+.rc-exp::before{content:'💡 ';}
+/* match result */
+.match-result-pairs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.mrpair{display:flex;align-items:center;gap:6px;font-size:.78rem;padding:6px 10px;border-radius:7px;}
+.mrpair.ok{background:rgba(34,211,160,.08);border:1px solid rgba(34,211,160,.2);}
+.mrpair.ng{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);}
+.mrpair .mra{color:var(--dim);flex-shrink:0;}
+.mrpair .arr{color:var(--dim);}
+.mrpair .mrb{font-weight:600;}
+.mrpair.ok .mrb{color:var(--ok);}
+.mrpair.ng .mrb{color:var(--ng);}
+.mrpair .mrc{font-size:.7rem;color:var(--ok);}
+
+/* self-mark WH */
+.sm-row{display:flex;gap:8px;margin-top:8px;}
+.sm-btn{flex:1;padding:9px;border-radius:8px;border:1.5px solid var(--b2);background:transparent;font-family:var(--fa);font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;color:var(--dim);}
+.sm-btn:hover{transform:translateY(-1px);}
+.sm-ok{border-color:rgba(34,211,160,.4);color:var(--ok);}
+.sm-ok:hover{background:rgba(34,211,160,.1);}
+.sm-ok.ch{background:rgba(34,211,160,.15);border-color:var(--ok);}
+.sm-ng{border-color:rgba(248,113,113,.4);color:var(--ng);}
+.sm-ng:hover{background:rgba(248,113,113,.1);}
+.sm-ng.ch{background:rgba(248,113,113,.15);border-color:var(--ng);}
+.sm-btn.locked{pointer-events:none;opacity:.65;}
+.sm-lbl{font-family:var(--fa);font-size:.7rem;color:var(--dim);margin-top:8px;direction:rtl;text-align:right;}
+
+/* passage breakdown table */
+.pbtable{width:100%;border-collapse:collapse;margin-top:16px;}
+.pbtable th{font-family:var(--fa);font-size:.7rem;color:var(--dim);font-weight:700;padding:8px 12px;text-align:right;border-bottom:1px solid var(--b2);}
+.pbtable td{padding:8px 12px;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.04);}
+.pbtable tr:hover td{background:rgba(232,180,50,.03);}
+.pbtable .sec-name{font-family:var(--fa);text-align:right;color:var(--txt);}
+.pbtable .sec-score{font-family:var(--fm);color:var(--gold);font-size:.75rem;}
+.pbbar{height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin-top:3px;}
+.pbfill{height:100%;border-radius:3px;transition:width 1s ease;}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:880px){
+  .ebody{grid-template-columns:1fr;gap:14px;}
+  .pcol{position:relative;top:0;}
+  .pbody{max-height:220px;}
+  .sgrid{grid-template-columns:repeat(2,1fr);}
+  .rstats{grid-template-columns:repeat(2,1fr);}
 }
-.exam-kicker::before { content:'◈'; font-size:10px; }
-
-.s-h1 {
-  font-family: var(--fe);
-  font-size: clamp(2rem, 6vw, 3.8rem);
-  font-weight:900; line-height:1.04;
-  color: var(--cream); margin-bottom:8px;
+@media(max-width:600px){
+  .tbar-inner{padding:9px 14px;gap:9px;}
+  .ebody{padding:12px 14px 60px;}
+  .qnav{padding:9px 14px;}
+  .sh1{font-size:1.9rem;}
+  .qcard{padding:18px;}
+  .match-cols{grid-template-columns:1fr 1fr;}
 }
-.s-h1 em { color:var(--gold); font-style:italic; }
-.s-sub { font-family:var(--fa); font-size:.9rem; color:var(--muted); direction:rtl; margin-bottom:28px; line-height:1.85; }
+</style>
+</head>
+<body>
 
-.gl { width:48px; height:2px; background:linear-gradient(90deg,var(--gold),transparent); margin-bottom:28px; }
+<!-- ══════════ START ══════════ -->
+<div id="sStart" class="scr on">
+  <div class="sw">
+    <div class="badge up">Ministry Style · الثالث المتوسط</div>
+    <h1 class="sh1 up d1">English<br><em>Final Exam</em></h1>
+    <p class="sar up d1">امتحان شامل — القطع القرائية والتوصيلات | النتائج بعد الإنهاء فقط</p>
+    <div class="gl up d2"></div>
+    <div class="sgrid up d2">
+      <div class="sbox"><div class="sn" id="totalQCount">—</div><div class="sl">سؤال</div></div>
+      <div class="sbox"><div class="sn">45</div><div class="sl">دقيقة</div></div>
+      <div class="sbox"><div class="sn">4</div><div class="sl">توصيلات</div></div>
+      <div class="sbox"><div class="sn">12</div><div class="sl">قطعة</div></div>
+    </div>
+    <div class="icard up d3">
+      <div class="ititle">📋 تعليمات الامتحان</div>
+      <ul class="ilist">
+        <li><b>الإجابات لا تظهر</b> أثناء الامتحان — فقط بعد الإنهاء أو انتهاء الوقت</li>
+        <li>في أسئلة <b>صح / خطأ (T/F)</b>: اضغط True أو False — سيحفظ اختيارك</li>
+        <li>في أسئلة <b>WH</b>: اكتب جوابك — ستقارن مع النموذج بعد الانتهاء</li>
+        <li>في <b>التوصيلات</b>: اضغط كلمة من A ثم كلمة من B لربطهما</li>
+        <li>يمكنك <b>التنقل بين الأسئلة</b> بحرية عبر النقاط العلوية أو الأزرار</li>
+        <li>عند <b>انتهاء الوقت</b> يُسلَّم الامتحان تلقائياً</li>
+      </ul>
+    </div>
+    <button class="btn-start up d4" onclick="startExam()">ابدأ الامتحان — Begin Exam ◈</button>
+  </div>
+</div>
 
-.s-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:24px; }
-.s-stat {
-  background: var(--s1); border:1px solid var(--b1);
-  border-radius:var(--r); padding:18px 8px; text-align:center;
-  position:relative; overflow:hidden;
-}
-.s-stat::after {
-  content:''; position:absolute; top:0; left:0; right:0; height:2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-.s-stat-n { font-family:var(--fe); font-size:2.1rem; font-weight:900; color:var(--gold); line-height:1; }
-.s-stat-l { font-family:var(--fa); font-size:.58rem; color:var(--muted); margin-top:4px; }
+<!-- ══════════ EXAM ══════════ -->
+<div id="sExam" class="scr">
+  <div class="tbar">
+    <div class="tbar-inner">
+      <div class="timer-wrap">
+        <span style="font-family:var(--fm);font-size:.6rem;color:var(--dim);">⏱</span>
+        <div class="timer" id="timerDisplay">45:00</div>
+      </div>
+      <div class="tprog">
+        <div class="tprog-track"><div class="tprog-fill" id="progFill" style="width:0%"></div></div>
+        <div class="tprog-info">
+          <span id="progText">0 / 0 أُجيب</span>
+          <span id="progPct">0%</span>
+        </div>
+      </div>
+      <button class="btn-sub" onclick="confirmSubmit()">إنهاء وعرض النتائج ◈</button>
+    </div>
+  </div>
+  <div class="qnav">
+    <div class="qnav-lbl">الأسئلة — Questions</div>
+    <div class="dots" id="dotsBar"></div>
+  </div>
+  <div class="ebody" id="eBody">
+    <!-- passage col -->
+    <div class="pcol" id="pCol" style="display:none;">
+      <div class="pbox">
+        <div class="pbox-head">
+          <div class="plbl" id="pLbl">Passage</div>
+          <div class="ptitle-en" id="pTitleEn"></div>
+          <div class="ptitle-ar" id="pTitleAr"></div>
+        </div>
+        <div class="pbody" id="pBody"></div>
+      </div>
+      <div class="pinstr" id="pInstr" style="display:none;"></div>
+    </div>
+    <!-- question col -->
+    <div class="qcol" id="qCol">
+      <div class="qcard" id="qCard">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+</div>
 
-.s-instr {
-  background:var(--s1); border:1px solid var(--b1);
-  border-radius:var(--r); padding:20px 22px;
-  margin-bottom:22px; direction:rtl;
-}
-.s-instr-title { font-family:var(--fa); font-weight:900; color:var(--gold); font-size:.92rem; margin-bottom:12px; }
-.s-instr-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
-.s-instr-list li {
-  font-family:var(--fa); font-size:.83rem; color:var(--txt);
-  line-height:1.7; padding-right:18px; position:relative;
-}
-.s-instr-list li::before { content:'›'; position:absolute; right:0; color:var(--gold); font-size:1.1rem; font-weight:700; line-height:1.5; }
-.s-instr-list b { color:var(--gold); }
+<!-- ══════════ RESULTS ══════════ -->
+<div id="sResults" class="scr">
+  <div class="rwrap">
+    <div class="rhero up">
+      <div class="rbadge">◈ النتائج — Results</div>
+      <h2 class="rtitle">اكتمل الامتحان</h2>
+      <p class="rsub" id="rTimeTaken">مدة الامتحان: —</p>
+      <div class="ring-wrap">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(232,180,50,.1)" stroke-width="10"/>
+          <circle id="ringCircle" cx="80" cy="80" r="68" fill="none" stroke="url(#rg)" stroke-width="10"
+            stroke-linecap="round" stroke-dasharray="427.26" stroke-dashoffset="427.26" style="transition:stroke-dashoffset 1.2s ease;"/>
+          <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e8b432"/>
+            <stop offset="100%" stop-color="#b88a18"/>
+          </linearGradient></defs>
+        </svg>
+        <div class="ring-inner">
+          <div class="ring-pct" id="rPct">0%</div>
+          <div class="ring-lbl" id="rFrac">0 / 0</div>
+        </div>
+      </div>
+      <br>
+      <div class="grade-tag" id="rGrade">——</div>
+      <p class="grade-note" id="rNote"></p>
+    </div>
 
-.s-btn-start {
-  width:100%;
-  background: linear-gradient(135deg, var(--gold), var(--gold2));
-  color:#06090f; border:none; border-radius:var(--r);
-  padding:17px; font-family:var(--fe);
-  font-size:1.05rem; font-weight:700;
-  cursor:pointer; transition:transform .2s, box-shadow .2s;
-  position:relative; overflow:hidden; letter-spacing:.3px;
-}
-.s-btn-start::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.15),transparent); }
-.s-btn-start:hover { transform:translateY(-3px); box-shadow:0 16px 50px rgba(245,181,60,.3); }
+    <div class="rstats">
+      <div class="rstat"><div class="rn ok" id="rsOk">0</div><div class="rl">صحيح</div></div>
+      <div class="rstat"><div class="rn ng" id="rsNg">0</div><div class="rl">خطأ</div></div>
+      <div class="rstat"><div class="rn sk" id="rsSk">0</div><div class="rl">لم يُجَب</div></div>
+      <div class="rstat"><div class="rn tot" id="rsTot">0</div><div class="rl">المجموع</div></div>
+    </div>
 
-/* ══════════════════════════════
-   EXAM SCREEN
-══════════════════════════════ */
-#sExam.on { display:flex; flex-direction:column; }
+    <div class="rbtns">
+      <button class="rbtn rbtn-gold" onclick="restartExam()">↺ إعادة الامتحان</button>
+      <button class="rbtn rbtn-red" id="retryWrongBtn" onclick="retryWrong()" style="display:none;">🔁 إعادة الأسئلة الخاطئة</button>
+      <button class="rbtn rbtn-ghost" onclick="window.print()">🖨 طباعة</button>
+    </div>
 
-/* ── Top Bar ── */
-.tbar {
-  position:sticky; top:0; z-index:400;
-  background:rgba(6,11,24,.96); backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--b1);
-}
-.tbar-row {
-  max-width:1260px; margin:0 auto;
-  padding:10px 24px;
-  display:flex; align-items:center; gap:14px;
-}
-.timer {
-  font-family:var(--fm); font-size:1.02rem; font-weight:500;
-  background: var(--gold4); border:1px solid rgba(245,181,60,.28);
-  border-radius:var(--r2); padding:7px 15px;
-  color:var(--gold); min-width:84px; text-align:center;
-  transition:all .35s; flex-shrink:0; letter-spacing:.5px;
-}
-.timer.warn { color:#fb923c; background:rgba(251,146,60,.1); border-color:rgba(251,146,60,.3); }
-.timer.danger { color:var(--ng); background:rgba(239,68,68,.1); border-color:rgba(239,68,68,.3); animation:blink .7s infinite; }
+    <!-- per-section breakdown -->
+    <div style="background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:28px;">
+      <div style="font-family:var(--fa);font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:12px;direction:rtl;text-align:right;">📊 نتائج كل قسم</div>
+      <table class="pbtable" id="sectionTable"></table>
+    </div>
 
-.tbar-prog { flex:1; display:flex; flex-direction:column; gap:5px; }
-.tbar-prog-track { background:rgba(255,255,255,.07); border-radius:3px; height:5px; overflow:hidden; }
-.tbar-prog-fill { height:100%; background:linear-gradient(90deg,var(--gold),var(--gold2)); border-radius:3px; transition:width .5s cubic-bezier(.4,0,.2,1); }
-.tbar-prog-info { display:flex; justify-content:space-between; font-size:.62rem; font-family:var(--fm); color:var(--muted); }
+    <div class="rdiv"><span>مراجعة تفصيلية — Detailed Review</span></div>
+    <div class="frow">
+      <button class="fbtn on" onclick="filterReview('all',this)">الكل</button>
+      <button class="fbtn fok" onclick="filterReview('ok',this)">✅ صحيح</button>
+      <button class="fbtn fng" onclick="filterReview('ng',this)">❌ خطأ</button>
+      <button class="fbtn fsk" onclick="filterReview('sk',this)">⭕ لم يُجَب</button>
+    </div>
+    <div class="rlist" id="reviewList"></div>
+  </div>
+</div>
 
-.btn-end {
-  background:linear-gradient(135deg, var(--ok), #059669);
-  color:#fff; border:none; border-radius:var(--r2);
-  padding:9px 17px; font-family:var(--fa); font-size:.8rem; font-weight:700;
-  cursor:pointer; flex-shrink:0; transition:all .2s;
-  display:flex; align-items:center; gap:6px;
+<!-- Confirm dialog -->
+<div class="overlay" id="confirmOverlay">
+  <div class="dialog">
+    <h3>إنهاء الامتحان؟</h3>
+    <p id="confirmMsg">هل أنت متأكد من إنهاء الامتحان؟ لن تتمكن من تغيير الإجابات بعد الإنهاء.</p>
+    <div class="dialog-btns">
+      <button class="btn-confirm btn-do" onclick="doSubmit()">نعم، أنهِ الامتحان</button>
+      <button class="btn-confirm btn-cancel" onclick="closeConfirm()">لا، ارجع</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  DATA — All questions
+// ════════════════════════════════════════════════════════
+
+// Each question: {id, type:'tf'|'wh'|'match', section, sectionAr, passage?, q?, ar?, a?, exp?, listA?, listB?, answers?}
+
+const PASSAGES = {
+  external:{
+    lbl:'القطعة الخارجية',lblEn:'External Passage',ar:'قصة سالي وجون',
+    text:`Last week, John took his four-year-old daughter, Sally to a children's party. They travelled by train. Sally has never travelled by train before. She sat near the window and asked a lot of questions. Suddenly, a middle-aged lady came into their compartment and sat opposite Sally. "Hello, little girl," she said. Sally didn't answer, but looked curiously. The lady took out her powder compact. She then began to make up her face. "Why are you doing that?" Sally asked. "To make myself beautiful," the lady answered. She put away her compact and smiled kindly. "But you are still ugly," Sally said.`,
+    instr:'أجب عن (5) أسئلة فقط من الأسئلة التالية (10 درجات) — Answer 5 only'
+  },
+  mall:{lbl:'مول جواهر',lblEn:'Jawahir Mall',ar:'إسطنبول — تركيا',
+    text:`Jawahir Mall is one of the largest shopping centres in Istanbul, Turkey. It opened in 2005 and has six floors. It contains everything you need: shops, restaurants, a cinema, entertainment and much more. You can also pray at the mall — there is a prayer room available for visitors. The office opens at 10 a.m. and closes late in the evening.`
+  },
+  panther:{lbl:'السيارة النمر',lblEn:'Panther 3.0D',ar:'سيارة العام',
+    text:`The car everyone is talking about is called the Panther 3.0D — it's car of the year! The new Panther is really fantastic and beautiful. It looks quite cheap but it's actually great value. There are eight seats so there's loads of space inside. All the young men are very interested in its engine. The Panther is a really safe car because there are airbags. It also has great standard features: GPS, sunroof, tinted windows and a CD player. The Panther has a warranty for four years.`
+  },
+  kareem:{lbl:'الزبون المحظوظ',lblEn:'Lucky Customer',ar:'قصة كريم في شارع المتنبي',
+    text:`Kareem's parents, friends and teacher all said he was imaginative because he spent most of his free time reading and writing his own poems. His dream was to be a famous poet. He had read Al-Nawab's poems twice and found them very interesting. He had been saving up for months to be the first one to buy the new book "Islands of Salt". When he arrived at Al-Mutanabbi Street, he was sad because there was a long queue forming outside the bookshop. He waited patiently. When it was finally his turn, the shop owner told him he was the 50th customer and gave him a big prize: he would meet Al-Nawab, who would read his poems and give him advice. Kareem was so happy because his patience was being rewarded.`
+  },
+  atv:{lbl:'كوميديا ATV',lblEn:'ATV Comedy',ar:'لوسي وشخصية سامارا',
+    text:`Lucy is 16 years old and plays Samara in a popular TV comedy. Samara is a character who is the daughter in a traditional family. Samara has a clumsy brother who is younger than her and always causes problems. In one episode, Samara's brother put salt instead of sugar in his mother's tea. In another episode, he put cleaning fluid instead of gel on his hair. He also fell in the pool with all his clothes on and got very wet.`
+  },
+  falcons:{lbl:'أسرع الاشياء',lblEn:'The Fastest Living Things',ar:'الصقور — أسرع الكائنات',
+    text:`Falcons can move faster than any other living thing. They fly high up and then dive down to kill a bird or small animal. The Bedouin are the people from the deserts of Arabia. They used to live mostly on dates, milk and bread — they didn't eat a lot of meat. So the Bedouin used falconry to catch birds to eat, especially the large, long-legged houbara. The Bedouin enjoyed the food that falcons caught for them. Falconry was not just a sport — it was also necessary for food. Today, falconry is popular as a sport, but there could soon be no rare birds left because of it.`
+  },
+  news:{lbl:'أخبار الصباح',lblEn:'Iraqi Morning News',ar:'نشرة الأخبار',
+    text:`Today's Iraqi Morning News: The Iraqi minister met with officials in London yesterday. The meeting focused on discussing educational development between countries. The minister suggested opening English schools in Iraq to develop the English language. In sports news, the sports minister opened a new sports city in Basra.`
+  },
+  lesson:{lbl:'الدرس الأقوى',lblEn:'A Powerful Lesson',ar:'درس لكل شخص',
+    text:`Al-Sabah newspaper had a special offer: work as a reporter for a day. The lucky boy was Salam Ahmed, 15 years old. On Tuesday he took his notebook and camera. A special thing attracted his attention: a young boy was taking his old father, who was in a wheelchair, to a restaurant for a treat. The boy bought his father some food. Because the father was very old and weak, he kept dropping food on his shirt and trousers. The customers didn't watch him with love and respect. But the son was not embarrassed — he was proud.`
+  },
+  school:{lbl:'مدرسة المستقبل',lblEn:'School of the Future',ar:'التعليم المستقبلي',
+    text:`School in the future will be very different from schools today. There will be much more technology. Students will come to school once or twice a week. Global Education will connect students with other students and teachers around the world. I think there will be fewer small schools in the future because students will learn at home.`
+  },
+  ibn:{lbl:'مهنة مشهورة',lblEn:'Ibn Al-Haytham',ar:'أبو علي الحسن ابن الهيثم',
+    text:`Abu Ali al-Hasan Ibn al-Haitham was born in 965 in Basra, Iraq. He received his education in Basra and Baghdad, and later travelled to Egypt and Spain. He was called "Physicist" and sometimes called "Al-Basri". He was known as the "father of optics" for his great contributions in the field of optics. He discovered the laws of refraction and proved many other things. He died in 1040 in Cairo.`
+  },
+  africa:{lbl:'بلدان أفريقيان',lblEn:'Two African Countries',ar:'ليبيا والسودان',
+    text:`Libya is in North Africa. It is mostly desert and mountain. The climate is varied — it is not always very hot there. Libya has some agriculture and also produces oil, which is very important for its economy. Sudan is also in Africa and gets most of its water from the Blue Nile. Sudan produces cotton, sugar and gum Arabic, which are important exports.`
+  },
+  asian:{lbl:'الألعاب الآسيوية',lblEn:'The Asian Games',ar:'الألعاب الرياضية الآسيوية',
+    text:`The Asian Games are held every four years. They began after the end of the Second World War. Athletes from all across Asia participate in many different sports. The last games were held in South Korea in 2014. The games bring Asian countries together in the spirit of sport and friendly competition.`
+  }
+};
+
+const Q = [
+  // ── MATCHING (4 exercises) ──
+  {id:'m1',type:'match',section:'التوصيلات',sectionEn:'Matching Q3·B',
+   instAr:'وصّل الأفعال في القائمة A بالأسماء في القائمة B لتكوين جمل صحيحة',
+   instEn:'Match verbs in List A with nouns in List B',
+   listA:['do','Watch','score','kick','put out','write'],
+   listB:['a goal','fires','gymnastics','a letter','TV','a ball'],
+   answers:{0:2,1:4,2:0,3:5,4:1,5:3}},
+  // do→gymnastics(2), Watch→TV(4), score→a goal(0), kick→a ball(5), put out→fires(1), write→a letter(3)
+
+  {id:'m2',type:'match',section:'التوصيلات',sectionEn:'Matching Q3·B',
+   instAr:'وصّل الأفعال في القائمة A بالأسماء في القائمة B لتكوين جمل صحيحة',
+   instEn:'Match verbs in List A with nouns in List B',
+   listA:['watch','Write','Have','spend','borrow','cut'],
+   listB:['a picnic','the morning','a letter','hair','TV','a book'],
+   answers:{0:4,1:2,2:0,3:1,4:5,5:3}},
+  // watch→TV(4), Write→a letter(2), Have→a picnic(0), spend→the morning(1), borrow→a book(5), cut→hair(3)
+
+  {id:'m3',type:'match',section:'التوصيلات',sectionEn:'Matching Q3·B',
+   instAr:'وصّل كلمات القائمة A بالقائمة B لتكوين أسماء مركبة (Compound Nouns)',
+   instEn:'Match words to make compound nouns',
+   listA:['insect','Car','Video','Air','swimming','sun'],
+   listB:['game','pool','roof','park','proof','bag'],
+   answers:{0:4,1:3,2:0,3:5,4:1,5:2}},
+  // insect→proof(4), Car→park(3), Video→game(0), Air→bag(5), swimming→pool(1), sun→roof(2)
+
+  {id:'m4',type:'match',section:'التوصيلات',sectionEn:'Matching Q3·B',
+   instAr:'وصّل الأفعال في القائمة A بالأسماء في القائمة B لتكوين جمل صحيحة',
+   instEn:'Match verbs in List A with nouns in List B',
+   listA:['Score','do','go','Spend','Win','kick'],
+   listB:['to the cinema','a game','the afternoon','a goal','a hobby','a ball'],
+   answers:{0:3,1:4,2:0,3:2,4:1,5:5}},
+  // Score→a goal(3), do→a hobby(4), go→to the cinema(0), Spend→the afternoon(2), Win→a game(1), kick→a ball(5)
+
+  // ── EXTERNAL PASSAGE ──
+  {id:'e1',type:'wh',passage:'external',section:'القطعة الخارجية',sectionEn:'External Passage',
+   q:'Where did John take his old daughter?',ar:'أين أخذ جون ابنته؟',
+   a:'John took his old daughter to a children\'s party.'},
+  {id:'e2',type:'tf',passage:'external',section:'القطعة الخارجية',sectionEn:'External Passage',
+   q:'Sally sat silent near the window of the train.',ar:'جلست سالي بصمت قرب نافذة القطار.',
+   a:false,exp:'False — She sat near the window but asked a lot of questions (كانت تسأل أسئلة كثيرة).'},
+  {id:'e3',type:'wh',passage:'external',section:'القطعة الخارجية',sectionEn:'External Passage',
+   q:'Why did the lady take out her powder compact?',ar:'لماذا أخرجت السيدة مرآتها؟',
+   a:'The lady took out her powder compact to make up her face.'},
+  {id:'e4',type:'tf',passage:'external',section:'القطعة الخارجية',sectionEn:'External Passage',
+   q:'The lady greeted Sally but Sally didn\'t answer.',ar:'رحّبت السيدة بسالي لكن سالي لم تردّ.',
+   a:true,exp:'True — The lady said "Hello" but Sally didn\'t answer, she only looked curiously.'},
+  {id:'e5',type:'wh',passage:'external',section:'القطعة الخارجية',sectionEn:'External Passage',
+   q:'Was it the first time for Sally to travel by train?',ar:'هل كانت المرة الأولى لسالي في القطار؟',
+   a:'Yes, it was. Sally has never travelled by train before.'},
+  {id:'e6',type:'wh',passage:'external',section:'القطعة الخارجية',sectionEn:'External Passage',
+   q:'What did the lady answer when Sally asked why she was making up her face?',ar:'ماذا أجابت السيدة سالي عن سبب وضع المساحيق؟',
+   a:'"To make myself beautiful."'},
+
+  // ── MALL ──
+  {id:'ma1',type:'wh',passage:'mall',section:'مول جواهر',sectionEn:'Jawahir Mall',
+   q:'Where is the mall?',ar:'أين يقع المول؟',a:'It\'s in Istanbul, Turkey.'},
+  {id:'ma2',type:'wh',passage:'mall',section:'مول جواهر',sectionEn:'Jawahir Mall',
+   q:'When did it open?',ar:'متى تم افتتاحه؟',a:'It opened in 2005.'},
+  {id:'ma3',type:'wh',passage:'mall',section:'مول جواهر',sectionEn:'Jawahir Mall',
+   q:'How many floors does it have?',ar:'كم عدد طوابقه؟',a:'It has six floors.'},
+  {id:'ma4',type:'tf',passage:'mall',section:'مول جواهر',sectionEn:'Jawahir Mall',
+   q:'You can pray at the mall.',ar:'يمكنك الصلاة في المول.',
+   a:true,exp:'True — there is a prayer room available for visitors.'},
+  {id:'ma5',type:'wh',passage:'mall',section:'مول جواهر',sectionEn:'Jawahir Mall',
+   q:'Can I contact the office at nine a.m.?',ar:'هل يمكنني الاتصال بالمكتب الساعة التاسعة صباحاً؟',
+   a:'No, it doesn\'t open until 10 a.m.'},
+
+  // ── PANTHER ──
+  {id:'p1',type:'wh',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'What is the name of the car of the year?',ar:'ما هو اسم سيارة هذه السنة؟',a:'The Panther 3.0D.'},
+  {id:'p2',type:'wh',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'Does the Panther 3.0D look very expensive or quite cheap?',ar:'هل تبدو السيارة غالية جداً أم رخيصة نوعاً ما؟',a:'It looks quite cheap.'},
+  {id:'p3',type:'wh',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'How many seats are there in the Panther 3.0D?',ar:'كم عدد المقاعد؟',a:'There are eight seats.'},
+  {id:'p4',type:'tf',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'Are the young men interested in the engine?',ar:'هل الشباب مهتمون بالمحرك؟',
+   a:true,exp:'True — All the young men are very interested in its engine.'},
+  {id:'p5',type:'wh',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'What are the safety features in the Panther?',ar:'ما هي مميزات السلامة في السيارة؟',a:'There are airbags.'},
+  {id:'p6',type:'wh',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'What are the standard features in the Panther?',ar:'ما هي المميزات الأساسية الإضافية؟',a:'It has GPS, sunroof, tinted windows and CD player.'},
+  {id:'p7',type:'tf',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'The new Panther is really fantastic / beautiful.',ar:'السيارة النمر الجديدة رائعة وجميلة حقاً.',
+   a:true,exp:'True — stated directly in the text.'},
+  {id:'p8',type:'tf',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'Some young men are not very interested in its engine.',ar:'بعض الشباب غير مهتمين بالمحرك.',
+   a:false,exp:'False — ALL the young men are very interested in its engine.'},
+  {id:'p9',type:'tf',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'Panther has no standard features.',ar:'السيارة النمر ليس فيها مواصفات مميزة.',
+   a:false,exp:'False — It has GPS, sunroof, tinted windows and CD player.'},
+  {id:'p10',type:'tf',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'The Panther is actually very expensive.',ar:'السيارة غالية جداً في الواقع.',
+   a:false,exp:'False — It looks quite cheap.'},
+  {id:'p11',type:'tf',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'The Panther has seats for six people.',ar:'للسيارة مقاعد لستة أشخاص.',
+   a:false,exp:'False — There are EIGHT seats.'},
+  {id:'p12',type:'tf',passage:'panther',section:'السيارة النمر',sectionEn:'Panther 3.0D',
+   q:'The Panther has a warranty for four years.',ar:'للسيارة ضمان لأربع سنوات.',
+   a:true,exp:'True — stated directly in the text.'},
+
+  // ── KAREEM ──
+  {id:'k1',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'Where does the story take place?',ar:'أين تجري أحداث القصة؟',a:'In Al-Mutanabbi Street.'},
+  {id:'k2',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'Why was Kareem sad when he arrived at the bookshop?',ar:'لماذا كان كريم حزيناً عند وصوله؟',a:'Because there was a long queue forming outside.'},
+  {id:'k3',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'What was Kareem\'s dream?',ar:'ما هو حلم كريم؟',a:'To be a famous poet.'},
+  {id:'k4',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'Why did the shop owner give Kareem a prize?',ar:'لماذا أعطى مالك المحل جائزةً لكريم؟',a:'Because he was the 50th customer in the shop.'},
+  {id:'k5',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'Why was Kareem so happy with the prize?',ar:'لماذا كان كريم سعيداً بالجائزة؟',a:'Because his patience was being rewarded.'},
+  {id:'k6',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'Who is going to read Kareem\'s poems and give him advice?',ar:'من سيقرأ قصائد كريم ويعطيه النصيحة؟',a:'Al-Nawab (مظفر النواب).'},
+  {id:'k7',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'Describe Kareem\'s character.',ar:'صف شخصية كريم.',a:'He was hard working, imaginative and patient.'},
+  {id:'k8',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'What is the name of the new book Kareem wants to buy?',ar:'ما اسم الكتاب الجديد الذي يريد كريم شراءه؟',a:'Islands of Salt (جزر الملح).'},
+  {id:'k9',type:'wh',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'How many times had Kareem read Al-Nawab\'s poems?',ar:'كم مرة قرأ كريم قصائد النواب؟',a:'Twice (مرتان).'},
+  {id:'k10',type:'tf',passage:'kareem',section:'الزبون المحظوظ',sectionEn:'Lucky Customer',
+   q:'Kareem was the first to buy the new book.',ar:'كريم كان الأول لشراء الكتاب الجديد.',
+   a:false,exp:'False — he was the 50th customer, not the first.'},
+
+  // ── ATV ──
+  {id:'a1',type:'wh',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'How old is Lucy?',ar:'كم عمر لوسي؟',a:'She is 16 years old.'},
+  {id:'a2',type:'wh',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'What does Lucy play in the TV comedy?',ar:'من تلعب لوسي دور في كوميديا التلفزيون؟',a:'Lucy plays Samara.'},
+  {id:'a3',type:'wh',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'Who is Samara?',ar:'من هي سامارا؟',a:'She is a character in a TV comedy, the daughter in a traditional family.'},
+  {id:'a4',type:'wh',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'What did Samara\'s brother put in his mother\'s tea?',ar:'ماذا وضع أخو سامارا في شاي أمه؟',a:'He put salt instead of sugar.'},
+  {id:'a5',type:'wh',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'Where does Samara\'s brother fall?',ar:'أين سقط أخو سامارا؟',a:'He falls in the pool.'},
+  {id:'a6',type:'wh',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'What does Samara\'s brother put on his hair?',ar:'ماذا وضع على شعره؟',a:'He puts cleaning fluid instead of gel.'},
+  {id:'a7',type:'tf',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'Lucy\'s brother is clumsy.',ar:'أخو لوسي أخرق.',a:true,exp:'True — Samara\'s brother is described as clumsy.'},
+  {id:'a8',type:'tf',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'Samara\'s brother is older than her.',ar:'أخو سامارا أكبر منها.',a:false,exp:'False — he is YOUNGER than her.'},
+  {id:'a9',type:'tf',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'Samara\'s mother liked her tea.',ar:'أعجبت أم سامارا بشايها.',a:false,exp:'False — the brother put salt instead of sugar.'},
+  {id:'a10',type:'tf',passage:'atv',section:'كوميديا ATV',sectionEn:'ATV Comedy',
+   q:'The brother got very wet.',ar:'أصبح الأخ مبللاً جداً.',a:true,exp:'True — he fell in the pool with all his clothes on.'},
+
+  // ── FALCONS ──
+  {id:'f1',type:'wh',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'How fast can some falcons dive?',ar:'كيف يهبط بعض الصقور؟',a:'They fly high up and then dive down to kill a bird or small animal.'},
+  {id:'f2',type:'wh',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'What are the fastest things in the natural world?',ar:'ما هي أسرع الأشياء في عالم الطبيعة؟',a:'The falcons.'},
+  {id:'f3',type:'wh',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'Who are the Bedouin?',ar:'من هم البدو؟',a:'They are the people from the deserts of Arabia.'},
+  {id:'f4',type:'wh',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'What was the favourite bird for the Bedouin to catch?',ar:'ما هو الطير المفضل لدى البدو لصيده؟',a:'The large, long-legged houbara (الحباري ذو الأرجل الطويلة).'},
+  {id:'f5',type:'tf',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'Falcons can move faster than any other living thing.',ar:'الصقور تتحرك أسرع من أي كائن آخر.',a:true,exp:'True — stated directly.'},
+  {id:'f6',type:'tf',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'Before falconry, the Bedouin used to eat a lot of meat.',ar:'قبل الصيد كان البدو يأكلون الكثير من اللحوم.',a:false,exp:'False — they lived mostly on dates, milk and bread, NOT a lot of meat.'},
+  {id:'f7',type:'tf',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'The Bedouin enjoyed the food that falcons caught for them.',ar:'استمتع البدو بالطعام الذي صاده الصقر.',a:true,exp:'True — stated in the text.'},
+  {id:'f8',type:'tf',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'Falconry used to be just a sport.',ar:'صيد الصقور كان مجرد رياضة.',a:false,exp:'False — it was also necessary for food, not just a sport.'},
+  {id:'f9',type:'tf',passage:'falcons',section:'أسرع الاشياء',sectionEn:'Fastest Living Things',
+   q:'There could soon be no rare birds because of falconry.',ar:'ربما لا تبقى طيور نادرة بسبب صيد الصقور.',a:true,exp:'True — stated in the text.'},
+
+  // ── NEWS ──
+  {id:'n1',type:'wh',passage:'news',section:'أخبار الصباح',sectionEn:'Iraqi Morning News',
+   q:'What did the meeting in London focus on?',ar:'على ماذا ركز الاجتماع في لندن؟',a:'Discussing educational development between countries.'},
+  {id:'n2',type:'wh',passage:'news',section:'أخبار الصباح',sectionEn:'Iraqi Morning News',
+   q:'What was the minister\'s suggestion?',ar:'ماذا اقترح الوزير؟',a:'Opening English schools in Iraq to develop English language.'},
+  {id:'n3',type:'wh',passage:'news',section:'أخبار الصباح',sectionEn:'Iraqi Morning News',
+   q:'What did the sports minister open in Basra?',ar:'ماذا افتتح وزير الرياضة في البصرة؟',a:'He opened a new sports city.'},
+
+  // ── LESSON ──
+  {id:'l1',type:'wh',passage:'lesson',section:'الدرس الأقوى',sectionEn:'Powerful Lesson',
+   q:'What was the special offer of Al-Sabah newspaper?',ar:'ما هو العرض الخاص لجريدة الصباح؟',a:'Work as a reporter (العمل كمراسل صحفي).'},
+  {id:'l2',type:'wh',passage:'lesson',section:'الدرس الأقوى',sectionEn:'Powerful Lesson',
+   q:'Who was the lucky boy? How old was he?',ar:'من هو الصبي المحظوظ وكم عمره؟',a:'Salam Ahmed, he was 15 years old.'},
+  {id:'l3',type:'wh',passage:'lesson',section:'الدرس الأقوى',sectionEn:'Powerful Lesson',
+   q:'What did Salam take with him on Tuesday?',ar:'ماذا أخذ سلام معه يوم الثلاثاء؟',a:'He took his notebook and camera.'},
+  {id:'l4',type:'wh',passage:'lesson',section:'الدرس الأقوى',sectionEn:'Powerful Lesson',
+   q:'What was the special thing that attracted Salam\'s attention?',ar:'ما الشيء الذي جذب انتباه سلام؟',a:'A young boy was taking his old father, who was in a wheelchair, to a restaurant for a treat.'},
+  {id:'l5',type:'wh',passage:'lesson',section:'الدرس الأقوى',sectionEn:'Powerful Lesson',
+   q:'Why was the boy\'s father dropping food on his clothes?',ar:'لماذا كان والد الصبي يسكب الطعام على ملابسه؟',a:'Because he was very old and weak.'},
+  {id:'l6',type:'tf',passage:'lesson',section:'الدرس الأقوى',sectionEn:'Powerful Lesson',
+   q:'Did the customers watch the old man with love and respect?',ar:'هل شاهد الزبائن الرجل المسن بحب واحترام؟',a:false,exp:'False — No, they didn\'t.'},
+  {id:'l7',type:'tf',passage:'lesson',section:'الدرس الأقوى',sectionEn:'Powerful Lesson',
+   q:'The son was embarrassed when his father was eating.',ar:'الابن كان محرجاً عندما كان والده يأكل.',a:false,exp:'False — he was PROUD (فخور), not embarrassed.'},
+
+  // ── SCHOOL ──
+  {id:'sc1',type:'wh',passage:'school',section:'مدرسة المستقبل',sectionEn:'School of Future',
+   q:'How will teaching and learning take place in the future?',ar:'كيف سيكون التعليم في المستقبل؟',a:'There will be much more technology.'},
+  {id:'sc2',type:'wh',passage:'school',section:'مدرسة المستقبل',sectionEn:'School of Future',
+   q:'What is the importance of Global Education?',ar:'ما أهمية التعليم العالمي؟',a:'It makes the students connect with other students and teachers.'},
+  {id:'sc3',type:'wh',passage:'school',section:'مدرسة المستقبل',sectionEn:'School of Future',
+   q:'How often will students come to school in the future?',ar:'كم مرة سيأتي الطلاب للمدرسة مستقبلاً؟',a:'Once or twice a week.'},
+  {id:'sc4',type:'tf',passage:'school',section:'مدرسة المستقبل',sectionEn:'School of Future',
+   q:'School in the future will be very different to schools now.',ar:'المدرسة في المستقبل ستكون مختلفة جداً.',a:true,exp:'True — much more technology, students come once or twice a week.'},
+  {id:'sc5',type:'tf',passage:'school',section:'مدرسة المستقبل',sectionEn:'School of Future',
+   q:'There will be more small schools in the future.',ar:'سيكون هناك مدارس صغيرة أكثر في المستقبل.',a:false,exp:'False — there will be FEWER small schools.'},
+
+  // ── IBN HAYTHAM ──
+  {id:'i1',type:'wh',passage:'ibn',section:'مهنة مشهورة',sectionEn:'Famous Career',
+   q:'When and where was Ibn Al-Haytham born?',ar:'أين ومتى ولد ابن الهيثم؟',a:'He was born in 965 in Basra, Iraq.'},
+  {id:'i2',type:'wh',passage:'ibn',section:'مهنة مشهورة',sectionEn:'Famous Career',
+   q:'Where did Ibn Al-Haytham receive his education?',ar:'أين أنجز ابن الهيثم تعليمه؟',a:'In Basra, Baghdad and later travelled to Egypt and Spain.'},
+  {id:'i3',type:'wh',passage:'ibn',section:'مهنة مشهورة',sectionEn:'Famous Career',
+   q:'What was Ibn Al-Haytham called?',ar:'بماذا كان يُلقَّب ابن الهيثم؟',a:'"Physicist" and sometimes "Al-Basri".'},
+  {id:'i4',type:'wh',passage:'ibn',section:'مهنة مشهورة',sectionEn:'Famous Career',
+   q:'What was Ibn Al-Haytham known for?',ar:'بماذا كان مشهوراً ابن الهيثم؟',a:'He was known as "father of optics" for his great contributions in optics.'},
+  {id:'i5',type:'wh',passage:'ibn',section:'مهنة مشهورة',sectionEn:'Famous Career',
+   q:'What made Ibn Al-Haytham famous?',ar:'ما الذي جعل ابن الهيثم مشهوراً؟',a:'He discovered the laws of refraction and proved other things.'},
+  {id:'i6',type:'wh',passage:'ibn',section:'مهنة مشهورة',sectionEn:'Famous Career',
+   q:'When and where did Ibn Al-Haytham die?',ar:'أين ومتى توفي ابن الهيثم؟',a:'He died in 1040, in Cairo.'},
+
+  // ── AFRICA ──
+  {id:'af1',type:'tf',passage:'africa',section:'بلدان أفريقيان',sectionEn:'Two African Countries',
+   q:'Libya is mostly desert and mountain.',ar:'ليبيا في معظمها صحراء وجبال.',a:true,exp:'True — stated directly.'},
+  {id:'af2',type:'tf',passage:'africa',section:'بلدان أفريقيان',sectionEn:'Two African Countries',
+   q:'It is always very hot there in Libya.',ar:'الطقس دائماً حار جداً في ليبيا.',a:false,exp:'False — the climate is varied, not always very hot.'},
+  {id:'af3',type:'tf',passage:'africa',section:'بلدان أفريقيان',sectionEn:'Two African Countries',
+   q:'There is no agriculture in Libya.',ar:'لا توجد زراعة في ليبيا.',a:false,exp:'False — Libya has some agriculture.'},
+  {id:'af4',type:'tf',passage:'africa',section:'بلدان أفريقيان',sectionEn:'Two African Countries',
+   q:'Libya produces oil.',ar:'ليبيا تنتج النفط.',a:true,exp:'True — stated in the text.'},
+  {id:'af5',type:'tf',passage:'africa',section:'بلدان أفريقيان',sectionEn:'Two African Countries',
+   q:'Sudan gets most of its water from Blue Nile.',ar:'السودان يحصل على معظم مياهه من النيل الأزرق.',a:true,exp:'True — stated directly.'},
+  {id:'af6',type:'tf',passage:'africa',section:'بلدان أفريقيان',sectionEn:'Two African Countries',
+   q:'Sudan produces cotton, sugar and gum Arabic.',ar:'السودان ينتج القطن والسكر والصمغ العربي.',a:true,exp:'True — stated directly.'},
+
+  // ── ASIAN GAMES ──
+  {id:'as1',type:'wh',passage:'asian',section:'الألعاب الآسيوية',sectionEn:'Asian Games',
+   q:'How often do the games take place?',ar:'كم مرة تحصل الألعاب الآسيوية؟',a:'They are held every four years.'},
+  {id:'as2',type:'wh',passage:'asian',section:'الألعاب الآسيوية',sectionEn:'Asian Games',
+   q:'When did they begin?',ar:'متى بدأت الألعاب؟',a:'After the end of the Second World War.'},
+  {id:'as3',type:'wh',passage:'asian',section:'الألعاب الآسيوية',sectionEn:'Asian Games',
+   q:'Where and when were the last games held?',ar:'أين ومتى حُصلت آخر الألعاب؟',a:'South Korea 2014.'}
+];
+
+// ════════════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════════════
+let cur = 0;              // current question index
+let answers = {};         // qid → value
+let matchPairs = {};      // qid → {selectedA, pairs:{ai:bi}}
+let shuffledBs = {};      // qid → shuffled B array
+let timerSecs = 45*60;
+let timerInterval = null;
+let examStartTime = null;
+let retryMode = false;
+let retryIds = [];
+let retryQueue = [];
+
+// mode: 'full' | 'retry'
+let activeQ = Q;          // questions in current run
+
+// ════════════════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════════════════
+const $ = id => document.getElementById(id);
+function scr(id){ document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on')); $(id).classList.add('on'); window.scrollTo(0,0); }
+function shuffleArr(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];} return b; }
+function answered(q){ const id=q.id; if(q.type==='match') return matchPairs[id]&&Object.keys(matchPairs[id].pairs).length>0; if(q.type==='tf') return answers[id]!==undefined; if(q.type==='wh') return answers[id]&&answers[id].trim().length>0; return false; }
+function countAnswered(){ return activeQ.filter(answered).length; }
+
+// ════════════════════════════════════════════════════════
+//  START
+// ════════════════════════════════════════════════════════
+function initQCount(){ $('totalQCount').textContent = Q.length; }
+
+function startExam(){
+  answers={};matchPairs={};shuffledBs={};cur=0;
+  retryMode=false;retryIds=[];retryQueue=[];
+  activeQ=Q;
+  timerSecs=45*60;
+  examStartTime=Date.now();
+  scr('sExam');
+  buildDots();
+  renderQuestion(0);
+  startTimer();
 }
-.btn-end:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(16,185,129,.28); }
 
-/* ── Category Navigator ── */
-.cat-nav { max-width:1260px; margin:0 auto; padding:10px 24px; display:grid; grid-template-columns:1fr 1fr; gap:10px; border-bottom:1px solid rgba(255,255,255,.05); }
-
-.cat-nav-bar { background:var(--s1); border:1px solid var(--b2); border-radius:var(--r); overflow:hidden; transition:all .2s; position:relative; }
-.cat-nav-bar:hover { border-color:var(--b3); }
-.cat-nav-bar.expanded { border-color:rgba(245,181,60,.3); }
-
-.cat-nav-header {
-  display:flex; align-items:center; gap:12px;
-  padding:11px 16px; cursor:pointer; user-select:none;
+function retryWrong(){
+  retryQueue=[...retryIds];
+  activeQ=Q.filter(q=>retryIds.includes(q.id));
+  // reset answers for retry questions
+  retryIds.forEach(id=>{ delete answers[id]; delete matchPairs[id]; });
+  cur=0;retryMode=true;
+  timerSecs=45*60;examStartTime=Date.now();
+  scr('sExam');
+  buildDots();renderQuestion(0);startTimer();
 }
-.cat-icon { font-size:1.1rem; flex-shrink:0; }
-.cat-info { flex:1; min-width:0; }
-.cat-title { font-family:var(--fa); font-size:.8rem; font-weight:700; color:var(--cream); }
-.cat-subtitle { font-family:var(--fm); font-size:.58rem; color:var(--muted); margin-top:1px; }
-.cat-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-.cat-pill { font-family:var(--fm); font-size:.65rem; color:var(--muted); background:var(--s2); border-radius:20px; padding:3px 9px; }
-.cat-pill.warm { color:var(--gold); }
-.cat-bar-mini { width:80px; height:5px; background:rgba(255,255,255,.07); border-radius:3px; overflow:hidden; }
-.cat-bar-fill { height:100%; border-radius:3px; transition:width .5s ease; }
-.cat-fill-read { background:linear-gradient(90deg,var(--indigo),var(--cyan)); }
-.cat-fill-match { background:linear-gradient(90deg,var(--gold),var(--gold2)); }
-.cat-chevron { color:var(--muted); font-size:.7rem; transition:transform .3s cubic-bezier(.4,0,.2,1); flex-shrink:0; }
-.cat-nav-bar.expanded .cat-chevron { transform:rotate(180deg); color:var(--gold); }
 
-/* Dropdown */
-.cat-dropdown {
-  max-height:0; overflow:hidden;
-  transition:max-height .4s cubic-bezier(.4,0,.2,1);
-  border-top:0px solid transparent;
+// ════════════════════════════════════════════════════════
+//  TIMER
+// ════════════════════════════════════════════════════════
+function startTimer(){
+  if(timerInterval)clearInterval(timerInterval);
+  updateTimerDisplay();
+  timerInterval=setInterval(()=>{
+    timerSecs--;
+    updateTimerDisplay();
+    if(timerSecs<=0){clearInterval(timerInterval);autoSubmit();}
+  },1000);
 }
-.cat-nav-bar.expanded .cat-dropdown {
-  max-height:480px; overflow-y:auto;
-  border-top:1px solid var(--b2);
-}
-.cat-dropdown::-webkit-scrollbar { width:3px; }
-.cat-dropdown::-webkit-scrollbar-thumb { background:rgba(245,181,60,.2); }
 
-.drop-section { padding:8px 0; }
-.drop-sec-header {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:7px 16px; cursor:default;
+function updateTimerDisplay(){
+  const m=Math.floor(timerSecs/60), s=timerSecs%60;
+  const txt=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  const el=$('timerDisplay');
+  el.textContent=txt;
+  el.className='timer'+(timerSecs<=600?' danger':timerSecs<=900?' warn':'');
 }
-.drop-sec-name { font-family:var(--fa); font-size:.75rem; font-weight:700; color:var(--gold); }
-.drop-sec-count { font-family:var(--fm); font-size:.6rem; color:var(--muted); }
-.drop-sec-divider { height:1px; background:rgba(255,255,255,.05); margin:0 16px; }
 
-.drop-q-item {
-  display:flex; align-items:center; gap:10px;
-  padding:7px 16px 7px 22px; cursor:pointer;
-  transition:background .15s; position:relative;
+function autoSubmit(){
+  doSubmit();
 }
-.drop-q-item:hover { background:rgba(255,255,255,.04); }
-.drop-q-item.current { background:rgba(245,181,60,.07); }
-.drop-q-item.current::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); }
-.drop-q-num { font-family:var(--fm); font-size:.6rem; color:var(--muted); flex-shrink:0; width:28px; }
-.drop-q-txt { font-family:var(--fb); font-size:.76rem; color:var(--txt); flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.drop-q-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-.drop-q-dot.answered { background:var(--gold); }
-.drop-q-dot.unanswered { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.2); }
-.drop-q-type { font-size:.55rem; padding:2px 6px; border-radius:4px; flex-shrink:0; font-weight:600; text-transform:uppercase; }
-.qt-tf { background:rgba(139,124,248,.15); color:var(--indigo); }
-.qt-wh { background:rgba(34,211,238,.12); color:var(--cyan); }
-.qt-mt { background:rgba(245,181,60,.12); color:var(--gold); }
 
-/* ── Exam Body ── */
-.ebody {
-  max-width:1260px; margin:0 auto;
-  padding:22px 24px 70px;
-  display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start;
+// ════════════════════════════════════════════════════════
+//  DOTS
+// ════════════════════════════════════════════════════════
+function buildDots(){
+  const bar=$('dotsBar'); bar.innerHTML='';
+  activeQ.forEach((q,i)=>{
+    const d=document.createElement('div');
+    d.className='dot'+(q.type==='match'?' section-match':'');
+    d.textContent=i+1;
+    d.id='dot-'+i;
+    d.onclick=()=>goTo(i);
+    bar.appendChild(d);
+  });
+  refreshDots();
 }
-.ebody.nopass { grid-template-columns:minmax(0,740px); justify-content:center; }
 
-/* Passage */
-.pcol { position:sticky; top:112px; }
-.pbox {
-  background:rgba(255,246,220,.023);
-  border:1px solid rgba(245,181,60,.1);
-  border-radius:var(--r); overflow:hidden;
+function refreshDots(){
+  activeQ.forEach((q,i)=>{
+    const d=$('dot-'+i); if(!d)return;
+    d.className='dot'+(q.type==='match'?' section-match':'');
+    if(answered(q)) d.classList.add('answered');
+    if(i===cur) d.classList.add('cur');
+  });
+  // progress
+  const done=countAnswered(), tot=activeQ.length;
+  const pct=tot>0?Math.round(done/tot*100):0;
+  $('progFill').style.width=pct+'%';
+  $('progText').textContent=done+' / '+tot+' أُجيب';
+  $('progPct').textContent=pct+'%';
 }
-.pbox-head { padding:13px 17px; border-bottom:1px solid rgba(245,181,60,.07); display:flex; align-items:flex-start; gap:10px; }
-.pbox-info { flex:1; }
-.plbl { font-size:.55rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:700; margin-bottom:3px; }
-.ptitle-en { font-family:var(--fe); font-size:.95rem; font-weight:700; color:var(--cream); }
-.ptitle-ar { font-family:var(--fa); font-size:.72rem; color:var(--muted); direction:rtl; text-align:right; margin-top:2px; }
 
-.btn-trans {
-  background:rgba(34,211,238,.08); border:1px solid rgba(34,211,238,.22);
-  border-radius:var(--r3); padding:6px 10px; cursor:pointer;
-  display:flex; align-items:center; gap:5px;
-  transition:all .18s; flex-shrink:0;
-}
-.btn-trans:hover { background:rgba(34,211,238,.16); transform:scale(1.04); }
-.btn-trans.active { background:rgba(34,211,238,.18); border-color:rgba(34,211,238,.4); }
-.btn-trans.out { background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08); cursor:not-allowed; opacity:.45; pointer-events:none; }
-.btn-trans-lbl { font-family:var(--fa); font-size:.68rem; font-weight:700; color:var(--cyan); }
-.btn-trans.out .btn-trans-lbl { color:var(--muted); }
-.trans-uses {
-  background:var(--cyan); color:#06090f;
-  border-radius:50%; width:17px; height:17px;
-  font-family:var(--fm); font-size:.58rem; font-weight:700;
-  display:flex; align-items:center; justify-content:center; flex-shrink:0;
-}
-.btn-trans.out .trans-uses { background:rgba(255,255,255,.15); color:var(--muted); }
+function goTo(i){ saveCurrentAnswer(); cur=i; renderQuestion(i); refreshDots(); }
+function prev(){ if(cur>0) goTo(cur-1); }
+function next(){ if(cur<activeQ.length-1) goTo(cur+1); }
 
-.pbody {
-  padding:18px; max-height:calc(100vh - 270px); overflow-y:auto;
-  position:relative;
-  -webkit-user-select:none; -moz-user-select:none; user-select:none;
-}
-.pbody p { font-family:'Crimson Pro',serif; font-size:1.1rem; line-height:1.95; color:rgba(237,229,214,.84); margin-bottom:.9em; }
-.pbody p:last-child { margin-bottom:0; }
-.pass-ar { display:none; direction:rtl; }
-.pass-ar.show { display:block; }
-.pass-ar p { font-family:var(--fa); font-size:1rem; line-height:1.9; color:rgba(237,229,214,.88); }
-.pass-en.hide { display:none; }
-.trans-cd {
-  display:none; position:absolute; top:10px; right:10px;
-  background:rgba(34,211,238,.15); border:1px solid rgba(34,211,238,.3);
-  border-radius:var(--r3); padding:4px 9px;
-  font-family:var(--fm); font-size:.68rem; color:var(--cyan);
-  align-items:center; gap:5px;
-}
-.trans-cd.show { display:flex; }
-.pinstr { background:var(--gold4); border:1px solid rgba(245,181,60,.16); border-radius:var(--r3); padding:9px 13px; margin-top:10px; font-family:var(--fa); font-size:.78rem; color:rgba(245,181,60,.82); direction:rtl; text-align:right; line-height:1.65; }
+// ════════════════════════════════════════════════════════
+//  RENDER QUESTION
+// ════════════════════════════════════════════════════════
+function renderQuestion(i){
+  const q=activeQ[i];
+  const qc=$('qCard');
+  qc.innerHTML='';
 
-/* ── Question Card ── */
-.qcard {
-  background:var(--s1); border:1px solid var(--b1);
-  border-radius:var(--r); padding:26px; position:relative; overflow:hidden;
+  // passage
+  const pCol=$('pCol');
+  if(q.passage){
+    const p=PASSAGES[q.passage];
+    pCol.style.display='block';
+    $('pLbl').textContent=(q.type==='match'?'Matching':'Reading Passage')+(q.passage==='external'?' · External':' · Book');
+    $('pTitleEn').textContent=p.lblEn;
+    $('pTitleAr').textContent=p.ar;
+    $('pBody').innerHTML=p.text.split('\n').filter(l=>l.trim()).map(l=>`<p>${l}</p>`).join('');
+    const pi=$('pInstr');
+    if(p.instr){pi.textContent=p.instr;pi.style.display='block';}else{pi.style.display='none';}
+    // adjust grid
+    $('eBody').style.gridTemplateColumns='1fr 1fr';
+  } else {
+    pCol.style.display='none';
+    $('eBody').style.gridTemplateColumns='1fr';
+  }
+
+  // header
+  const secColor=q.type==='match'?'var(--purple)':q.type==='tf'?'var(--purple)':'var(--blue)';
+  const pillCls=q.type==='match'?'p-mt':q.type==='tf'?'p-tf':'p-wh';
+  const pillTxt=q.type==='match'?'Match · توصيل':q.type==='tf'?'True / False':'WH Question';
+
+  qc.innerHTML=`
+    <div class="qhead">
+      <span class="qnum">Q${i+1} / ${activeQ.length}</span>
+      <span class="pill ${pillCls}">${pillTxt}</span>
+      <span class="qsec">${q.sectionEn||''}</span>
+    </div>
+    <div style="font-family:var(--fa);font-size:.72rem;color:var(--dim);text-align:right;direction:rtl;margin-bottom:12px;">${q.section}</div>
+    <div id="qBody"></div>
+    <div class="nav-row" style="margin-top:20px;">
+      <button class="btn-nav btn-prev" onclick="prev()" ${i===0?'disabled style="opacity:.35;pointer-events:none;"':''}>← السابق</button>
+      <span class="qpos">${i+1} / ${activeQ.length}</span>
+      ${i===activeQ.length-1
+        ? `<button class="btn-nav btn-next" onclick="confirmSubmit()">إنهاء الامتحان ✓</button>`
+        : `<button class="btn-nav btn-next" onclick="next()">التالي →</button>`}
+    </div>
+  `;
+
+  const qb=$('qBody');
+
+  if(q.type==='match') renderMatch(q,qb);
+  else if(q.type==='tf') renderTF(q,qb);
+  else renderWH(q,qb);
+
+  // animate
+  qc.style.animation='none';
+  requestAnimationFrame(()=>{qc.style.animation='up .35s cubic-bezier(.16,1,.3,1) both';});
 }
-.qcard::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),var(--gold2),transparent 75%); }
-.qcard.match-card::before { background:linear-gradient(90deg,var(--indigo),var(--cyan),transparent 75%); }
 
-.qhead { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
-.qnum-badge { font-family:var(--fm); font-size:.64rem; color:var(--gold); background:var(--gold4); border:1px solid rgba(245,181,60,.22); border-radius:6px; padding:3px 10px; }
-.qtype-pill { display:inline-flex; padding:3px 10px; border-radius:6px; font-size:.58rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-.qt-pill-tf { background:rgba(139,124,248,.12); color:var(--indigo); border:1px solid rgba(139,124,248,.25); }
-.qt-pill-wh { background:rgba(34,211,238,.1); color:var(--cyan); border:1px solid rgba(34,211,238,.24); }
-.qt-pill-mt { background:rgba(245,181,60,.1); color:var(--gold); border:1px solid rgba(245,181,60,.24); }
-.qsec-label { font-size:.58rem; color:var(--muted); font-style:italic; margin-left:auto; }
-
-.qtxt { font-family:var(--fe); font-size:1.06rem; font-weight:700; color:var(--cream); line-height:1.58; margin-bottom:6px; }
-
-/* Question translation */
-.q-trans-row { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
-.btn-q-trans { background:rgba(34,211,238,.07); border:1px solid rgba(34,211,238,.2); border-radius:6px; padding:4px 10px; cursor:pointer; font-family:var(--fa); font-size:.67rem; color:var(--cyan); font-weight:600; transition:all .17s; display:flex; align-items:center; gap:5px; }
-.btn-q-trans:hover { background:rgba(34,211,238,.14); }
-.btn-q-trans.out { opacity:.4; cursor:not-allowed; pointer-events:none; }
-.q-trans-ar { display:none; font-family:var(--fa); font-size:.8rem; color:rgba(202,193,176,.68); direction:rtl; text-align:right; line-height:1.65; border-right:2px solid rgba(245,181,60,.2); padding-right:10px; flex:1; }
-.q-trans-ar.show { display:block; }
-.q-trans-cd { font-family:var(--fm); font-size:.65rem; color:var(--cyan); flex-shrink:0; display:none; }
-.q-trans-cd.show { display:inline; }
-
-/* TF Buttons */
-.tf-row { display:flex; gap:10px; }
-.tf-btn {
-  flex:1; padding:15px; border-radius:11px;
-  border:1.5px solid var(--b2); background:transparent;
-  font-family:var(--fe); font-size:1rem; font-weight:700;
-  cursor:pointer; transition:all .18s; color:var(--muted); position:relative;
+// ── T/F ──
+function renderTF(q,el){
+  const saved=answers[q.id];
+  el.innerHTML=`
+    <div class="qtxt">${q.q}</div>
+    <div class="qar">${q.ar}</div>
+    <div class="tf-row">
+      <button class="tf-btn${saved===true?' sel':''}" id="tf-t" onclick="pickTF('${q.id}',true)">True ✓</button>
+      <button class="tf-btn${saved===false?' sel':''}" id="tf-f" onclick="pickTF('${q.id}',false)">False ✗</button>
+    </div>
+    <div style="font-family:var(--fa);font-size:.72rem;color:var(--dim);margin-top:8px;text-align:right;direction:rtl;">
+      ${saved!==undefined?'✔ تم حفظ إجابتك':'اختر إجابتك — لن تُعرض النتيجة الآن'}
+    </div>
+  `;
 }
-.tf-btn:hover { border-color:rgba(245,181,60,.45); color:var(--cream); background:var(--gold4); }
-.tf-btn.sel {
-  border-color:var(--gold); color:#06090f;
-  background:linear-gradient(135deg, var(--gold), var(--gold2)); font-weight:900;
-}
-.tf-saved { font-family:var(--fa); font-size:.7rem; color:var(--ok); margin-top:8px; text-align:right; direction:rtl; min-height:18px; }
 
-/* WH Input */
-.wh-area {
-  width:100%; background:rgba(255,255,255,.04);
-  border:1.5px solid var(--b2); border-radius:var(--r2);
-  padding:13px 15px; color:var(--cream);
-  font-family:var(--fb); font-size:.9rem; line-height:1.65;
-  resize:vertical; outline:none; transition:all .2s; min-height:62px;
+function pickTF(id,val){
+  answers[id]=val;
+  const q=activeQ.find(x=>x.id===id);
+  const qb=$('qBody');
+  renderTF(q,qb);
+  refreshDots();
 }
-.wh-area:focus { border-color:var(--gold); background:rgba(245,181,60,.04); box-shadow:0 0 0 3px rgba(245,181,60,.07); }
-.wh-area::placeholder { color:rgba(255,255,255,.13); }
-.wh-hint { font-family:var(--fa); font-size:.7rem; color:var(--muted); margin-top:6px; direction:rtl; text-align:right; }
-.q-saved { font-family:var(--fa); font-size:.7rem; color:var(--ok); margin-top:4px; text-align:right; direction:rtl; min-height:16px; }
 
-/* Match */
-.match-header { background:var(--gold4); border:1px solid rgba(245,181,60,.15); border-radius:var(--r3); padding:10px 13px; margin-bottom:14px; }
-.match-h-ar { font-family:var(--fa); font-size:.8rem; color:rgba(245,181,60,.85); direction:rtl; text-align:right; line-height:1.6; }
-.match-h-en { font-family:var(--fe); font-size:.7rem; font-style:italic; color:var(--muted); margin-top:2px; }
-.match-cols { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.match-col-lbl { font-family:var(--fm); font-size:.57rem; font-weight:700; color:var(--muted); letter-spacing:2px; text-transform:uppercase; text-align:center; margin-bottom:7px; }
-.mitem {
-  background:rgba(255,255,255,.04); border:1.5px solid var(--b2);
-  border-radius:var(--r3); padding:9px 12px;
-  font-size:.82rem; cursor:pointer; transition:all .16s;
-  margin-bottom:4px; display:flex; align-items:center; gap:8px; user-select:none;
+// ── WH ──
+function renderWH(q,el){
+  const saved=answers[q.id]||'';
+  el.innerHTML=`
+    <div class="qtxt">${q.q}</div>
+    <div class="qar">${q.ar}</div>
+    <textarea class="wh-area" id="wh-inp" placeholder="اكتب جوابك هنا… / Write your answer here…" rows="3" oninput="saveWH('${q.id}')">${saved}</textarea>
+    <div class="wh-hint">💡 الإجابة النموذجية ستظهر بعد إنهاء الامتحان فقط</div>
+  `;
 }
-.mitem:hover { border-color:rgba(245,181,60,.4); background:var(--gold4); color:var(--cream); }
-.mitem.sel { border-color:var(--gold); background:var(--gold4); co
+
+function saveWH(id){
+  const v=$('wh-inp')?.value||'';
+  answers[id]=v;
+  refreshDots();
+}
+
+// ── MATCHING ──
+function renderMatch(q,el){
+  if(!matchPairs[q.id]) matchPairs[q.id]={selectedA:null,pairs:{}};
+  if(!shuffledBs[q.id]) shuffledBs[q.id]=shuffleArr(q.listB.map((w,i)=>({w,i})));
+  const state=matchPairs[q.id];
+  const sb=shuffledBs[q.id];
+
+  const aItems=q.listA.map((w,ai)=>{
+    const pairedBi=state.pairs[ai];
+    const paired=pairedBi!==undefined;
+    const sel=state.selectedA===ai;
+    const bWord=paired?q.listB[pairedBi]:'';
+    return `<div class="mitem${sel?' sel':paired?' paired':''}" id="mai-${q.id}-${ai}" onclick="matchSelA('${q.id}',${ai})">
+      <span class="midx">${ai+1}.</span>
+      <span>${w}</span>
+      <span class="mpair-tag">${bWord?'→ '+bWord:''}</span>
+    </div>`;
+  }).join('');
+
+  const bItems=sb.map((item,si)=>{
+    const usedByA=Object.keys(state.pairs).find(k=>state.pairs[k]===item.i);
+    const paired=usedByA!==undefined;
+    return `<div class="mitem${paired?' paired':''}" id="mbi-${q.id}-${item.i}" onclick="matchSelB('${q.id}',${item.i})">
+      <span class="midx">${String.fromCharCode(97+si)}.</span>
+      <span>${item.w}</span>
+    </div>`;
+  }).join('');
+
+  const paired=Object.keys(state.pairs).length;
+  const total=q.listA.length;
+
+  el.innerHTML=`
+    <div class="match-instr">${q.instAr}<br><span style="font-family:var(--fe);font-size:.78rem;font-style:italic;color:var(--dim);">${q.instEn}</span></div>
+    <div class="match-cols">
+      <div><div class="match-col-lbl">List A — أ</div>${aItems}</div>
+      <div><div class="match-col-lbl">List B — ب</div>${bItems}</div>
+    </div>
+    <div class="match-status">${paired}/${total} تم ربطها${state.selectedA!==null?' — اضغط كلمة من B لإكمال الربط':''}</div>
+  `;
+}
+
+function matchSelA(qid,ai){
+  const state=matchPairs[qid];
+  if(state.pairs[ai]!==undefined){
+    // un-pair
+    delete state.pairs[ai];
+    if(state.selectedA===ai)state.selectedA=null;
+  } else {
+    state.selectedA=(state.selectedA===ai)?null:ai;
+  }
+  const q=activeQ.find(x=>x.id===qid);
+  renderMatch(q,$('qBody'));
+  refreshDots();
+}
+
+function matchSelB(qid,bi){
+  const state=matchPairs[qid];
+  if(state.selectedA===null)return;
+  const ai=state.selectedA;
+  // free any A that had this B
+  Object.keys(state.pairs).forEach(k=>{if(state.pairs[k]===bi)delete state.pairs[k];});
+  state.pairs[ai]=bi;
+  state.selectedA=null;
+  const q=activeQ.find(x=>x.id===qid);
+  renderMatch(q,$('qBody'));
+  refreshDots();
+}
+
+function saveCurrentAnswer(){
+  const q=activeQ[cur];
+  if(q&&q.type==='wh'){
+    const v=$('wh-inp')?.value||'';
+    if(v)answers[q.id]=v;
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  SUBMIT
+// ════════════════════════════════════════════════════════
+function confirmSubmit(){
+  saveCurrentAnswer();
+  const unanswered=activeQ.length-countAnswered();
+  $('confirmMsg').innerHTML=`هل أنت متأكد من إنهاء الامتحان؟<br><br>
+    <strong style="color:var(--ok);">${countAnswered()} سؤال أُجيب</strong> — 
+    <strong style="color:var(--ng);">${unanswered} لم يُجَب</strong><br>
+    <span style="font-size:.82rem;color:var(--dim);">لن تتمكن من تغيير الإجابات بعد الإنهاء.</span>`;
+  $('confirmOverlay').classList.add('on');
+}
+function closeConfirm(){ $('confirmOverlay').classList.remove('on'); }
+
+function doSubmit(){
+  closeConfirm();
+  clearInterval(timerInterval);
+  buildResults();
+  scr('sResults');
+}
+
+function restartExam(){ scr('sStart'); }
+
+// ════════════════════════════════════════════════════════
+//  BUILD RESULTS
+// ════════════════════════════════════════════════════════
+let selfMarks={};   // qid → 'ok'|'ng' (for WH)
+
+function buildResults(){
+  selfMarks={};
+  // Calculate score for TF and Match; WH = self-mark later
+  let okCount=0,ngCount=0,skCount=0;
+  retryIds=[];
+
+  // Compute TF & Match scores
+  activeQ.forEach(q=>{
+    if(q.type==='tf'){
+      const ans=answers[q.id];
+      if(ans===undefined){skCount++;retryIds.push(q.id);}
+      else if(ans===q.a){okCount++;}
+      else{ngCount++;retryIds.push(q.id);}
+    } else if(q.type==='match'){
+      const state=matchPairs[q.id]||{pairs:{}};
+      let qOk=0;
+      q.listA.forEach((_,ai)=>{
+        const ui=state.pairs[ai];
+        if(ui===undefined){skCount++;}
+        else if(ui===q.answers[ai]){okCount++;qOk++;}
+        else{ngCount++;}
+      });
+      if(qOk<q.listA.length)retryIds.push(q.id);
+    }
+    // WH: counted after self-mark
+  });
+
+  const whTotal=activeQ.filter(q=>q.type==='wh').length;
+  const scoredTotal=activeQ.filter(q=>q.type!=='wh').reduce((s,q)=>s+(q.type==='match'?q.listA.length:1),0);
+
+  // Show results (WH self-marking adds to score interactively)
+  showResultsUI(okCount,ngCount,skCount,scoredTotal,whTotal);
+  buildReviewList();
+
+  // Section breakdown
+  buildSectionTable();
+
+  // Retry button
+  $('retryWrongBtn').style.display=retryIds.length>0?'inline-flex':'none';
+
+  // Time taken
+  const elapsed=Math.round((Date.now()-examStartTime)/1000);
+  const em=Math.floor(elapsed/60), es=elapsed%60;
+  $('rTimeTaken').textContent=`مدة الامتحان: ${em} دقيقة و ${es} ثانية`;
+}
+
+function showResultsUI(ok,ng,sk,scoredTot,whTotal){
+  const total=scoredTot; // WH added dynamically
+  const pct=total>0?Math.round(ok/total*100):0;
+
+  $('rPct').textContent=pct+'%';
+  $('rFrac').textContent=ok+' / '+total;
+  $('rsOk').textContent=ok;
+  $('rsNg').textContent=ng;
+  $('rsSk').textContent=sk+(whTotal>0?` (+${whTotal} WH)`: '');
+  $('rsTot').textContent=total+(whTotal>0?` (+${whTotal})`: '');
+
+  // Ring
+  const circumf=2*Math.PI*68;
+  const offset=circumf*(1-(pct/100));
+  setTimeout(()=>{ $('ringCircle').style.strokeDashoffset=offset; },100);
+
+  gradeUI(pct);
+}
+
+function gradeUI(pct){
+  let g,c,n;
+  if(pct>=90){g='ممتاز 🏆';c='var(--ok)';n='أداء استثنائي — واصل التميز!';}
+  else if(pct>=75){g='جيد جداً ⭐';c='var(--gold)';n='أداء رائع — أنت قريب من القمة!';}
+  else if(pct>=60){g='جيد 👍';c='var(--blue)';n='أداء جيد — راجع الإجابات الخاطئة.';}
+  else if(pct>=50){g='مقبول';c='var(--purple)';n='تحتاج مزيداً من المراجعة.';}
+  else{g='ضعيف';c='var(--ng)';n='لا تيأس! راجع القطع مجدداً.';}
+  const gt=$('rGrade');
+  gt.textContent=g;gt.style.background=c+'22';gt.style.color=c;gt.style.border='1px solid '+c+'55';
+  $('rNote').textContent=n;
+}
+
+function buildSectionTable(){
+  const tbl=$('sectionTable');
+  const sections={};
+  activeQ.forEach(q=>{
+    const sec=q.section;
+    if(!sections[sec])sections[sec]={label:sec,ok:0,ng:0,sk:0,tot:0};
+    if(q.type==='match'){
+      const state=matchPairs[q.id]||{pairs:{}};
+      q.listA.forEach((_,ai)=>{
+        sections[sec].tot++;
+        const ui=state.pairs[ai];
+        if(ui===undefined)sections[sec].sk++;
+        else if(ui===q.answers[ai])sections[sec].ok++;
+        else sections[sec].ng++;
+      });
+    } else if(q.type==='tf'){
+      sections[sec].tot++;
+      const ans=answers[q.id];
+      if(ans===undefined)sections[sec].sk++;
+      else if(ans===q.a)sections[sec].ok++;
+      else sections[sec].ng++;
+    } else {
+      sections[sec].tot++;
+      sections[sec].sk++; // WH pending self-mark
+    }
+  });
+
+  tbl.innerHTML=`<thead><tr>
+    <th style="text-align:right;">القسم</th>
+    <th style="text-align:center;font-family:var(--fm);font-size:.62rem;">صحيح</th>
+    <th style="text-align:center;font-family:var(--fm);font-size:.62rem;">خطأ</th>
+    <th style="text-align:center;font-family:var(--fm);font-size:.62rem;">المجموع</th>
+    <th style="min-width:80px;">نسبة</th>
+  </tr></thead><tbody></tbody>`;
+  const tbody=tbl.querySelector('tbody');
+  Object.values(sections).forEach(s=>{
+    const pct=s.tot>0?Math.round((s.ok/s.tot)*100):0;
+    const barColor=pct>=75?'var(--ok)':pct>=50?'var(--gold)':'var(--ng)';
+    tbody.innerHTML+=`<tr>
+      <td class="sec-name">${s.label}</td>
+      <td style="text-align:center;color:var(--ok);font-family:var(--fm);font-size:.75rem;">${s.ok}</td>
+      <td style="text-align:center;color:var(--ng);font-family:var(--fm);font-size:.75rem;">${s.ng}</td>
+      <td style="text-align:center;color:var(--dim);font-family:var(--fm);font-size:.75rem;">${s.tot}</td>
+      <td><div class="pbbar"><div class="pbfill" style="width:${pct}%;background:${barColor};"></div></div>
+        <div style="font-family:var(--fm);font-size:.6rem;color:var(--dim);">${pct}%</div></td>
+    </tr>`;
+  });
+}
+
+// ── Review list ──
+let currentFilter='all';
+
+function filterReview(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  buildReviewList();
+}
+
+function getQStatus(q){
+  if(q.type==='tf'){
+    const ans=answers[q.id];
+    if(ans===undefined)return'sk';
+    return ans===q.a?'ok':'ng';
+  }
+  if(q.type==='match'){
+    const state=matchPairs[q.id]||{pairs:{}};
+    let allOk=true,anyAns=false;
+    q.listA.forEach((_,ai)=>{
+      const ui=state.pairs[ai];
+      if(ui!==undefined)anyAns=true;
+      if(ui!==q.answers[ai])allOk=false;
+    });
+    if(!anyAns)return'sk';
+    return allOk?'ok':'ng';
+  }
+  // WH
+  if(selfMarks[q.id])return selfMarks[q.id];
+  const ans=answers[q.id];
+  return ans&&ans.trim()?'sk':'sk'; // 'sk' until self-marked
+}
+
+function buildReviewList(){
+  const list=$('reviewList');
+  list.innerHTML='';
+  let i=0;
+  activeQ.forEach((q,qi)=>{
+    const status=getQStatus(q);
+    if(currentFilter!=='all'&&status!==currentFilter)return;
+    const card=document.createElement('div');
+    card.className=`rc ${status}`;
+    card.style.animationDelay=(i++*0.04)+'s';
+    card.innerHTML=buildReviewCard(q,qi,status);
+    list.appendChild(card);
+  });
+  if(list.children.length===0){
+    list.innerHTML='<div style="text-align:center;padding:40px;color:var(--dim);font-family:var(--fa);">لا توجد أسئلة في هذا التصنيف</div>';
+  }
+}
+
+function buildReviewCard(q,qi,status){
+  const badge=status==='ok'?'<span class="rc-badge ok">✅ صحيح</span>':status==='ng'?'<span class="rc-badge ng">❌ خطأ</span>':'<span class="rc-badge sk">⭕ لم يُجَب</span>';
+
+  if(q.type==='match'){
+    const state=matchPairs[q.id]||{pairs:{}};
+    const pairsHTML=q.listA.map((w,ai)=>{
+      const ui=state.pairs[ai];
+      const ri=q.answers[ai];
+      const ok=ui===ri;
+      const yourB=ui!==undefined?q.listB[ui]:'—';
+      const rightB=q.listB[ri];
+      return `<div class="mrpair ${ok?'ok':'ng'}">
+        <span class="mra">${ai+1}. ${w}</span>
+        <span class="arr">→</span>
+        <span class="mrb">${yourB}</span>
+        ${!ok?`<span class="mrc" style="margin-left:auto;">(✓ ${rightB})</span>`:''}
+      </div>`;
+    }).join('');
+    return `
+      <div class="rc-top">
+        <div class="rc-meta"><span class="rc-num">Q${qi+1}</span><span class="pill p-mt">Match</span><span class="rc-sec">${q.sectionEn}</span></div>
+        ${badge}
+      </div>
+      <div class="rc-q">${q.instEn}</div>
+      <div class="rc-qar" style="font-family:var(--fa);font-size:.77rem;color:var(--dim);direction:rtl;text-align:right;">${q.instAr}</div>
+      <div class="match-result-pairs">${pairsHTML}</div>
+    `;
+  }
+
+  if(q.type==='tf'){
+    const userAns=answers[q.id];
+    const userTxt=userAns===true?'True ✓':userAns===false?'False ✗':'لم يُجَب';
+    const correct=q.a;
+    const ok=userAns===correct;
+    return `
+      <div class="rc-top">
+        <div class="rc-meta"><span class="rc-num">Q${qi+1}</span><span class="pill p-tf">T / F</span><span class="rc-sec">${q.sectionEn}</span></div>
+        ${badge}
+      </div>
+      <div class="rc-q">${q.q}</div>
+      <div class="rc-qar">${q.ar}</div>
+      <div class="rc-ans">
+        <div class="your">إجابتك: <span class="${ok?'ok':'ng'}">${userTxt}</span></div>
+        <div class="correct-ans">الجواب الصحيح: ${correct?'True ✓':'False ✗'}</div>
+      </div>
+      ${q.exp?`<div class="rc-exp">${q.exp}</div>`:''}
+    `;
+  }
+
+  // WH
+  const userTxt=answers[q.id]||'';
+  const smk=selfMarks[q.id];
+  const smStatus=smk==='ok'?'ok':smk==='ng'?'ng':'sk';
+  return `
+    <div class="rc-top">
+      <div class="rc-meta"><span class="rc-num">Q${qi+1}</span><span class="pill p-wh">WH</span><span class="rc-sec">${q.sectionEn}</span></div>
+      ${smk?`<span class="rc-badge ${smStatus}">${smk==='ok'?'✅ صحيح':'❌ خطأ'}</span>`:badge}
+    </div>
+    <div class="rc-q">${q.q}</div>
+    <div class="rc-qar">${q.ar}</div>
+    <div class="rc-ans" style="margin-bottom:8px;">
+      <div class="your" style="margin-bottom:4px;">إجابتك: <span style="color:var(--cream);">${userTxt||'<em style="color:var(--dim);">لم تكتب شيئاً</em>'}</span></div>
+      <div class="correct-ans">الإجابة النموذجية: ${q.a}</div>
+    </div>
+    ${!smk?`
+      <div class="sm-lbl">قيّم إجابتك — هل أجبت صح؟</div>
+      <div class="sm-row">
+        <button class="sm-btn sm-ok" onclick="whSelfMark('${q.id}',this.parentElement)">✅ أجبت صح</button>
+        <button class="sm-btn sm-ng" onclick="whSelfMark2('${q.id}',this.parentElement)">❌ أجبت غلط</button>
+      </div>
+    `:`<div class="sm-lbl" style="color:${smk==='ok'?'var(--ok)':'var(--ng)'};">${smk==='ok'?'✅ سجّلت إجابتك صح':'❌ سجّلت إجابتك خطأ'}</div>`}
+  `;
+}
+
+let rOk=0,rNg=0,rTot=0; // running tally for ring updates
+function updateRingWH(delta){
+  const circle=$('ringCircle');
+  // re-read current pct from display
+  const pctTxt=$('rPct').textContent;
+  const curPct=parseInt(pctTxt)||0;
+  // We'll just rebuild after self-mark
+}
+
+function whSelfMark(qid,row){
+  selfMarks[qid]='ok';
+  row.innerHTML='<div class="sm-lbl" style="color:var(--ok);">✅ سجّلت إجابتك صح</div>';
+  retryIds=retryIds.filter(i=>i!==qid);
+  buildReviewList();
+  if(!retryIds.length)$('retryWrongBtn').style.display='none';
+}
+function whSelfMark2(qid,row){
+  selfMarks[qid]='ng';
+  row.innerHTML='<div class="sm-lbl" style="color:var(--ng);">❌ سجّلت إجابتك خطأ</div>';
+  if(!retryIds.includes(qid))retryIds.push(qid);
+  $('retryWrongBtn').style.display='inline-flex';
+  buildReviewList();
+}
+
+// ════════════════════════════════════════════════════════
+//  BOOT
+// ════════════════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded',initQCount);
+</script>
+</body>
+</html>
