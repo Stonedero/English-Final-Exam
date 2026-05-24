@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>القطع القرائية — Reading · الثالث المتوسط</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+</style>
+</head><style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+.page{max-width:1200px;margin:0 auto;padding:20px 20px 70px;position:relative;z-index:1;}
+.sel-page{max-width:800px;margin:0 auto;padding:40px 20px 70px;position:relative;z-index:1;text-align:center;}
+.rd-k{display:inline-flex;align-items:center;gap:7px;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.24);border-radius:50px;padding:5px 16px;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:16px;}
+.psel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin:20px 0;}
+.psel-card{background:var(--s1);border:2px solid var(--b2);border-radius:12px;padding:14px;cursor:pointer;transition:all .18s;text-align:right;direction:rtl;}
+.psel-card:hover{border-color:rgba(34,211,238,.4);background:rgba(34,211,238,.06);transform:translateY(-2px);}
+.psel-card.on{border-color:var(--cyan);background:rgba(34,211,238,.08);}
+.psel-name{font-family:var(--fa);font-size:.82rem;font-weight:700;color:var(--cream);margin-bottom:3px;}
+.psel-en{font-family:var(--fb);font-size:.7rem;color:var(--muted);}
+.psel-cnt{font-family:var(--fm);font-size:.62rem;color:var(--cyan);margin-top:5px;}
+.check-icon{float:left;color:var(--cyan);font-size:.85rem;}
+/* exam layout */
+.exam-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+.exam-layout.nopass{grid-template-columns:minmax(0,740px);justify-content:center;}
+.pcol{position:sticky;top:112px;}
+.pbox{background:rgba(255,246,220,.022);border:1px solid rgba(245,181,60,.1);border-radius:15px;overflow:hidden;}
+.pbox-head{padding:12px 16px;border-bottom:1px solid rgba(245,181,60,.07);display:flex;align-items:flex-start;gap:10px;}
+.pbox-info{flex:1;}
+.plbl{font-size:.55rem;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);font-weight:700;margin-bottom:3px;}
+.ptitle-en{font-family:var(--fe);font-size:.94rem;font-weight:700;color:var(--cream);}
+.ptitle-ar{font-family:var(--fa);font-size:.72rem;color:var(--muted);direction:rtl;text-align:right;margin-top:2px;}
+.pbody{padding:16px 18px;max-height:calc(100vh - 270px);overflow-y:auto;-webkit-user-select:none;user-select:none;}
+.pbody p{font-family:'Crimson Pro',serif;font-size:1.08rem;line-height:1.95;color:rgba(240,228,200,.84);margin-bottom:.85em;}
+.pinstr{background:var(--g4);border:1px solid rgba(245,181,60,.18);border-radius:8px;padding:9px 13px;margin-top:9px;font-family:var(--fa);font-size:.77rem;color:rgba(245,181,60,.8);direction:rtl;text-align:right;}
+/* question card */
+.qcard{background:var(--s1);border:1px solid var(--b1);border-radius:15px;padding:24px;position:relative;overflow:hidden;}
+.qcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2),transparent 70%);}
+.qhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.qnum{font-family:var(--fm);font-size:.63rem;color:var(--gold);background:var(--g4);border:1px solid rgba(245,181,60,.2);border-radius:5px;padding:3px 9px;}
+.pill{display:inline-flex;padding:3px 9px;border-radius:5px;font-size:.58rem;font-weight:700;text-transform:uppercase;}
+.ptf{background:rgba(139,124,248,.12);color:var(--indigo);border:1px solid rgba(139,124,248,.26);}
+.pwh{background:rgba(34,211,238,.1);color:var(--cyan);border:1px solid rgba(34,211,238,.26);}
+.qtxt{font-family:var(--fe);font-size:1.04rem;font-weight:700;color:var(--cream);line-height:1.55;margin-bottom:8px;}
+.qar{font-family:var(--fa);font-size:.75rem;color:rgba(202,193,176,.5);direction:rtl;text-align:right;margin-bottom:14px;border-right:2px solid rgba(245,181,60,.2);padding-right:10px;}
+.tf-row{display:flex;gap:10px;}
+.tf-btn{flex:1;padding:13px;border-radius:11px;border:1.5px solid var(--b2);background:transparent;font-family:var(--fe);font-size:.98rem;font-weight:700;cursor:pointer;transition:all .18s;color:var(--muted);}
+.tf-btn:hover{border-color:rgba(245,181,60,.4);color:var(--cream);background:var(--g4);}
+.tf-btn.sel{border-color:var(--gold);color:#06090f;background:linear-gradient(135deg,var(--gold),var(--gold2));font-weight:900;}
+.wha{width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--b2);border-radius:10px;padding:12px 14px;color:var(--cream);font-family:var(--fb);font-size:.9rem;line-height:1.65;resize:vertical;outline:none;transition:all .2s;min-height:58px;}
+.wha:focus{border-color:var(--gold);background:rgba(245,181,60,.04);}
+.wha::placeholder{color:rgba(255,255,255,.14);}
+.saved{font-family:var(--fa);font-size:.7rem;color:var(--ok);margin-top:6px;text-align:right;direction:rtl;min-height:16px;}
+.nav-row{display:flex;justify-content:space-between;align-items:center;gap:9px;margin-top:18px;}
+.btn-prev{background:rgba(255,255,255,.07);border:1px solid var(--b2);color:var(--muted);}
+.btn-prev:hover{background:rgba(255,255,255,.11);color:var(--txt);}
+.btn-prev:disabled{opacity:.3;pointer-events:none;}
+.btn-next{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.26);}
+.qpos{font-family:var(--fm);font-size:.7rem;color:var(--muted);}
+/* tbar */
+.tbar{position:sticky;top:62px;z-index:300;background:rgba(6,11,24,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--b1);}
+.tbar-inner{max-width:1200px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:12px;}
+.timer{font-family:var(--fm);font-size:1rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:9px;padding:7px 14px;color:var(--gold);min-width:80px;text-align:center;transition:all .4s;flex-shrink:0;}
+.timer.warn{color:#fb923c;background:rgba(251,146,60,.1);}
+.timer.danger{color:var(--ng);background:rgba(239,68,68,.1);animation:blink .7s infinite;}
+.tprog{flex:1;display:flex;flex-direction:column;gap:4px;}
+.tpi{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.tpf{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .4s;}
+.tpin{display:flex;justify-content:space-between;font-size:.62rem;font-family:var(--fm);color:var(--muted);}
+/* results */
+.res-card{background:var(--s1);border:1px solid var(--b1);border-radius:16px;padding:28px;text-align:center;margin-bottom:18px;}
+.res-big{font-family:var(--fe);font-size:3.5rem;font-weight:900;color:var(--gold);}
+.grade-tag{display:inline-block;padding:7px 26px;border-radius:50px;font-family:var(--fa);font-weight:900;font-size:.97rem;margin:10px 0;}
+.res-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;}
+.rst{background:rgba(255,255,255,.04);border:1px solid var(--b2);border-radius:12px;padding:14px;text-align:center;}
+.rsn{font-family:var(--fe);font-size:1.7rem;font-weight:900;}.rsl{font-family:var(--fa);font-size:.63rem;color:var(--muted);margin-top:3px;}
+.rdiv{text-align:center;margin:22px 0 16px;position:relative;}.rdiv::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.rdiv span{position:relative;background:var(--bg);padding:0 13px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+.rc{border-radius:12px;padding:18px 20px;border-left:4px solid;background:var(--s1);margin-bottom:10px;animation:rise .28s ease both;}
+.rc.ok{border-color:var(--ok);}.rc.ng{border-color:var(--ng);}.rc.sk{border-color:var(--gold);}
+.rc-q{font-family:var(--fe);font-size:.9rem;font-weight:700;color:var(--cream);margin-bottom:8px;}
+.rc-ans{font-size:.8rem;display:flex;flex-direction:column;gap:4px;}
+.rc-u{color:var(--muted);}.vok{color:var(--ok);font-weight:700;}.vng{color:var(--ng);font-weight:700;}
+.rc-m{color:var(--ok);font-weight:700;}
+.rc-exp{background:rgba(245,181,60,.05);border:1px solid rgba(245,181,60,.12);border-radius:7px;padding:8px 11px;margin-top:8px;font-family:var(--fa);font-size:.77rem;color:rgba(245,181,60,.82);direction:rtl;text-align:right;line-height:1.6;}
+.rc-exp::before{content:'💡 ';}
+.weval{margin-top:8px;padding:8px 12px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;}
+.webar{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.wetrk{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;}
+.wefil{height:100%;border-radius:3px;transition:width .9s;}
+.wenote{font-family:var(--fa);font-size:.74rem;direction:rtl;text-align:right;}
+.frow{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.fbtn{padding:6px 12px;border-radius:7px;border:1px solid var(--b2);background:transparent;color:var(--muted);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .14s;font-family:var(--fb);}
+.fbtn.on{background:var(--g4);border-color:rgba(245,181,60,.36);color:var(--gold);}
+.fbtn.fok.on{background:rgba(16,185,129,.09);border-color:rgba(16,185,129,.36);color:var(--ok);}
+.fbtn.fng.on{background:rgba(239,68,68,.09);border-color:rgba(239,68,68,.36);color:var(--ng);}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+@media(max-width:860px){.exam-layout{grid-template-columns:1fr!important;}.pcol{position:relative;top:0;}.pbody{max-height:200px;}}
+@media(max-width:580px){.psel-grid{grid-template-columns:1fr 1fr;}}
+</style><body>
+<div class="top-nav"><div class="top-nav-inner">
+  <a class="nav-logo" href="index.html">◈ <span>English Exam</span></a>
+  <a class="nav-back" href="index.html">← الرئيسية</a>
+</div></div>
+
+<!-- SELECTOR -->
+<div id="selDiv" class="sel-page">
+  <div class="rise">
+    <div class="rd-k">Reading Comprehension</div>
+    <h1 style="font-family:var(--fe);font-size:2.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;">القطع القرائية<br><em style="color:var(--cyan);">Reading</em></h1>
+    <p style="font-family:var(--fa);font-size:.88rem;color:var(--muted);direction:rtl;margin-bottom:24px;">اختر القطعة أو القطع التي تريد الاختبار بها</p>
+  </div>
+  <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;" class="rise d1">
+    <button class="btn btn-ghost" onclick="selAll()">✓ تحديد الكل</button>
+    <button class="btn btn-ghost" onclick="selNone()">✕ إلغاء الكل</button>
+  </div>
+  <div class="psel-grid rise d2" id="pselGrid"></div>
+  <div class="rise d3">
+    <p style="font-family:var(--fa);font-size:.82rem;color:var(--muted);direction:rtl;margin-bottom:14px;" id="selCount">لم تختر أي قطعة</p>
+    <button class="btn btn-gold" id="startReadBtn" onclick="startReading()" disabled style="min-width:220px;justify-content:center;">ابدأ الاختبار ←</button>
+  </div>
+</div>
+
+<!-- EXAM -->
+<div id="examDiv" style="display:none;">
+  <div class="tbar">
+    <div class="tbar-inner">
+      <div class="timer" id="rTimer">00:00</div>
+      <div class="tprog">
+        <div class="tpi"><div class="tpf" id="rFill" style="width:0%"></div></div>
+        <div class="tpin"><span id="rTxt">0/0 أُجيب</span><span id="rPct2">0%</span></div>
+      </div>
+      <button class="btn btn-ok" onclick="submitReading()" style="padding:8px 14px;font-size:.8rem;">✓ إنهاء</button>
+    </div>
+  </div>
+  <div class="page">
+    <div class="exam-layout" id="examLayout">
+      <div class="pcol" id="rdPCol">
+        <div class="pbox">
+          <div class="pbox-head">
+            <div class="pbox-info">
+              <div class="plbl" id="rdPlbl">Passage</div>
+              <div class="ptitle-en" id="rdPen"></div>
+              <div class="ptitle-ar" id="rdPar"></div>
+            </div>
+          </div>
+          <div class="pbody" id="rdPbody"></div>
+        </div>
+        <div class="pinstr" id="rdPinstr" style="display:none;"></div>
+      </div>
+      <div><div class="qcard" id="rdQcard"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="resDiv" style="display:none;">
+  <div style="max-width:800px;margin:0 auto;padding:30px 20px 80px;position:relative;z-index:1;">
+    <div class="res-card rise">
+      <p style="font-family:var(--fa);font-size:.74rem;color:var(--muted);margin-bottom:10px;">نتيجة القطع القرائية</p>
+      <div class="res-big" id="rdBig">0/0</div>
+      <div class="grade-tag" id="rdGrade">——</div>
+      <p style="font-family:var(--fa);font-size:.82rem;color:var(--muted);direction:rtl;" id="rdNote"></p>
+      <div class="res-stats">
+        <div class="rst"><div class="rsn" style="color:var(--ok);" id="rdOk">0</div><div class="rsl">صحيح</div></div>
+        <div class="rst"><div class="rsn" style="color:var(--ng);" id="rdNg">0</div><div class="rsl">خطأ</div></div>
+        <div class="rst"><div class="rsn" style="color:var(--gold);" id="rdPct">0%</div><div class="rsl">النسبة</div></div>
+      </div>
+    </div>
+    <div class="rdiv"><span>المراجعة التفصيلية</span></div>
+    <div class="frow">
+      <button class="fbtn on" onclick="filt('all',this)">الكل</button>
+      <button class="fbtn fok" onclick="filt('ok',this)">✅ صحيح</button>
+      <button class="fbtn fng" onclick="filt('ng',this)">❌ خطأ</button>
+      <button class="fbtn fsk" onclick="filt('sk',this)">⭕ لم يُجَب</button>
+    </div>
+    <div id="rdRevList"></div>
+    <div class="acts">
+      <button class="btn btn-gold" onclick="backToSel()">↺ اختر قطعة أخرى</button>
+      <a class="btn btn-ghost" href="index.html">← الرئيسية</a>
+    </div>
+  </div>
+</div>
+
+<script>
+
+const PASS_DATA={external:{lbl:'القطعة الخارجية',en:'External Passage',ar:'قصة سالي وجون',instr:'أجب عن (5) أسئلة فقط من الستة',textEn:`Last week, John took his four-year-old daughter Sally to a children's party. They travelled by train — Sally had never travelled by train before. She sat near the window and asked a lot of questions. Suddenly, a middle-aged lady came into their compartment and sat opposite Sally. "Hello, little girl," she said. Sally didn't answer but looked curiously. The lady took out her powder compact and began to make up her face. "Why are you doing that?" Sally asked. "To make myself beautiful," the lady answered. She put away her compact and smiled kindly. "But you are still ugly," Sally said.`},mall:{lbl:'مول جواهر',en:'Jawahir Mall',ar:'إسطنبول، تركيا',textEn:`Jawahir Mall is one of the largest shopping centres in Istanbul, Turkey. It opened in 2005 and has six floors. It contains everything you need: shops, restaurants, a cinema and entertainment. You can also pray at the mall — there is a prayer room available. The office opens at 10 a.m. and closes late in the evening.`},panther:{lbl:'السيارة النمر',en:'Panther 3.0D — Car of the Year',ar:'سيارة العام',textEn:`The car everyone is talking about is the Panther 3.0D — car of the year! It's really fantastic and beautiful. It looks quite cheap but is actually great value. There are eight seats so there's loads of space inside. All the young men are very interested in its engine. The Panther is a really safe car because there are airbags. Standard features include GPS, sunroof, tinted windows and a CD player. The Panther has a warranty for four years.`},kareem:{lbl:'الزبون المحظوظ',en:'The Lucky Customer',ar:'قصة كريم — شارع المتنبي',textEn:`Kareem's parents, friends and teacher said he was imaginative because he spent his free time reading and writing poems. His dream was to be a famous poet. He had read Al-Nawab's poems twice and found them very interesting. He had been saving up to be the first to buy "Islands of Salt". At Al-Mutanabbi Street, he was sad because there was a long queue outside. He waited patiently. He was the 50th customer and won a big prize: meeting Al-Nawab, who would read his poems and give advice. Kareem was happy because his patience was rewarded.`},atv:{lbl:'كوميديا ATV',en:'ATV TV Comedy',ar:'لوسي وشخصية سامارا',textEn:`Lucy is 16 years old and plays Samara in a popular TV comedy. Samara is the daughter in a traditional family. Her brother is clumsy, younger than her, and always causes problems. In one episode he put salt instead of sugar in his mother's tea. In another he put cleaning fluid instead of gel on his hair. He also fell in the pool with all his clothes on and got very wet.`},falcons:{lbl:'أسرع الاشياء',en:'The Fastest Living Things',ar:'الصقور — أسرع الكائنات',textEn:`Falcons can move faster than any other living thing. They fly high and then dive down to kill a bird or small animal. The Bedouin are people from the deserts of Arabia. They lived mostly on dates, milk and bread. So they used falconry to catch birds, especially the large long-legged houbara. The Bedouin enjoyed the food falcons caught for them. Falconry was not just a sport — it was necessary for food. Today there could soon be no rare birds left because of it.`},news:{lbl:'أخبار الصباح',en:'Iraqi Morning News',ar:'نشرة الأخبار',textEn:`The Iraqi minister met with officials in London. The meeting focused on educational development between countries. The minister suggested opening English schools in Iraq to develop the English language. In sports news, the sports minister opened a new sports city in Basra.`},lesson:{lbl:'الدرس الأقوى',en:'A Powerful Lesson',ar:'درس لكل شخص',textEn:`Al-Sabah newspaper had a special offer: work as a reporter for a day. The lucky boy was Salam Ahmed, 15 years old. On Tuesday he took his notebook and camera. He noticed a young boy taking his old father in a wheelchair to a restaurant. The boy bought his father food. Because the father was very old and weak, he kept dropping food on his clothes. The customers didn't watch him with love and respect. But the son was not embarrassed — he was proud.`},school:{lbl:'مدرسة المستقبل',en:'The School of the Future',ar:'التعليم المستقبلي',textEn:`School in the future will be very different from today. There will be much more technology. Students will come to school once or twice a week. Global Education will connect students with other students and teachers around the world. There will be fewer small schools because students will learn at home.`},ibn:{lbl:'مهنة مشهورة',en:'Ibn Al-Haytham',ar:'ابن الهيثم',textEn:`Abu Ali al-Hasan Ibn al-Haitham was born in 965 in Basra, Iraq. He was educated in Basra and Baghdad, then travelled to Egypt and Spain. He was called "Physicist" and sometimes "Al-Basri". He was known as the "father of optics" for his great contributions to optics. He discovered the laws of refraction. He died in 1040 in Cairo.`},africa:{lbl:'بلدان أفريقيان',en:'Two African Countries',ar:'ليبيا والسودان',textEn:`Libya is in North Africa. It is mostly desert and mountain. The climate is varied — it is not always very hot. Libya has some agriculture and produces oil. Sudan gets most of its water from the Blue Nile. Sudan produces cotton, sugar and gum Arabic.`},asian:{lbl:'الألعاب الآسيوية',en:'The Asian Games',ar:'الألعاب الرياضية',textEn:`The Asian Games are held every four years. They began after the end of the Second World War. Athletes from all across Asia participate in many sports. The last games were held in South Korea in 2014.`}};
+
+const ALL_Q=[{id:'e1',type:'wh',pass:'external',q:"Where did John take his daughter?",ar:"أين أخذ جون ابنته؟",a:"John took his daughter to a children's party.",kw:['children','party']},{id:'e2',type:'tf',pass:'external',q:"Sally sat silent near the window of the train.",ar:"جلست سالي بصمت قرب نافذة القطار.",a:false,exp:"False — She asked a lot of questions."},{id:'e3',type:'wh',pass:'external',q:"Why did the lady take out her powder compact?",ar:"لماذا أخرجت السيدة مرآتها؟",a:"The lady took out her powder compact to make up her face.",kw:['make','face','beautiful']},{id:'e4',type:'tf',pass:'external',q:"The lady greeted Sally but Sally didn't answer.",ar:"رحّبت السيدة بسالي لكن سالي لم تردّ.",a:true,exp:"True — The lady said Hello but Sally only looked curiously."},{id:'e5',type:'wh',pass:'external',q:"Was it the first time for Sally to travel by train?",ar:"هل كانت المرة الأولى لسالي في القطار؟",a:"Yes, Sally had never travelled by train before.",kw:['yes','first','never']},{id:'e6',type:'wh',pass:'external',q:"What did the lady answer when Sally asked why?",ar:"ماذا أجابت السيدة سالي؟",a:'"To make myself beautiful."',kw:['beautiful','make']},{id:'ma1',type:'wh',pass:'mall',q:"Where is the mall?",ar:"أين يقع المول؟",a:"It's in Istanbul, Turkey.",kw:['istanbul','turkey']},{id:'ma2',type:'wh',pass:'mall',q:"When did it open?",ar:"متى تم افتتاحه؟",a:"It opened in 2005.",kw:['2005']},{id:'ma3',type:'wh',pass:'mall',q:"How many floors does it have?",ar:"كم عدد طوابقه؟",a:"It has six floors.",kw:['six','6']},{id:'ma4',type:'tf',pass:'mall',q:"You can pray at the mall.",ar:"يمكنك الصلاة في المول.",a:true,exp:"True — there is a prayer room available."},{id:'ma5',type:'wh',pass:'mall',q:"Can I contact the office at nine a.m.?",ar:"هل يمكنني الاتصال بالمكتب التاسعة صباحاً؟",a:"No, it doesn't open until 10 a.m.",kw:['no','10']},{id:'p1',type:'wh',pass:'panther',q:"What is the name of the car of the year?",ar:"ما هو اسم سيارة هذه السنة؟",a:"The Panther 3.0D.",kw:['panther']},{id:'p2',type:'wh',pass:'panther',q:"Does the Panther look very expensive or quite cheap?",ar:"هل تبدو السيارة غالية أم رخيصة؟",a:"It looks quite cheap.",kw:['cheap']},{id:'p3',type:'wh',pass:'panther',q:"How many seats are there in the Panther?",ar:"كم عدد المقاعد؟",a:"There are eight seats.",kw:['eight','8']},{id:'p4',type:'tf',pass:'panther',q:"Are the young men interested in the engine?",ar:"هل الشباب مهتمون بالمحرك؟",a:true,exp:"True — ALL the young men are very interested."},{id:'p5',type:'wh',pass:'panther',q:"What are the safety features?",ar:"ما هي مميزات السلامة؟",a:"There are airbags.",kw:['airbags']},{id:'p6',type:'wh',pass:'panther',q:"What are the standard features?",ar:"ما هي المميزات الأساسية؟",a:"GPS, sunroof, tinted windows and CD player.",kw:['gps','sunroof','tinted','cd']},{id:'p7',type:'tf',pass:'panther',q:"The new Panther is really fantastic / beautiful.",ar:"السيارة النمر الجديدة رائعة وجميلة.",a:true,exp:"True — stated directly."},{id:'p8',type:'tf',pass:'panther',q:"Some young men are not very interested in its engine.",ar:"بعض الشباب غير مهتمين بالمحرك.",a:false,exp:"False — ALL the young men are very interested."},{id:'p9',type:'tf',pass:'panther',q:"The Panther is actually very expensive.",ar:"السيارة غالية جداً في الواقع.",a:false,exp:"False — It looks quite cheap."},{id:'p10',type:'tf',pass:'panther',q:"The Panther has seats for six people.",ar:"للسيارة مقاعد لستة أشخاص.",a:false,exp:"False — There are EIGHT seats."},{id:'p11',type:'tf',pass:'panther',q:"The Panther has a warranty for four years.",ar:"للسيارة ضمان لأربع سنوات.",a:true,exp:"True — stated directly."},{id:'k1',type:'wh',pass:'kareem',q:"Where does the story take place?",ar:"أين تجري أحداث القصة؟",a:"In Al-Mutanabbi Street.",kw:['mutanabbi']},{id:'k2',type:'wh',pass:'kareem',q:"Why was Kareem sad when he arrived?",ar:"لماذا كان كريم حزيناً؟",a:"Because there was a long queue forming outside.",kw:['queue','long']},{id:'k3',type:'wh',pass:'kareem',q:"What was Kareem's dream?",ar:"ما هو حلم كريم؟",a:"To be a famous poet.",kw:['famous','poet']},{id:'k4',type:'wh',pass:'kareem',q:"Why did the shop owner give Kareem a prize?",ar:"لماذا أعطاه مالك المحل جائزة؟",a:"Because he was the 50th customer.",kw:['50','50th','customer']},{id:'k5',type:'wh',pass:'kareem',q:"Why was Kareem so happy with the prize?",ar:"لماذا كان كريم سعيداً بالجائزة؟",a:"Because his patience was being rewarded.",kw:['patience','rewarded']},{id:'k6',type:'tf',pass:'kareem',q:"Kareem was the first to buy the new book.",ar:"كريم كان الأول لشراء الكتاب الجديد.",a:false,exp:"False — He was the 50th customer, not the first."},{id:'a1',type:'wh',pass:'atv',q:"How old is Lucy?",ar:"كم عمر لوسي؟",a:"She is 16 years old.",kw:['16','sixteen']},{id:'a2',type:'wh',pass:'atv',q:"What does Lucy play in the TV comedy?",ar:"من تلعب لوسي دوره؟",a:"Lucy plays Samara.",kw:['samara']},{id:'a3',type:'wh',pass:'atv',q:"What did Samara's brother put in his mother's tea?",ar:"ماذا وضع أخو سامارا في شاي أمه؟",a:"He put salt instead of sugar.",kw:['salt','sugar']},{id:'a4',type:'tf',pass:'atv',q:"Samara's brother is older than her.",ar:"أخو سامارا أكبر منها.",a:false,exp:"False — He is YOUNGER than her."},{id:'a5',type:'tf',pass:'atv',q:"The brother got very wet.",ar:"أصبح الأخ مبللاً جداً.",a:true,exp:"True — He fell in the pool with all his clothes on."},{id:'f1',type:'wh',pass:'falcons',q:"How do falcons attack their prey?",ar:"كيف يهاجم الصقر فريسته؟",a:"They fly high then dive down to kill a bird or animal.",kw:['fly','high','dive']},{id:'f2',type:'wh',pass:'falcons',q:"What are the fastest things in the natural world?",ar:"ما هي أسرع الأشياء؟",a:"The falcons.",kw:['falcons']},{id:'f3',type:'tf',pass:'falcons',q:"Falconry used to be just a sport.",ar:"صيد الصقور كان مجرد رياضة.",a:false,exp:"False — It was also necessary for food."},{id:'f4',type:'tf',pass:'falcons',q:"The Bedouin enjoyed the food that falcons caught.",ar:"استمتع البدو بالطعام الذي صاده الصقر.",a:true,exp:"True — stated in the passage."},{id:'n1',type:'wh',pass:'news',q:"What did the meeting in London focus on?",ar:"على ماذا ركز الاجتماع؟",a:"Discussing educational development between countries.",kw:['educational','development']},{id:'n2',type:'wh',pass:'news',q:"What did the sports minister open in Basra?",ar:"ماذا افتتح وزير الرياضة؟",a:"He opened a new sports city.",kw:['sports','city']},{id:'l1',type:'wh',pass:'lesson',q:"Who was the lucky boy and how old was he?",ar:"من هو الصبي المحظوظ وكم عمره؟",a:"Salam Ahmed, he was 15 years old.",kw:['salam','15']},{id:'l2',type:'wh',pass:'lesson',q:"What attracted Salam's attention?",ar:"ما الشيء الذي جذب انتباه سلام؟",a:"A young boy taking his old father in a wheelchair to a restaurant.",kw:['boy','father','wheelchair']},{id:'l3',type:'tf',pass:'lesson',q:"The son was embarrassed when his father was eating.",ar:"الابن كان محرجاً عندما كان والده يأكل.",a:false,exp:"False — He was PROUD (فخور), NOT embarrassed."},{id:'sc1',type:'wh',pass:'school',q:"How will teaching take place in the future?",ar:"كيف سيكون التعليم في المستقبل؟",a:"There will be much more technology.",kw:['technology']},{id:'sc2',type:'tf',pass:'school',q:"There will be more small schools in the future.",ar:"سيكون هناك مدارس صغيرة أكثر.",a:false,exp:"False — FEWER small schools because students learn at home."},{id:'i1',type:'wh',pass:'ibn',q:"When and where was Ibn Al-Haytham born?",ar:"أين ومتى ولد ابن الهيثم؟",a:"He was born in 965 in Basra, Iraq.",kw:['965','basra']},{id:'i2',type:'wh',pass:'ibn',q:"What was Ibn Al-Haytham known for?",ar:"بماذا كان مشهوراً؟",a:'He was known as "father of optics".',kw:['father','optics']},{id:'i3',type:'wh',pass:'ibn',q:"When and where did Ibn Al-Haytham die?",ar:"أين ومتى توفي؟",a:"He died in 1040 in Cairo.",kw:['1040','cairo']},{id:'af1',type:'tf',pass:'africa',q:"Libya is mostly desert and mountain.",ar:"ليبيا في معظمها صحراء وجبال.",a:true,exp:"True — stated directly."},{id:'af2',type:'tf',pass:'africa',q:"It is always very hot there in Libya.",ar:"الطقس دائماً حار جداً في ليبيا.",a:false,exp:"False — The climate is VARIED."},{id:'af3',type:'tf',pass:'africa',q:"Libya produces oil.",ar:"ليبيا تنتج النفط.",a:true,exp:"True — stated in the passage."},{id:'af4',type:'tf',pass:'africa',q:"Sudan produces cotton, sugar and gum Arabic.",ar:"السودان ينتج القطن والسكر والصمغ العربي.",a:true,exp:"True — stated directly."},{id:'as1',type:'wh',pass:'asian',q:"How often do the games take place?",ar:"كم مرة تحصل الألعاب الآسيوية؟",a:"They are held every four years.",kw:['four','4']},{id:'as2',type:'wh',pass:'asian',q:"When did the Asian Games begin?",ar:"متى بدأت الألعاب الآسيوية؟",a:"After the end of the Second World War.",kw:['second','world','war']},{id:'as3',type:'wh',pass:'asian',q:"Where and when were the last games held?",ar:"أين ومتى حُصلت آخر الألعاب؟",a:"South Korea 2014.",kw:['south','korea','2014']}];
+let selPasses=new Set(),activeQ=[],answers={},cur=0,timerInt=null,elapsed=0,curFilter='all';
+const $=id=>document.getElementById(id);
+// Build selector
+function buildSel(){
+  const g=$('pselGrid');g.innerHTML='';
+  Object.entries(PASS_DATA).forEach(([k,v])=>{
+    const qs=ALL_Q.filter(q=>q.pass===k);
+    const d=document.createElement('div');d.className='psel-card';d.id='ps-'+k;
+    d.innerHTML='<span class="check-icon" id="chk-'+k+'" style="display:none;">✓</span><div class="psel-name">'+v.lbl+'</div><div class="psel-en">'+v.en+'</div><div class="psel-cnt">'+qs.length+' سؤال</div>';
+    d.onclick=()=>togglePass(k);g.appendChild(d);
+  });
+}
+function togglePass(k){
+  if(selPasses.has(k)){selPasses.delete(k);document.getElementById('ps-'+k).classList.remove('on');document.getElementById('chk-'+k).style.display='none';}
+  else{selPasses.add(k);document.getElementById('ps-'+k).classList.add('on');document.getElementById('chk-'+k).style.display='inline';}
+  updateSelCount();
+}
+function selAll(){Object.keys(PASS_DATA).forEach(k=>{selPasses.add(k);document.getElementById('ps-'+k).classList.add('on');document.getElementById('chk-'+k).style.display='inline';});updateSelCount();}
+function selNone(){Object.keys(PASS_DATA).forEach(k=>{selPasses.delete(k);document.getElementById('ps-'+k).classList.remove('on');document.getElementById('chk-'+k).style.display='none';});updateSelCount();}
+function updateSelCount(){
+  const n=selPasses.size,q=ALL_Q.filter(x=>selPasses.has(x.pass)).length;
+  $('selCount').textContent=n>0?'اخترت '+n+' قطعة — '+q+' سؤال':'لم تختر أي قطعة';
+  $('startReadBtn').disabled=n===0;
+}
+function startReading(){
+  activeQ=ALL_Q.filter(q=>selPasses.has(q.pass));
+  answers={};cur=0;elapsed=0;
+  $('selDiv').style.display='none';$('examDiv').style.display='block';
+  renderRQ(0);startRTimer();updateRProg();
+  window.scrollTo(0,0);
+}
+function startRTimer(){if(timerInt)clearInterval(timerInt);timerInt=setInterval(()=>{elapsed++;const m=Math.floor(elapsed/60),s=elapsed%60;$('rTimer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;},1000);}
+function updateRProg(){
+  const done=Object.keys(answers).length,tot=activeQ.length;
+  const pct=tot?Math.round(done/tot*100):0;
+  $('rFill').style.width=pct+'%';$('rTxt').textContent=done+'/'+tot+' أُجيب';$('rPct2').textContent=pct+'%';
+}
+function renderRQ(i){
+  const q=activeQ[i];
+  const p=PASS_DATA[q.pass];
+  $('rdPlbl').textContent=q.pass==='external'?'🔴 External':'📘 Book — '+p.lbl;
+  $('rdPen').textContent=p.en;$('rdPar').textContent=p.ar;
+  const sents=(p.textEn.match(/[^.!?]+[.!?]+/g)||[p.textEn]);
+  let paras=[],ch=[];
+  sents.forEach((s,idx)=>{ch.push(s.trim());if(ch.length>=3||idx===sents.length-1){paras.push(ch.join(' '));ch=[];}});
+  $('rdPbody').innerHTML=paras.map(t=>'<p>'+t+'</p>').join('');
+  const pi=$('rdPinstr');if(p.instr){pi.textContent=p.instr;pi.style.display='block';}else pi.style.display='none';
+  const isLast=i===activeQ.length-1;
+  const qc=$('rdQcard');
+  qc.innerHTML=`<div class="qhead"><span class="qnum">Q${i+1} / ${activeQ.length}</span><span class="pill ${q.type==='tf'?'ptf':'pwh'}">${q.type==='tf'?'T/F':'WH'}</span></div>
+    <div class="qtxt">${q.q}</div>
+    <div class="qar">${q.ar}</div>
+    <div id="rdQbody"></div>
+    <div class="nav-row">
+      <button class="btn btn-prev" onclick="prevR()" ${i===0?'disabled':''}>← السابق</button>
+      <span class="qpos">${i+1} / ${activeQ.length}</span>
+      ${isLast?'<button class="btn btn-next" onclick="submitReading()">إنهاء ✓</button>':'<button class="btn btn-next" onclick="nextR()">التالي →</button>'}
+    </div>`;
+  qc.style.animation='none';requestAnimationFrame(()=>{qc.style.animation='rise .3s cubic-bezier(.16,1,.3,1) both';});
+  if(q.type==='tf')renderRTF(q);else renderRWH(q);
+}
+function renderRTF(q){const s=answers[q.id];document.getElementById('rdQbody').innerHTML=`<div class="tf-row"><button class="tf-btn${s===true?' sel':''}" onclick="pickRTF('${q.id}',true)">True ✓</button><button class="tf-btn${s===false?' sel':''}" onclick="pickRTF('${q.id}',false)">False ✗</button></div><div class="saved">${s!==undefined?'✔ تم تسجيل: '+(s?'True':'False'):''}</div>`;}
+function pickRTF(id,v){answers[id]=v;const q=activeQ.find(x=>x.id===id);renderRTF(q);updateRProg();}
+function renderRWH(q){const s=answers[q.id]||'';document.getElementById('rdQbody').innerHTML=`<textarea class="wha" id="rWHA" placeholder="اكتب جوابك بالإنجليزية…" rows="3" oninput="answers['${q.id}']=this.value;updateRProg();">${s}</textarea><div class="saved" style="margin-top:6px;">${s?'✔ إجابتك محفوظة':''}</div>`;}
+function saveWH(){const q=activeQ[cur];if(q&&q.type==='wh'){const v=$('rWHA');if(v)answers[q.id]=v.value;}}
+function prevR(){saveWH();if(cur>0){cur--;renderRQ(cur);}}
+function nextR(){saveWH();if(cur<activeQ.length-1){cur++;renderRQ(cur);}}
+function submitReading(){
+  saveWH();clearInterval(timerInt);
+  let ok=0,ng=0,sk=0,tot=0;
+  activeQ.forEach(q=>{
+    if(q.type==='tf'){tot++;const a=answers[q.id];if(a===undefined)sk++;else if(a===q.a)ok++;else ng++;}
+    else{tot++;const r=scoreWH(q);if(r.v==='ok')ok++;else if(r.v==='sk')sk++;else ng++;}
+  });
+  const pct=tot?Math.round(ok/tot*100):0;
+  $('rdBig').textContent=ok+' / '+tot;$('rdOk').textContent=ok;$('rdNg').textContent=ng;$('rdPct').textContent=pct+'%';
+  let g,c,n;
+  if(pct>=90){g='ممتاز 🏆';c='var(--ok)';n='أداء استثنائي!';}else if(pct>=75){g='جيد جداً ⭐';c='var(--gold)';n='واصل التميز!';}else if(pct>=60){g='جيد 👍';c='var(--indigo)';n='راجع الإجابات الخاطئة.';}else{g='تحتاج مراجعة';c='var(--ng)';n='راجع القطع وحاول مجدداً.';}
+  const gb=$('rdGrade');gb.textContent=g;gb.style.cssText='background:'+c+'20;color:'+c+';border:1px solid '+c+'44;';
+  $('rdNote').textContent=n;
+  $('examDiv').style.display='none';$('resDiv').style.display='block';
+  buildRev('all');window.scrollTo(0,0);
+}
+function scoreWH(q){
+  const raw=answers[q.id]||'';if(!raw.trim())return{v:'sk',conf:0,note:'لم تكتب إجابة'};
+  const norm=s=>s.toLowerCase().replace(/[.,!?'"؟،()]/g,' ').replace(/\s+/g,' ').trim();
+  const u=norm(raw),m=norm(q.a);
+  if(u===m||u.includes(m)||m.includes(u))return{v:'ok',conf:1,note:'إجابة صحيحة تماماً ✓'};
+  if(/^yes/.test(m)&&/\byes\b/.test(u))return{v:'ok',conf:1,note:'صحيح ✓'};
+  if(/^no/.test(m)&&/\bno\b/.test(u))return{v:'ok',conf:1,note:'صحيح ✓'};
+  const kw=q.kw||[];if(!kw.length)return{v:u.length>3?'ok':'sk',conf:.6,note:'تحقق مع النموذج'};
+  const matched=kw.filter(k=>u.includes(k.toLowerCase())).length;
+  const ratio=matched/kw.length;
+  if(ratio>=0.55)return{v:'ok',conf:ratio,note:Math.round(ratio*100)+'% تطابق — صحيح ✓'};
+  return{v:'ng',conf:ratio,note:Math.round(ratio*100)+'% تطابق — راجع النموذج'};
+}
+function getSt(q){
+  if(q.type==='tf'){const a=answers[q.id];if(a===undefined)return'sk';return a===q.a?'ok':'ng';}
+  return scoreWH(q).v==='ok'?'ok':scoreWH(q).v==='ng'?'ng':'sk';
+}
+function filt(f,btn){curFilter=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildRev(f);}
+function buildRev(f){
+  const rl=$('rdRevList');rl.innerHTML='';let i=0;
+  activeQ.forEach((q,qi)=>{
+    const st=getSt(q);if(f!=='all'&&f!==st)return;
+    const d=document.createElement('div');d.className='rc '+st;d.style.animationDelay=(i++*.02)+'s';
+    let html=`<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;"><div style="display:flex;gap:6px;align-items:center;"><span style="font-family:var(--fm);font-size:.6rem;color:var(--muted);">Q${qi+1}</span><span class="pill ${q.type==='tf'?'ptf':'pwh'}">${q.type==='tf'?'T/F':'WH'}</span></div><span style="font-size:.63rem;font-weight:700;padding:3px 9px;border-radius:5px;${st==='ok'?'background:rgba(16,185,129,.12);color:var(--ok);border:1px solid rgba(16,185,129,.3);':st==='ng'?'background:rgba(239,68,68,.12);color:var(--ng);border:1px solid rgba(239,68,68,.3);':'background:rgba(245,181,60,.12);color:var(--gold);border:1px solid rgba(245,181,60,.3);'}">${st==='ok'?'✅ صحيح':st==='ng'?'❌ خطأ':'⭕ لم يُجَب'}</span></div>`;
+    html+=`<div class="rc-q">${q.q}</div>`;
+    if(q.type==='tf'){const ua=answers[q.id],ok=ua===q.a;html+=`<div class="rc-ans"><div class="rc-u">إجابتك: <span class="${ok?'vok':'vng'}">${ua===true?'True ✓':ua===false?'False ✗':'<em>لم تختر</em>'}</span></div><div class="rc-m">الجواب الصحيح: ${q.a?'True ✓':'False ✗'}</div></div>${q.exp?'<div class="rc-exp">'+q.exp+'</div>':''}`;}
+    else{const raw=answers[q.id]||'';const sc=scoreWH(q);const c=sc.v==='ok'?'var(--ok)':'var(--ng)';html+=`<div class="rc-ans" style="margin-bottom:7px;"><div class="rc-u" style="margin-bottom:4px;">إجابتك: <span style="color:var(--cream);">${raw||'<em style="opacity:.5;">لم تكتب شيئاً</em>'}</span></div><div class="rc-m">الإجابة النموذجية: ${q.a}</div></div><div class="weval"><div class="webar"><span style="font-family:var(--fa);font-size:.7rem;color:var(--muted);flex-shrink:0;">تطابق:</span><div class="wetrk"><div class="wefil" style="width:${Math.round(sc.conf*100)}%;background:${c};"></div></div><span style="font-family:var(--fm);font-size:.64rem;color:${c};">${Math.round(sc.conf*100)}%</span></div><div class="wenote" style="color:${c};">${sc.note}</div></div>`;}
+    d.innerHTML=html;rl.appendChild(d);
+  });
+  if(!rl.children.length)rl.innerHTML='<div style="text-align:center;padding:36px;color:var(--muted);font-family:var(--fa);">لا توجد أسئلة في هذا التصنيف</div>';
+}
+function backToSel(){$('resDiv').style.display='none';$('selDiv').style.display='block';window.scrollTo(0,0);}
+buildSel();
+</script></body></html>

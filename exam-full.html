@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Exam · الثالث المتوسط</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  --bg: #060b18;
+  --bg2: #0c1228;
+  --bg3: #111a32;
+  --s0: rgba(255,255,255,.03);
+  --s1: rgba(255,255,255,.05);
+  --s2: rgba(255,255,255,.08);
+  --s3: rgba(255,255,255,.12);
+  --b1: rgba(245,181,60,.16);
+  --b2: rgba(255,255,255,.09);
+  --b3: rgba(255,255,255,.14);
+  --gold: #f5b53c;
+  --gold2: #c48a18;
+  --gold3: rgba(245,181,60,.1);
+  --gold4: rgba(245,181,60,.06);
+  --indigo: #8b7cf8;
+  --indigo2: rgba(139,124,248,.12);
+  --cyan: #22d3ee;
+  --cream: #ede5d6;
+  --txt: #cac1b0;
+  --muted: rgba(202,193,176,.44);
+  --ok: #10b981;
+  --ok2: rgba(16,185,129,.12);
+  --ok3: rgba(16,185,129,.22);
+  --ng: #ef4444;
+  --ng2: rgba(239,68,68,.12);
+  --ng3: rgba(239,68,68,.22);
+  --r: 14px;
+  --r2: 10px;
+  --r3: 8px;
+  --shadow: 0 4px 24px rgba(0,0,0,.4);
+  --shadow2: 0 8px 40px rgba(0,0,0,.5);
+  --fa: 'Tajawal', sans-serif;
+  --fe: 'Playfair Display', serif;
+  --fb: 'Outfit', sans-serif;
+  --fm: 'IBM Plex Mono', monospace;
+}
+*, ::before, ::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  color: var(--txt);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content:''; position:fixed; top:-30%; left:-20%; width:70%; height:70%;
+  background: radial-gradient(ellipse, rgba(245,181,60,.05) 0%, transparent 60%);
+  pointer-events:none; z-index:0;
+}
+body::after {
+  content:''; position:fixed; bottom:-20%; right:-15%; width:55%; height:55%;
+  background: radial-gradient(ellipse, rgba(139,124,248,.04) 0%, transparent 60%);
+  pointer-events:none; z-index:0;
+}
+::-webkit-scrollbar { width:4px; height:4px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(245,181,60,.2); border-radius:4px; }
+::-webkit-scrollbar-thumb:hover { background:rgba(245,181,60,.38); }
+
+.scr { display:none; min-height:100vh; position:relative; z-index:1; }
+.scr.on { display:block; }
+
+/* ── Animations ── */
+@keyframes rise { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes slideDown { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+@keyframes slideR { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:none; } }
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.3; } }
+@keyframes pop { 0% { transform:scale(.9); } 65% { transform:scale(1.03); } 100% { transform:scale(1); } }
+@keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+@keyframes glow { 0%,100% { box-shadow:0 0 0 rgba(245,181,60,0); } 50% { box-shadow:0 0 22px rgba(245,181,60,.3); } }
+.rise { animation: rise .6s cubic-bezier(.16,1,.3,1) both; }
+.d1{animation-delay:.07s} .d2{animation-delay:.14s} .d3{animation-delay:.21s} .d4{animation-delay:.28s}
+
+/* ══════════════════════════════
+   START SCREEN
+══════════════════════════════ */
+#sStart.on { display:flex; align-items:center; justify-content:center; padding:48px 20px; }
+.sw { max-width:580px; width:100%; }
+
+.exam-kicker {
+  display:inline-flex; align-items:center; gap:8px;
+  background: linear-gradient(135deg, rgba(245,181,60,.12), rgba(245,181,60,.04));
+  border: 1px solid rgba(245,181,60,.3);
+  border-radius:50px; padding:6px 18px;
+  font-size:.62rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  color: var(--gold); margin-bottom:24px;
+}
+.exam-kicker::before { content:'◈'; font-size:10px; }
+
+.s-h1 {
+  font-family: var(--fe);
+  font-size: clamp(2rem, 6vw, 3.8rem);
+  font-weight:900; line-height:1.04;
+  color: var(--cream); margin-bottom:8px;
+}
+.s-h1 em { color:var(--gold); font-style:italic; }
+.s-sub { font-family:var(--fa); font-size:.9rem; color:var(--muted); direction:rtl; margin-bottom:28px; line-height:1.85; }
+
+.gl { width:48px; height:2px; background:linear-gradient(90deg,var(--gold),transparent); margin-bottom:28px; }
+
+.s-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:24px; }
+.s-stat {
+  background: var(--s1); border:1px solid var(--b1);
+  border-radius:var(--r); padding:18px 8px; text-align:center;
+  position:relative; overflow:hidden;
+}
+.s-stat::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.s-stat-n { font-family:var(--fe); font-size:2.1rem; font-weight:900; color:var(--gold); line-height:1; }
+.s-stat-l { font-family:var(--fa); font-size:.58rem; color:var(--muted); margin-top:4px; }
+
+.s-instr {
+  background:var(--s1); border:1px solid var(--b1);
+  border-radius:var(--r); padding:20px 22px;
+  margin-bottom:22px; direction:rtl;
+}
+.s-instr-title { font-family:var(--fa); font-weight:900; color:var(--gold); font-size:.92rem; margin-bottom:12px; }
+.s-instr-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.s-instr-list li {
+  font-family:var(--fa); font-size:.83rem; color:var(--txt);
+  line-height:1.7; padding-right:18px; position:relative;
+}
+.s-instr-list li::before { content:'›'; position:absolute; right:0; color:var(--gold); font-size:1.1rem; font-weight:700; line-height:1.5; }
+.s-instr-list b { color:var(--gold); }
+
+.s-btn-start {
+  width:100%;
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color:#06090f; border:none; border-radius:var(--r);
+  padding:17px; font-family:var(--fe);
+  font-size:1.05rem; font-weight:700;
+  cursor:pointer; transition:transform .2s, box-shadow .2s;
+  position:relative; overflow:hidden; letter-spacing:.3px;
+}
+.s-btn-start::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.15),transparent); }
+.s-btn-start:hover { transform:translateY(-3px); box-shadow:0 16px 50px rgba(245,181,60,.3); }
+
+/* ══════════════════════════════
+   EXAM SCREEN
+══════════════════════════════ */
+#sExam.on { display:flex; flex-direction:column; }
+
+/* ── Top Bar ── */
+.tbar {
+  position:sticky; top:0; z-index:400;
+  background:rgba(6,11,24,.96); backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--b1);
+}
+.tbar-row {
+  max-width:1260px; margin:0 auto;
+  padding:10px 24px;
+  display:flex; align-items:center; gap:14px;
+}
+.timer {
+  font-family:var(--fm); font-size:1.02rem; font-weight:500;
+  background: var(--gold4); border:1px solid rgba(245,181,60,.28);
+  border-radius:var(--r2); padding:7px 15px;
+  color:var(--gold); min-width:84px; text-align:center;
+  transition:all .35s; flex-shrink:0; letter-spacing:.5px;
+}
+.timer.warn { color:#fb923c; background:rgba(251,146,60,.1); border-color:rgba(251,146,60,.3); }
+.timer.danger { color:var(--ng); background:rgba(239,68,68,.1); border-color:rgba(239,68,68,.3); animation:blink .7s infinite; }
+
+.tbar-prog { flex:1; display:flex; flex-direction:column; gap:5px; }
+.tbar-prog-track { background:rgba(255,255,255,.07); border-radius:3px; height:5px; overflow:hidden; }
+.tbar-prog-fill { height:100%; background:linear-gradient(90deg,var(--gold),var(--gold2)); border-radius:3px; transition:width .5s cubic-bezier(.4,0,.2,1); }
+.tbar-prog-info { display:flex; justify-content:space-between; font-size:.62rem; font-family:var(--fm); color:var(--muted); }
+
+.btn-end {
+  background:linear-gradient(135deg, var(--ok), #059669);
+  color:#fff; border:none; border-radius:var(--r2);
+  padding:9px 17px; font-family:var(--fa); font-size:.8rem; font-weight:700;
+  cursor:pointer; flex-shrink:0; transition:all .2s;
+  display:flex; align-items:center; gap:6px;
+}
+.btn-end:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(16,185,129,.28); }
+
+/* ── Category Navigator ── */
+.cat-nav { max-width:1260px; margin:0 auto; padding:10px 24px; display:grid; grid-template-columns:1fr 1fr; gap:10px; border-bottom:1px solid rgba(255,255,255,.05); }
+
+.cat-nav-bar { background:var(--s1); border:1px solid var(--b2); border-radius:var(--r); overflow:hidden; transition:all .2s; position:relative; }
+.cat-nav-bar:hover { border-color:var(--b3); }
+.cat-nav-bar.expanded { border-color:rgba(245,181,60,.3); }
+
+.cat-nav-header {
+  display:flex; align-items:center; gap:12px;
+  padding:11px 16px; cursor:pointer; user-select:none;
+}
+.cat-icon { font-size:1.1rem; flex-shrink:0; }
+.cat-info { flex:1; min-width:0; }
+.cat-title { font-family:var(--fa); font-size:.8rem; font-weight:700; color:var(--cream); }
+.cat-subtitle { font-family:var(--fm); font-size:.58rem; color:var(--muted); margin-top:1px; }
+.cat-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.cat-pill { font-family:var(--fm); font-size:.65rem; color:var(--muted); background:var(--s2); border-radius:20px; padding:3px 9px; }
+.cat-pill.warm { color:var(--gold); }
+.cat-bar-mini { width:80px; height:5px; background:rgba(255,255,255,.07); border-radius:3px; overflow:hidden; }
+.cat-bar-fill { height:100%; border-radius:3px; transition:width .5s ease; }
+.cat-fill-read { background:linear-gradient(90deg,var(--indigo),var(--cyan)); }
+.cat-fill-match { background:linear-gradient(90deg,var(--gold),var(--gold2)); }
+.cat-chevron { color:var(--muted); font-size:.7rem; transition:transform .3s cubic-bezier(.4,0,.2,1); flex-shrink:0; }
+.cat-nav-bar.expanded .cat-chevron { transform:rotate(180deg); color:var(--gold); }
+
+/* Dropdown */
+.cat-dropdown {
+  max-height:0; overflow:hidden;
+  transition:max-height .4s cubic-bezier(.4,0,.2,1);
+  border-top:0px solid transparent;
+}
+.cat-nav-bar.expanded .cat-dropdown {
+  max-height:480px; overflow-y:auto;
+  border-top:1px solid var(--b2);
+}
+.cat-dropdown::-webkit-scrollbar { width:3px; }
+.cat-dropdown::-webkit-scrollbar-thumb { background:rgba(245,181,60,.2); }
+
+.drop-section { padding:8px 0; }
+.drop-sec-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:7px 16px; cursor:default;
+}
+.drop-sec-name { font-family:var(--fa); font-size:.75rem; font-weight:700; color:var(--gold); }
+.drop-sec-count { font-family:var(--fm); font-size:.6rem; color:var(--muted); }
+.drop-sec-divider { height:1px; background:rgba(255,255,255,.05); margin:0 16px; }
+
+.drop-q-item {
+  display:flex; align-items:center; gap:10px;
+  padding:7px 16px 7px 22px; cursor:pointer;
+  transition:background .15s; position:relative;
+}
+.drop-q-item:hover { background:rgba(255,255,255,.04); }
+.drop-q-item.current { background:rgba(245,181,60,.07); }
+.drop-q-item.current::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--gold); }
+.drop-q-num { font-family:var(--fm); font-size:.6rem; color:var(--muted); flex-shrink:0; width:28px; }
+.drop-q-txt { font-family:var(--fb); font-size:.76rem; color:var(--txt); flex:1; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.drop-q-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.drop-q-dot.answered { background:var(--gold); }
+.drop-q-dot.unanswered { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.2); }
+.drop-q-type { font-size:.55rem; padding:2px 6px; border-radius:4px; flex-shrink:0; font-weight:600; text-transform:uppercase; }
+.qt-tf { background:rgba(139,124,248,.15); color:var(--indigo); }
+.qt-wh { background:rgba(34,211,238,.12); color:var(--cyan); }
+.qt-mt { background:rgba(245,181,60,.12); color:var(--gold); }
+
+/* ── Exam Body ── */
+.ebody {
+  max-width:1260px; margin:0 auto;
+  padding:22px 24px 70px;
+  display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start;
+}
+.ebody.nopass { grid-template-columns:minmax(0,740px); justify-content:center; }
+
+/* Passage */
+.pcol { position:sticky; top:112px; }
+.pbox {
+  background:rgba(255,246,220,.023);
+  border:1px solid rgba(245,181,60,.1);
+  border-radius:var(--r); overflow:hidden;
+}
+.pbox-head { padding:13px 17px; border-bottom:1px solid rgba(245,181,60,.07); display:flex; align-items:flex-start; gap:10px; }
+.pbox-info { flex:1; }
+.plbl { font-size:.55rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); font-weight:700; margin-bottom:3px; }
+.ptitle-en { font-family:var(--fe); font-size:.95rem; font-weight:700; color:var(--cream); }
+.ptitle-ar { font-family:var(--fa); font-size:.72rem; color:var(--muted); direction:rtl; text-align:right; margin-top:2px; }
+
+.btn-trans {
+  background:rgba(34,211,238,.08); border:1px solid rgba(34,211,238,.22);
+  border-radius:var(--r3); padding:6px 10px; cursor:pointer;
+  display:flex; align-items:center; gap:5px;
+  transition:all .18s; flex-shrink:0;
+}
+.btn-trans:hover { background:rgba(34,211,238,.16); transform:scale(1.04); }
+.btn-trans.active { background:rgba(34,211,238,.18); border-color:rgba(34,211,238,.4); }
+.btn-trans.out { background:rgba(255,255,255,.03); border-color:rgba(255,255,255,.08); cursor:not-allowed; opacity:.45; pointer-events:none; }
+.btn-trans-lbl { font-family:var(--fa); font-size:.68rem; font-weight:700; color:var(--cyan); }
+.btn-trans.out .btn-trans-lbl { color:var(--muted); }
+.trans-uses {
+  background:var(--cyan); color:#06090f;
+  border-radius:50%; width:17px; height:17px;
+  font-family:var(--fm); font-size:.58rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.btn-trans.out .trans-uses { background:rgba(255,255,255,.15); color:var(--muted); }
+
+.pbody {
+  padding:18px; max-height:calc(100vh - 270px); overflow-y:auto;
+  position:relative;
+  -webkit-user-select:none; -moz-user-select:none; user-select:none;
+}
+.pbody p { font-family:'Crimson Pro',serif; font-size:1.1rem; line-height:1.95; color:rgba(237,229,214,.84); margin-bottom:.9em; }
+.pbody p:last-child { margin-bottom:0; }
+.pass-ar { display:none; direction:rtl; }
+.pass-ar.show { display:block; }
+.pass-ar p { font-family:var(--fa); font-size:1rem; line-height:1.9; color:rgba(237,229,214,.88); }
+.pass-en.hide { display:none; }
+.trans-cd {
+  display:none; position:absolute; top:10px; right:10px;
+  background:rgba(34,211,238,.15); border:1px solid rgba(34,211,238,.3);
+  border-radius:var(--r3); padding:4px 9px;
+  font-family:var(--fm); font-size:.68rem; color:var(--cyan);
+  align-items:center; gap:5px;
+}
+.trans-cd.show { display:flex; }
+.pinstr { background:var(--gold4); border:1px solid rgba(245,181,60,.16); border-radius:var(--r3); padding:9px 13px; margin-top:10px; font-family:var(--fa); font-size:.78rem; color:rgba(245,181,60,.82); direction:rtl; text-align:right; line-height:1.65; }
+
+/* ── Question Card ── */
+.qcard {
+  background:var(--s1); border:1px solid var(--b1);
+  border-radius:var(--r); padding:26px; position:relative; overflow:hidden;
+}
+.qcard::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),var(--gold2),transparent 75%); }
+.qcard.match-card::before { background:linear-gradient(90deg,var(--indigo),var(--cyan),transparent 75%); }
+
+.qhead { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.qnum-badge { font-family:var(--fm); font-size:.64rem; color:var(--gold); background:var(--gold4); border:1px solid rgba(245,181,60,.22); border-radius:6px; padding:3px 10px; }
+.qtype-pill { display:inline-flex; padding:3px 10px; border-radius:6px; font-size:.58rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+.qt-pill-tf { background:rgba(139,124,248,.12); color:var(--indigo); border:1px solid rgba(139,124,248,.25); }
+.qt-pill-wh { background:rgba(34,211,238,.1); color:var(--cyan); border:1px solid rgba(34,211,238,.24); }
+.qt-pill-mt { background:rgba(245,181,60,.1); color:var(--gold); border:1px solid rgba(245,181,60,.24); }
+.qsec-label { font-size:.58rem; color:var(--muted); font-style:italic; margin-left:auto; }
+
+.qtxt { font-family:var(--fe); font-size:1.06rem; font-weight:700; color:var(--cream); line-height:1.58; margin-bottom:6px; }
+
+/* Question translation */
+.q-trans-row { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+.btn-q-trans { background:rgba(34,211,238,.07); border:1px solid rgba(34,211,238,.2); border-radius:6px; padding:4px 10px; cursor:pointer; font-family:var(--fa); font-size:.67rem; color:var(--cyan); font-weight:600; transition:all .17s; display:flex; align-items:center; gap:5px; }
+.btn-q-trans:hover { background:rgba(34,211,238,.14); }
+.btn-q-trans.out { opacity:.4; cursor:not-allowed; pointer-events:none; }
+.q-trans-ar { display:none; font-family:var(--fa); font-size:.8rem; color:rgba(202,193,176,.68); direction:rtl; text-align:right; line-height:1.65; border-right:2px solid rgba(245,181,60,.2); padding-right:10px; flex:1; }
+.q-trans-ar.show { display:block; }
+.q-trans-cd { font-family:var(--fm); font-size:.65rem; color:var(--cyan); flex-shrink:0; display:none; }
+.q-trans-cd.show { display:inline; }
+
+/* TF Buttons */
+.tf-row { display:flex; gap:10px; }
+.tf-btn {
+  flex:1; padding:15px; border-radius:11px;
+  border:1.5px solid var(--b2); background:transparent;
+  font-family:var(--fe); font-size:1rem; font-weight:700;
+  cursor:pointer; transition:all .18s; color:var(--muted); position:relative;
+}
+.tf-btn:hover { border-color:rgba(245,181,60,.45); color:var(--cream); background:var(--gold4); }
+.tf-btn.sel {
+  border-color:var(--gold); color:#06090f;
+  background:linear-gradient(135deg, var(--gold), var(--gold2)); font-weight:900;
+}
+.tf-saved { font-family:var(--fa); font-size:.7rem; color:var(--ok); margin-top:8px; text-align:right; direction:rtl; min-height:18px; }
+
+/* WH Input */
+.wh-area {
+  width:100%; background:rgba(255,255,255,.04);
+  border:1.5px solid var(--b2); border-radius:var(--r2);
+  padding:13px 15px; color:var(--cream);
+  font-family:var(--fb); font-size:.9rem; line-height:1.65;
+  resize:vertical; outline:none; transition:all .2s; min-height:62px;
+}
+.wh-area:focus { border-color:var(--gold); background:rgba(245,181,60,.04); box-shadow:0 0 0 3px rgba(245,181,60,.07); }
+.wh-area::placeholder { color:rgba(255,255,255,.13); }
+.wh-hint { font-family:var(--fa); font-size:.7rem; color:var(--muted); margin-top:6px; direction:rtl; text-align:right; }
+.q-saved { font-family:var(--fa); font-size:.7rem; color:var(--ok); margin-top:4px; text-align:right; direction:rtl; min-height:16px; }
+
+/* Match */
+.match-header { background:var(--gold4); border:1px solid rgba(245,181,60,.15); border-radius:var(--r3); padding:10px 13px; margin-bottom:14px; }
+.match-h-ar { font-family:var(--fa); font-size:.8rem; color:rgba(245,181,60,.85); direction:rtl; text-align:right; line-height:1.6; }
+.match-h-en { font-family:var(--fe); font-size:.7rem; font-style:italic; color:var(--muted); margin-top:2px; }
+.match-cols { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.match-col-lbl { font-family:var(--fm); font-size:.57rem; font-weight:700; color:var(--muted); letter-spacing:2px; text-transform:uppercase; text-align:center; margin-bottom:7px; }
+.mitem {
+  background:rgba(255,255,255,.04); border:1.5px solid var(--b2);
+  border-radius:var(--r3); padding:9px 12px;
+  font-size:.82rem; cursor:pointer; transition:all .16s;
+  margin-bottom:4px; display:flex; align-items:center; gap:8px; user-select:none;
+}
+.mitem:hover { border-color:rgba(245,181,60,.4); background:var(--gold4); color:var(--cream); }
+.mitem.sel { border-color:var(--gold); background:var(--gold4); color:var(--gold); }
+.mitem.paired { border-color:rgba(34,211,238,.4); background:rgba(34,211,238,.07); color:var(--cyan); }
+.midx { font-family:var(--fm); font-size:.6rem; color:var(--muted); flex-shrink:0; width:16px; }
+.mpair-tag { margin-left:auto; font-family:var(--fm); font-size:.58rem; color:var(--cyan); display:none; }
+.mitem.paired .mpair-tag { display:inline; }
+.match-status { font-family:var(--fa); font-size:.74rem; color:var(--muted); text-align:center; margin-top:8px; }
+
+/* Nav Buttons */
+.nav-row { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:20px; }
+.btn-nav { padding:10px 22px; border-radius:var(--r2); border:none; font-family:var(--fb); font-size:.85rem; font-weight:600; cursor:pointer; transition:all .18s; }
+.btn-prev { background:rgba(255,255,255,.07); border:1px solid var(--b2); color:var(--muted); }
+.btn-prev:hover { background:rgba(255,255,255,.11); color:var(--txt); }
+.btn-prev:disabled { opacity:.3; pointer-events:none; }
+.btn-next { background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#06090f; font-weight:700; }
+.btn-next:hover { transform:translateY(-2px); box-shadow:0 10px 30px rgba(245,181,60,.28); }
+.qpos { font-family:var(--fm); font-size:.7rem; color:var(--muted); }
+
+/* ── Overlay & Dialog ── */
+.overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.8); backdrop-filter:blur(12px); z-index:900; align-items:center; justify-content:center; padding:20px; }
+.overlay.on { display:flex; }
+.dialog { background:#0d1428; border:1px solid var(--b1); border-radius:18px; padding:32px; max-width:440px; width:100%; animation:pop .28s ease both; }
+.dialog h3 { font-family:var(--fe); font-size:1.4rem; font-weight:900; color:var(--cream); margin-bottom:8px; }
+.dialog p { font-family:var(--fa); font-size:.87rem; color:var(--muted); direction:rtl; line-height:1.75; margin-bottom:22px; }
+.dialog-btns { display:flex; gap:10px; }
+.btn-dlg { flex:1; padding:13px; border-radius:var(--r2); border:none; font-family:var(--fa); font-size:.9rem; font-weight:700; cursor:pointer; transition:all .18s; }
+.btn-dlg-yes { background:linear-gradient(135deg,var(--ok),#059669); color:#fff; }
+.btn-dlg-yes:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(16,185,129,.3); }
+.btn-dlg-no { background:rgba(255,255,255,.07); border:1px solid var(--b2); color:var(--txt); }
+.btn-dlg-no:hover { background:rgba(255,255,255,.12); }
+
+/* ══════════════════════════════
+   RESULTS SCREEN
+══════════════════════════════ */
+#sResults { padding:44px 20px 90px; }
+.rwrap { max-width:860px; margin:0 auto; }
+
+.r-hero { text-align:center; margin-bottom:36px; }
+.r-kicker { display:inline-block; padding:4px 16px; border-radius:50px; font-size:.6rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); border:1px solid var(--b1); margin-bottom:16px; }
+.r-title { font-family:var(--fe); font-size:2.1rem; font-weight:900; color:var(--cream); margin-bottom:4px; }
+.r-time { font-family:var(--fa); font-size:.84rem; color:var(--muted); direction:rtl; margin-bottom:0; }
+
+.ring-wrap { position:relative; display:inline-flex; align-items:center; justify-content:center; margin:18px 0 12px; }
+.ring-wrap svg { filter:drop-shadow(0 0 24px rgba(245,181,60,.2)); }
+.ring-inner { position:absolute; display:flex; flex-direction:column; align-items:center; }
+.ring-pct { font-family:var(--fe); font-size:2.7rem; font-weight:900; color:var(--gold); line-height:1; }
+.ring-frac { font-family:var(--fm); font-size:.62rem; color:var(--muted); margin-top:2px; }
+.grade-tag { display:inline-block; padding:8px 30px; border-radius:50px; font-family:var(--fa); font-weight:900; font-size:1rem; margin-bottom:5px; }
+.grade-note { font-family:var(--fa); font-size:.82rem; color:var(--muted); direction:rtl; margin-bottom:26px; }
+
+.r-score-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:26px; }
+.r-score-card { background:var(--s1); border:1px solid var(--b2); border-radius:var(--r); padding:18px 12px; text-align:center; position:relative; overflow:hidden; }
+.r-score-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
+.rsc-auto::before { background:linear-gradient(90deg,var(--indigo),var(--cyan)); }
+.rsc-wh::before { background:linear-gradient(90deg,var(--cyan),#06b6d4); }
+.rsc-total::before { background:linear-gradient(90deg,var(--gold),var(--gold2)); }
+.rsc-n { font-family:var(--fe); font-size:1.65rem; font-weight:900; line-height:1; margin-bottom:4px; }
+.rsc-n.ok { color:var(--ok); } .rsc-n.cyan { color:var(--cyan); } .rsc-n.gold { color:var(--gold); }
+.rsc-lbl { font-family:var(--fa); font-size:.65rem; color:var(--muted); line-height:1.5; }
+.rsc-sub { font-family:var(--fm); font-size:.6rem; color:var(--muted); margin-top:3px; }
+
+.r-btns { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
+.rbtn { padding:11px 22px; border-radius:var(--r2); border:none; font-family:var(--fa); font-size:.86rem; font-weight:700; cursor:pointer; transition:all .18s; }
+.rbtn-gold { background:linear-gradient(135deg,var(--gold),var(--gold2)); color:#06090f; }
+.rbtn-gold:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(245,181,60,.28); }
+.rbtn-red { background:rgba(239,68,68,.1); border:1px solid rgba(239,68,68,.3); color:var(--ng); }
+.rbtn-red:hover { background:rgba(239,68,68,.18); transform:translateY(-2px); }
+.rbtn-ghost { background:rgba(255,255,255,.07); border:1px solid var(--b2); color:var(--txt); }
+.rbtn-ghost:hover { background:rgba(255,255,255,.12); }
+
+/* Section Accordion */
+.sec-acc { margin-bottom:28px; }
+.sec-acc-title { font-family:var(--fa); font-size:.88rem; font-weight:700; color:var(--gold); direction:rtl; text-align:right; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.sec-acc-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--b1),transparent); }
+.sec-cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:8px; }
+.sec-card { background:var(--s1); border:1px solid var(--b2); border-radius:var(--r2); padding:13px 15px; cursor:pointer; transition:all .18s; }
+.sec-card:hover { border-color:rgba(245,181,60,.3); background:var(--s2); transform:translateY(-1px); }
+.sec-card.active { border-color:rgba(245,181,60,.4); background:rgba(245,181,60,.06); }
+.sec-name { font-family:var(--fa); font-size:.78rem; font-weight:700; color:var(--txt); direction:rtl; text-align:right; margin-bottom:7px; padding-right:8px; }
+.sec-mini-bar { background:rgba(255,255,255,.07); border-radius:3px; height:4px; overflow:hidden; margin-bottom:6px; }
+.sec-mini-fill { height:100%; border-radius:3px; transition:width 1.1s ease; }
+.sec-stats-row { display:flex; justify-content:space-between; align-items:center; }
+.ss-ok { font-family:var(--fm); font-size:.62rem; color:var(--ok); }
+.ss-ng { font-family:var(--fm); font-size:.62rem; color:var(--ng); }
+.ss-pct { font-family:var(--fm); font-size:.62rem; color:var(--muted); }
+.sec-detail-panel { background:var(--s0); border:1px solid var(--b1); border-radius:var(--r2); padding:16px 18px; margin-top:10px; display:none; animation:slideDown .3s ease both; }
+.sec-detail-panel.show { display:block; }
+.sdp-title { font-family:var(--fa); font-size:.8rem; font-weight:700; color:var(--gold); direction:rtl; text-align:right; margin-bottom:10px; }
+.sdp-item { display:flex; align-items:flex-start; gap:8px; padding:7px 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.sdp-item:last-child { border-bottom:none; }
+.sdp-icon { font-size:.82rem; flex-shrink:0; margin-top:1px; }
+.sdp-q { font-family:var(--fb); font-size:.78rem; color:var(--cream); flex:1; line-height:1.45; }
+.sdp-type { flex-shrink:0; }
+
+/* Divider */
+.rdiv { text-align:center; margin:24px 0 18px; position:relative; }
+.rdiv::before { content:''; position:absolute; top:50%; left:0; right:0; height:1px; background:rgba(255,255,255,.06); }
+.rdiv span { position:relative; background:var(--bg); padding:0 14px; font-size:.6rem; text-transform:uppercase; letter-spacing:2.5px; color:var(--muted); }
+
+/* Filter */
+.frow { display:flex; gap:7px; margin-bottom:16px; flex-wrap:wrap; }
+.fbtn { padding:6px 14px; border-radius:7px; border:1px solid var(--b2); background:transparent; color:var(--muted); font-size:.73rem; font-weight:600; cursor:pointer; transition:all .14s; font-family:var(--fb); }
+.fbtn.on, .fbtn:hover { background:var(--gold4); border-color:rgba(245,181,60,.36); color:var(--gold); }
+.fbtn.fok.on { background:rgba(16,185,129,.09); border-color:rgba(16,185,129,.34); color:var(--ok); }
+.fbtn.fng.on { background:rgba(239,68,68,.09); border-color:rgba(239,68,68,.34); color:var(--ng); }
+.fbtn.fsk.on { background:rgba(245,181,60,.09); border-color:rgba(245,181,60,.34); color:var(--gold); }
+
+/* Review Cards */
+.rlist { display:flex; flex-direction:column; gap:12px; }
+.rc { border-radius:var(--r); padding:20px 22px; border-left:4px solid; background:var(--s1); animation:rise .28s ease both; }
+.rc.ok { border-color:var(--ok); }
+.rc.ng { border-color:var(--ng); }
+.rc.sk { border-color:var(--gold); }
+.rc-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; gap:10px; }
+.rc-meta { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+.rc-num { font-family:var(--fm); font-size:.6rem; color:var(--muted); }
+.rc-sec { font-size:.58rem; color:var(--muted); font-style:italic; }
+.rc-badge { font-size:.64rem; font-weight:700; padding:3px 10px; border-radius:6px; white-space:nowrap; flex-shrink:0; }
+.rc-badge.ok { background:rgba(16,185,129,.12); color:var(--ok); border:1px solid rgba(16,185,129,.3); }
+.rc-badge.ng { background:rgba(239,68,68,.12); color:var(--ng); border:1px solid rgba(239,68,68,.3); }
+.rc-badge.sk { background:rgba(245,181,60,.12); color:var(--gold); border:1px solid rgba(245,181,60,.3); }
+.rc-q { font-family:var(--fe); font-size:.93rem; font-weight:700; color:var(--cream); margin-bottom:10px; line-height:1.52; }
+.rc-ans { font-size:.82rem; display:flex; flex-direction:column; gap:5px; }
+.rc-user { color:var(--muted); }
+.rc-user .ok { color:var(--ok); font-weight:700; }
+.rc-user .ng { color:var(--ng); font-weight:700; }
+.rc-model { color:var(--ok); font-weight:700; }
+.rc-exp { background:rgba(245,181,60,.05); border:1px solid rgba(245,181,60,.12); border-radius:var(--r3); padding:9px 12px; margin-top:10px; font-family:var(--fa); font-size:.78rem; color:rgba(245,181,60,.82); direction:rtl; text-align:right; line-height:1.65; }
+.rc-exp::before { content:'💡 '; }
+/* WH scoring bar */
+.wh-eval { margin-top:10px; padding:10px 13px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius:var(--r3); }
+.whe-row { display:flex; align-items:center; gap:9px; margin-bottom:6px; }
+.whe-lbl { font-family:var(--fa); font-size:.7rem; color:var(--muted); flex-shrink:0; }
+.whe-track { flex:1; height:5px; background:rgba(255,255,255,.07); border-radius:3px; overflow:hidden; }
+.whe-fill { height:100%; border-radius:3px; transition:width .9s ease; }
+.whe-pct { font-family:var(--fm); font-size:.64rem; flex-shrink:0; }
+.whe-note { font-family:var(--fa); font-size:.75rem; direction:rtl; text-align:right; }
+/* match result */
+.mr-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:10px; }
+.mrp { display:flex; align-items:center; gap:6px; font-size:.77rem; padding:5px 9px; border-radius:6px; }
+.mrp.ok { background:rgba(16,185,129,.07); border:1px solid rgba(16,185,129,.18); }
+.mrp.ng { background:rgba(239,68,68,.07); border:1px solid rgba(239,68,68,.18); }
+.mrp .mra { color:var(--muted); flex-shrink:0; font-family:var(--fm); font-size:.65rem; }
+.mrp .mrb { font-weight:600; }
+.mrp.ok .mrb { color:var(--ok); }
+.mrp.ng .mrb { color:var(--ng); }
+.mrp .mrc { font-size:.64rem; color:var(--ok); margin-left:auto; }
+
+/* Print */
+@media print {
+  body { background:#fff; color:#111; }
+  .tbar, .cat-nav, .nav-row, .r-btns, .frow, #sStart, #sExam, .overlay { display:none !important; }
+  #sResults { display:block !important; padding:16px; }
+  .rc { border:1px solid #ddd; page-break-inside:avoid; background:#fff; }
+  .rc-q { color:#111; } .rc-model { color:#059669; } .rc-user .ng { color:#dc2626; }
+  .ring-pct { color:#b88a18; } .grade-tag { border:1px solid #999; }
+}
+
+/* Responsive */
+@media (max-width:900px) {
+  .ebody { grid-template-columns:1fr !important; gap:14px; }
+  .pcol { position:relative; top:0; }
+  .pbody { max-height:220px; }
+  .s-stats { grid-template-columns:repeat(2,1fr); }
+  .r-score-grid { grid-template-columns:1fr 1fr; }
+  .cat-nav { grid-template-columns:1fr; }
+  .mr-grid { grid-template-columns:1fr; }
+}
+@media (max-width:580px) {
+  .tbar-row { padding:8px 14px; gap:8px; }
+  .ebody { padding:14px 14px 60px; }
+  .qcard { padding:18px; }
+  .cat-nav { padding:8px 14px; }
+  .s-h1 { font-size:1.9rem; }
+  .r-score-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ START ═══ -->
+<div id="sStart" class="scr on">
+  <div class="sw">
+    <div class="exam-kicker rise">Ministry · الثالث المتوسط</div>
+    <h1 class="s-h1 rise d1">English<br><em>Final Exam</em></h1>
+    <p class="s-sub rise d1">امتحان شامل — التوصيلات + القطع القرائية | الإجابات تُعرض بعد الإنهاء فقط</p>
+    <div class="gl rise d2"></div>
+    <div class="s-stats rise d2">
+      <div class="s-stat"><div class="s-stat-n" id="totalQN">86</div><div class="s-stat-l">سؤال</div></div>
+      <div class="s-stat"><div class="s-stat-n">45</div><div class="s-stat-l">دقيقة</div></div>
+      <div class="s-stat"><div class="s-stat-n">5</div><div class="s-stat-l">ترجمة</div></div>
+      <div class="s-stat"><div class="s-stat-n">12</div><div class="s-stat-l">قطعة</div></div>
+    </div>
+    <div class="s-instr rise d3">
+      <div class="s-instr-title">📋 تعليمات الامتحان</div>
+      <ul class="s-instr-list">
+        <li><b>WH:</b> اكتب جوابك — يُقيَّم تلقائياً بعد الإنهاء</li>
+        <li><b>T/F:</b> اضغط True أو False — يُحفظ اختيارك فوراً</li>
+        <li><b>لا تُعرض الإجابات</b> أثناء الامتحان — النتائج بعد الإنهاء</li>
+        <li><b>التوصيلات:</b> اضغط كلمة من A ثم كلمة من B للربط</li>
+        <li><b>الترجمة:</b> 5 ترجمات لكامل الامتحان لمدة 30 ثانية</li>
+      </ul>
+    </div>
+    <button class="s-btn-start rise d4" onclick="startExam()">
+      ابدأ الامتحان — Begin Exam ◈
+    </button>
+  </div>
+</div>
+
+<!-- ═══ EXAM ═══ -->
+<div id="sExam" class="scr">
+  <!-- Top Bar -->
+  <div class="tbar">
+    <div class="tbar-row">
+      <div class="timer" id="timerEl">45:00</div>
+      <div class="tbar-prog">
+        <div class="tbar-prog-track"><div class="tbar-prog-fill" id="mainFill" style="width:0%"></div></div>
+        <div class="tbar-prog-info"><span id="mainTxt">0 / 0 أُجيب</span><span id="mainPct">0%</span></div>
+      </div>
+      <button class="btn-end" onclick="confirmSubmit()">✓ إنهاء وعرض النتائج</button>
+    </div>
+  </div>
+
+  <!-- Category Navigator: 2 bars -->
+  <div class="cat-nav" id="catNav">
+    <!-- Reading bar -->
+    <div class="cat-nav-bar" id="catRead">
+      <div class="cat-nav-header" onclick="toggleCat('read')">
+        <div class="cat-icon">📖</div>
+        <div class="cat-info">
+          <div class="cat-title">القطع والأسئلة</div>
+          <div class="cat-subtitle">Reading & Questions</div>
+        </div>
+        <div class="cat-right">
+          <div class="cat-pill warm" id="readPill">0 / 0</div>
+          <div class="cat-bar-mini"><div class="cat-bar-fill cat-fill-read" id="readFill" style="width:0%"></div></div>
+          <div class="cat-chevron" id="chevRead">▾</div>
+        </div>
+      </div>
+      <div class="cat-dropdown" id="dropRead"></div>
+    </div>
+    <!-- Matching bar -->
+    <div class="cat-nav-bar" id="catMatch">
+      <div class="cat-nav-header" onclick="toggleCat('match')">
+        <div class="cat-icon">🔗</div>
+        <div class="cat-info">
+          <div class="cat-title">التوصيلات</div>
+          <div class="cat-subtitle">Matching Exercises Q3·B</div>
+        </div>
+        <div class="cat-right">
+          <div class="cat-pill" id="matchPill">0 / 4</div>
+          <div class="cat-bar-mini"><div class="cat-bar-fill cat-fill-match" id="matchFill" style="width:0%"></div></div>
+          <div class="cat-chevron" id="chevMatch">▾</div>
+        </div>
+      </div>
+      <div class="cat-dropdown" id="dropMatch"></div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="ebody" id="eBody">
+    <!-- Passage col -->
+    <div class="pcol" id="pCol" style="display:none;">
+      <div class="pbox">
+        <div class="pbox-head">
+          <div class="pbox-info">
+            <div class="plbl" id="pLbl">Passage</div>
+            <div class="ptitle-en" id="pTitleEn"></div>
+            <div class="ptitle-ar" id="pTitleAr"></div>
+          </div>
+          <button class="btn-trans" id="btnTransPass" onclick="doTransPass()">
+            <span>🌐</span>
+            <span class="btn-trans-lbl">ترجمة القطعة</span>
+            <span class="trans-uses" id="transUsesPass">5</span>
+          </button>
+        </div>
+        <div class="pbody" id="pBody">
+          <div id="passEn" class="pass-en"></div>
+          <div id="passAr" class="pass-ar"></div>
+          <div class="trans-cd" id="transCdPass">⏱ <span id="transTPass">30</span>ث</div>
+        </div>
+      </div>
+      <div class="pinstr" id="pInstr" style="display:none;"></div>
+    </div>
+    <!-- Question col -->
+    <div id="qCol"><div class="qcard" id="qCard"></div></div>
+  </div>
+</div>
+
+<!-- ═══ RESULTS ═══ -->
+<div id="sResults" class="scr">
+  <div class="rwrap">
+    <div class="r-hero rise">
+      <div class="r-kicker">◈ النتائج النهائية</div>
+      <h2 class="r-title">اكتمل الامتحان</h2>
+      <p class="r-time" id="rTime">—</p>
+      <div class="ring-wrap">
+        <svg width="164" height="164" viewBox="0 0 164 164">
+          <circle cx="82" cy="82" r="70" fill="none" stroke="rgba(245,181,60,.1)" stroke-width="10"/>
+          <circle id="ringC" cx="82" cy="82" r="70" fill="none" stroke="url(#rg)" stroke-width="10"
+            stroke-linecap="round" stroke-dasharray="439.82" stroke-dashoffset="439.82"
+            style="transition:stroke-dashoffset 1.3s cubic-bezier(.4,0,.2,1);transform:rotate(-90deg);transform-origin:50% 50%;"/>
+          <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f5b53c"/><stop offset="100%" stop-color="#c48a18"/>
+          </linearGradient></defs>
+        </svg>
+        <div class="ring-inner">
+          <div class="ring-pct" id="rPct">0%</div>
+          <div class="ring-frac" id="rFrac">0/0</div>
+        </div>
+      </div><br>
+      <div class="grade-tag" id="rGrade">——</div>
+      <p class="grade-note" id="rNote"></p>
+    </div>
+
+    <div class="r-score-grid">
+      <div class="r-score-card rsc-auto">
+        <div class="rsc-n ok" id="rAutoN">—</div>
+        <div class="rsc-lbl">T/F + التوصيلات<br><span style="font-size:.6rem;">تصحيح تلقائي</span></div>
+        <div class="rsc-sub" id="rAutoS">—</div>
+      </div>
+      <div class="r-score-card rsc-wh">
+        <div class="rsc-n cyan" id="rWhN">—</div>
+        <div class="rsc-lbl">أسئلة WH<br><span style="font-size:.6rem;">تقييم ذكي بالكلمات المفتاحية</span></div>
+        <div class="rsc-sub" id="rWhS">—</div>
+      </div>
+      <div class="r-score-card rsc-total">
+        <div class="rsc-n gold" id="rTotN">—</div>
+        <div class="rsc-lbl">المجموع الكلي<br><span style="font-size:.6rem;">جميع الأسئلة</span></div>
+        <div class="rsc-sub" id="rTotS">—</div>
+      </div>
+    </div>
+
+    <div class="r-btns">
+      <button class="rbtn rbtn-gold" onclick="restartExam()">↺ إعادة الامتحان</button>
+      <button class="rbtn rbtn-red" id="retryBtn" style="display:none;" onclick="retryWrong()">🔁 إعادة الخاطئة</button>
+      <button class="rbtn rbtn-ghost" onclick="printResults()">🖨 طباعة النتيجة</button>
+    </div>
+
+    <div class="sec-acc">
+      <div class="sec-acc-title">📊 نتائج كل قسم — اضغط للتفاصيل</div>
+      <div class="sec-cards" id="secCards"></div>
+      <div class="sec-detail-panel" id="secDetail"></div>
+    </div>
+
+    <div class="rdiv"><span>المراجعة التفصيلية لكل سؤال</span></div>
+    <div class="frow">
+      <button class="fbtn on" onclick="filterR('all',this)">الكل</button>
+      <button class="fbtn fok" onclick="filterR('ok',this)">✅ صحيح</button>
+      <button class="fbtn fng" onclick="filterR('ng',this)">❌ خطأ</button>
+      <button class="fbtn fsk" onclick="filterR('sk',this)">⭕ لم يُجَب</button>
+    </div>
+    <div class="rlist" id="reviewList"></div>
+
+    <div style="background:rgba(245,181,60,.05);border:1px solid rgba(245,181,60,.13);border-radius:14px;padding:16px 20px;text-align:center;direction:rtl;margin-top:30px;">
+      <p style="font-family:var(--fa);font-weight:700;color:var(--gold);font-size:.96rem;">لا تحزن إذا أخذت الحياة منك شيئاً، لربما هي تخبئ لك الأفضل</p>
+      <p style="font-family:var(--fa);font-size:.75rem;color:var(--muted);margin-top:4px;">— الزبون المحظوظ</p>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Overlay -->
+<div class="overlay" id="confirmOverlay">
+  <div class="dialog">
+    <h3>إنهاء الامتحان؟</h3>
+    <p id="confirmMsg">هل أنت متأكد؟</p>
+    <div class="dialog-btns">
+      <button class="btn-dlg btn-dlg-yes" onclick="doSubmit()">نعم، أنهِ الامتحان ✓</button>
+      <button class="btn-dlg btn-dlg-no" onclick="closeConfirm()">لا، ارجع</button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+// ══════════════════════════════════════════
+// PASSAGES
+// ══════════════════════════════════════════
+const PASS={
+  external:{lbl:'القطعة الخارجية',en:'External Passage',ar:'قصة سالي وجون',
+    instr:'أجب عن (5) أسئلة فقط من الستة | Answer 5 questions only',
+    textEn:`Last week, John took his four-year-old daughter Sally to a children's party. They travelled by train — Sally had never travelled by train before. She sat near the window and asked a lot of questions. Suddenly, a middle-aged lady came into their compartment and sat opposite Sally. "Hello, little girl," she said. Sally didn't answer but looked curiously. The lady took out her powder compact and began to make up her face. "Why are you doing that?" Sally asked. "To make myself beautiful," the lady answered. She put away her compact and smiled kindly. "But you are still ugly," Sally said.`,
+    textAr:`الأسبوع الماضي أخذ جون ابنته ذات الأربع سنوات سالي إلى حفلة أطفال. سافرا بالقطار ولم تسافر سالي بالقطار من قبل قط. جلست قرب النافذة وطرحت أسئلة كثيرة. فجأةً دخلت سيدة في منتصف العمر وجلست أمام سالي وقالت: "مرحباً أيتها الصغيرة." لم تجب سالي لكنها نظرت بفضول. أخرجت السيدة مرآة المساحيق وبدأت بوضع المكياج. سألت سالي: "لماذا تفعلين هذا؟" أجابت السيدة: "لأجعل نفسي جميلة." وضعت المرآة وابتسمت بلطف. قالت سالي: "لكنكِ لا تزالين قبيحة."`},
+  mall:{lbl:'مول جواهر',en:'Jawahir Mall — Istanbul',ar:'إسطنبول، تركيا',
+    textEn:`Jawahir Mall is one of the largest shopping centres in Istanbul, Turkey. It opened in 2005 and has six floors. It contains everything you need: shops, restaurants, a cinema and entertainment. You can also pray at the mall — there is a prayer room available. The office opens at 10 a.m. and closes late in the evening.`,
+    textAr:`مول جواهر أحد أكبر مراكز التسوق في إسطنبول تركيا. افتُتح عام 2005 ويضم ستة طوابق. يحتوي على محلات ومطاعم وسينما وترفيه. يمكنك الصلاة فيه إذ يوجد مصلى للزوار. يفتح المكتب الساعة العاشرة صباحاً ويغلق متأخراً.`},
+  panther:{lbl:'السيارة النمر',en:'Panther 3.0D — Car of the Year',ar:'سيارة العام',
+    textEn:`The car everyone is talking about is the Panther 3.0D — car of the year! It's really fantastic and beautiful. It looks quite cheap but is actually great value. There are eight seats so there's loads of space inside. All the young men are very interested in its engine. The Panther is a really safe car because there are airbags. Standard features include GPS, sunroof, tinted windows and a CD player. The Panther has a warranty for four years.`,
+    textAr:`السيارة التي يتحدث عنها الجميع هي بانثر 3.0D — سيارة العام! إنها رائعة وجميلة. تبدو رخيصة لكنها ذات قيمة ممتازة. فيها ثمانية مقاعد ومساحة واسعة. جميع الشباب مهتمون بمحركها. إنها آمنة بسبب الوسائد الهوائية. مميزاتها: GPS وفتحة سقف ونوافذ ملونة ومشغل CD. ضمانها أربع سنوات.`},
+  kareem:{lbl:'الزبون المحظوظ',en:'The Lucky Customer',ar:'قصة كريم — شارع المتنبي',
+    textEn:`Kareem's parents, friends and teacher said he was imaginative because he spent his free time reading and writing poems. His dream was to be a famous poet. He had read Al-Nawab's poems twice and found them very interesting. He had been saving up to be the first to buy "Islands of Salt". At Al-Mutanabbi Street, he was sad because there was a long queue outside. He waited patiently. He was the 50th customer and won a big prize: meeting Al-Nawab, who would read his poems and give advice. Kareem was happy because his patience was rewarded.`,
+    textAr:`قال والدا كريم وأصدقاؤه ومعلمه إنه مبدع لأنه قضى وقت فراغه بالقراءة والكتابة. حلمه أن يصبح شاعراً مشهوراً. قرأ قصائد النواب مرتين ووجدها ممتعة. كان يدخر لشراء "جزر الملح". في شارع المتنبي أحزنه الطابور الطويل. انتظر بصبر. كان الزبون الخمسين وفاز بلقاء النواب الذي سيقرأ قصائده. كان سعيداً لأن صبره نال مكافأته.`},
+  atv:{lbl:'كوميديا ATV',en:'ATV TV Comedy',ar:'لوسي وشخصية سامارا',
+    textEn:`Lucy is 16 years old and plays Samara in a popular TV comedy. Samara is the daughter in a traditional family. Her brother is clumsy, younger than her, and always causes problems. In one episode he put salt instead of sugar in his mother's tea. In another he put cleaning fluid instead of gel on his hair. He also fell in the pool with all his clothes on and got very wet.`,
+    textAr:`لوسي عمرها 16 عاماً وتلعب دور سامارا في كوميديا تلفزيونية شهيرة. سامارا ابنة في عائلة تقليدية. أخوها أخرق وأصغر منها ويسبب المشاكل دائماً. في حلقة وضع الملح بدل السكر في شاي أمه. وفي أخرى وضع سائل التنظيف بدل الجل على شعره. كما سقط في المسبح بكامل ملابسه وأصبح مبللاً جداً.`},
+  falcons:{lbl:'أسرع الاشياء',en:'The Fastest Living Things',ar:'الصقور — أسرع الكائنات',
+    textEn:`Falcons can move faster than any other living thing. They fly high and then dive down to kill a bird or small animal. The Bedouin are people from the deserts of Arabia. They lived mostly on dates, milk and bread — not a lot of meat. So they used falconry to catch birds, especially the large long-legged houbara. The Bedouin enjoyed the food falcons caught for them. Falconry was not just a sport — it was necessary for food. Today there could soon be no rare birds left because of it.`,
+    textAr:`يتحرك الصقر أسرع من أي كائن حي. يحلق عالياً ثم ينقض لقتل طائر أو حيوان صغير. البدو أهل صحاري الجزيرة العربية. عاشوا على التمر والحليب والخبز دون كثير من اللحوم. استخدموا صيد الصقور لاصطياد الطيور خاصة الحباري. استمتعوا بهذا الطعام. لم يكن الصيد مجرد رياضة بل ضرورياً للغذاء. اليوم قد لا تبقى طيور نادرة بسببه.`},
+  news:{lbl:'أخبار الصباح',en:'Iraqi Morning News',ar:'نشرة الأخبار الصباحية',
+    textEn:`Today's Iraqi Morning News: The Iraqi minister met with officials in London. The meeting focused on educational development between countries. The minister suggested opening English schools in Iraq to develop the English language. In sports news, the sports minister opened a new sports city in Basra.`,
+    textAr:`أخبار الصباح العراقية: التقى الوزير بمسؤولين في لندن. ركّز الاجتماع على التطوير التعليمي بين البلدين. اقترح الوزير فتح مدارس إنجليزية في العراق. افتتح وزير الرياضة مدينة رياضية جديدة في البصرة.`},
+  lesson:{lbl:'الدرس الأقوى',en:'A Powerful Lesson for Everyone',ar:'درس لكل شخص',
+    textEn:`Al-Sabah newspaper had a special offer: work as a reporter for a day. The lucky boy was Salam Ahmed, 15 years old. On Tuesday he took his notebook and camera. He noticed a young boy taking his old father in a wheelchair to a restaurant. The boy bought his father food. Because the father was very old and weak, he kept dropping food on his clothes. The customers didn't watch him with love and respect. But the son was not embarrassed — he was proud.`,
+    textAr:`قدمت جريدة الصباح عرضاً للعمل مراسلاً ليوم. سلام أحمد (15 عاماً) كان المحظوظ. يوم الثلاثاء أخذ دفتره وكاميرته. لاحظ فتى يأخذ والده الكبير على كرسي متحرك للمطعم. اشترى له طعاماً. لضعف الأب كان الطعام يسقط على ملابسه. لم يشاهده الزبائن باحترام. لكن الابن لم يكن محرجاً بل كان فخوراً.`},
+  school:{lbl:'مدرسة المستقبل',en:'The School of the Future',ar:'التعليم المستقبلي',
+    textEn:`School in the future will be very different from today. There will be much more technology. Students will come to school once or twice a week. Global Education will connect students with other students and teachers around the world. There will be fewer small schools because students will learn at home.`,
+    textAr:`ستكون المدرسة مستقبلاً مختلفة جداً. ستوجد تكنولوجيا أكثر بكثير. سيأتي الطلاب مرة أو مرتين أسبوعياً. التعليم العالمي سيوصلهم بطلاب ومعلمين حول العالم. ستكون هناك مدارس صغيرة أقل لأن الطلاب سيتعلمون في المنزل.`},
+  ibn:{lbl:'مهنة مشهورة',en:'Ibn Al-Haytham — Famous Career',ar:'أبو علي الحسن ابن الهيثم',
+    textEn:`Abu Ali al-Hasan Ibn al-Haitham was born in 965 in Basra, Iraq. He was educated in Basra and Baghdad, then travelled to Egypt and Spain. He was called "Physicist" and sometimes "Al-Basri". He was known as the "father of optics" for his great contributions to optics. He discovered the laws of refraction. He died in 1040 in Cairo.`,
+    textAr:`وُلد ابن الهيثم عام 965 في البصرة، العراق. تعلّم في البصرة وبغداد ثم سافر لمصر وإسبانيا. لُقِّب بـ"الفيزيائي" وأحياناً "البصري". اشتُهر بـ"أبو علم البصريات" لإسهاماته الكبيرة. اكتشف قوانين الانكسار. توفي عام 1040 في القاهرة.`},
+  africa:{lbl:'بلدان أفريقيان',en:'Two African Countries',ar:'ليبيا والسودان',
+    textEn:`Libya is in North Africa. It is mostly desert and mountain. The climate is varied — it is not always very hot. Libya has some agriculture and produces oil. Sudan is also in Africa and gets most of its water from the Blue Nile. Sudan produces cotton, sugar and gum Arabic.`,
+    textAr:`ليبيا في شمال أفريقيا. معظمها صحراء وجبال. مناخها متنوع وليس حاراً دائماً. فيها بعض الزراعة وتنتج النفط. السودان في أفريقيا أيضاً ويحصل على معظم مياهه من النيل الأزرق. ينتج القطن والسكر والصمغ العربي.`},
+  asian:{lbl:'الألعاب الآسيوية',en:'The Asian Games',ar:'الألعاب الرياضية الآسيوية',
+    textEn:`The Asian Games are held every four years. They began after the end of the Second World War. Athletes from all across Asia participate in many sports. The last games were held in South Korea in 2014.`,
+    textAr:`تُقام الألعاب الآسيوية كل أربع سنوات. بدأت بعد نهاية الحرب العالمية الثانية. يشارك رياضيون من آسيا في رياضات كثيرة. أُقيمت آخرها في كوريا الجنوبية 2014.`}
+};
+
+// ══════════════════════════════════════════
+// QUESTIONS
+// ══════════════════════════════════════════
+const Q=[
+  // MATCHING
+  {id:'m1',type:'match',sec:'التوصيلات',secEn:'Matching Q3B',ar:'وصّل الأفعال في القائمة A بالأسماء في القائمة B لتكوين جمل',en:'Match verbs (List A) with nouns (List B)',listA:['do','Watch','score','kick','put out','write'],listB:['a goal','fires','gymnastics','a letter','TV','a ball'],ans:{0:2,1:4,2:0,3:5,4:1,5:3}},
+  {id:'m2',type:'match',sec:'التوصيلات',secEn:'Matching Q3B',ar:'وصّل الأفعال في القائمة A بالأسماء في القائمة B',en:'Match verbs (List A) with nouns (List B)',listA:['watch','Write','Have','spend','borrow','cut'],listB:['a picnic','the morning','a letter','hair','TV','a book'],ans:{0:4,1:2,2:0,3:1,4:5,5:3}},
+  {id:'m3',type:'match',sec:'التوصيلات',secEn:'Matching Q3B',ar:'وصّل الكلمات لتكوين أسماء مركبة (Compound Nouns)',en:'Match words to make compound nouns',listA:['insect','Car','Video','Air','swimming','sun'],listB:['game','pool','roof','park','proof','bag'],ans:{0:4,1:3,2:0,3:5,4:1,5:2}},
+  {id:'m4',type:'match',sec:'التوصيلات',secEn:'Matching Q3B',ar:'وصّل الأفعال في القائمة A بالأسماء في القائمة B',en:'Match verbs (List A) with nouns (List B)',listA:['Score','do','go','Spend','Win','kick'],listB:['to the cinema','a game','the afternoon','a goal','a hobby','a ball'],ans:{0:3,1:4,2:0,3:2,4:1,5:5}},
+  // EXTERNAL
+  {id:'e1',type:'wh',pass:'external',sec:'القطعة الخارجية',secEn:'External Passage',q:"Where did John take his daughter?",ar:"أين أخذ جون ابنته؟",a:"John took his daughter to a children's party.",kw:['children','party','took']},
+  {id:'e2',type:'tf',pass:'external',sec:'القطعة الخارجية',secEn:'External Passage',q:"Sally sat silent near the window of the train.",ar:"جلست سالي بصمت قرب نافذة القطار.",a:false,exp:"False — جلست قرب النافذة لكنها كانت تسأل أسئلة كثيرة، لم تكن صامتة."},
+  {id:'e3',type:'wh',pass:'external',sec:'القطعة الخارجية',secEn:'External Passage',q:"Why did the lady take out her powder compact?",ar:"لماذا أخرجت السيدة مرآة المساحيق؟",a:"The lady took out her powder compact to make up her face.",kw:['make','face','beautiful','powder','compact']},
+  {id:'e4',type:'tf',pass:'external',sec:'القطعة الخارجية',secEn:'External Passage',q:"The lady greeted Sally but Sally didn't answer.",ar:"رحّبت السيدة بسالي لكن سالي لم تردّ.",a:true,exp:"True — قالت السيدة 'Hello' لكن سالي لم تجب، فقط نظرت بفضول."},
+  {id:'e5',type:'wh',pass:'external',sec:'القطعة الخارجية',secEn:'External Passage',q:"Was it the first time for Sally to travel by train?",ar:"هل كانت المرة الأولى لسالي في القطار؟",a:"Yes, Sally had never travelled by train before.",kw:['yes','first','never','before']},
+  {id:'e6',type:'wh',pass:'external',sec:'القطعة الخارجية',secEn:'External Passage',q:"What did the lady answer when Sally asked why?",ar:"ماذا أجابت السيدة سالي عن سبب وضع المكياج؟",a:'"To make myself beautiful."',kw:['beautiful','make','myself']},
+  // MALL
+  {id:'ma1',type:'wh',pass:'mall',sec:'مول جواهر',secEn:'Jawahir Mall',q:"Where is the mall?",ar:"أين يقع المول؟",a:"It's in Istanbul, Turkey.",kw:['istanbul','turkey']},
+  {id:'ma2',type:'wh',pass:'mall',sec:'مول جواهر',secEn:'Jawahir Mall',q:"When did it open?",ar:"متى تم افتتاحه؟",a:"It opened in 2005.",kw:['2005']},
+  {id:'ma3',type:'wh',pass:'mall',sec:'مول جواهر',secEn:'Jawahir Mall',q:"How many floors does it have?",ar:"كم عدد طوابقه؟",a:"It has six floors.",kw:['six','6','floors']},
+  {id:'ma4',type:'tf',pass:'mall',sec:'مول جواهر',secEn:'Jawahir Mall',q:"You can pray at the mall.",ar:"يمكنك الصلاة في المول.",a:true,exp:"True — يوجد مصلى متاح للزوار."},
+  {id:'ma5',type:'wh',pass:'mall',sec:'مول جواهر',secEn:'Jawahir Mall',q:"Can I contact the office at nine a.m.?",ar:"هل يمكنني الاتصال بالمكتب التاسعة صباحاً؟",a:"No, it doesn't open until 10 a.m.",kw:['no','10','open']},
+  // PANTHER
+  {id:'p1',type:'wh',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"What is the name of the car of the year?",ar:"ما هو اسم سيارة هذه السنة؟",a:"The Panther 3.0D.",kw:['panther','3.0d']},
+  {id:'p2',type:'wh',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"Does the Panther look very expensive or quite cheap?",ar:"هل تبدو السيارة غالية أم رخيصة؟",a:"It looks quite cheap.",kw:['cheap','quite']},
+  {id:'p3',type:'wh',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"How many seats are there in the Panther 3.0D?",ar:"كم عدد المقاعد؟",a:"There are eight seats.",kw:['eight','8','seats']},
+  {id:'p4',type:'tf',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"Are the young men interested in the engine?",ar:"هل الشباب مهتمون بالمحرك؟",a:true,exp:"True — ALL the young men are very interested in its engine."},
+  {id:'p5',type:'wh',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"What are the safety features in the Panther?",ar:"ما هي مميزات السلامة؟",a:"There are airbags.",kw:['airbags']},
+  {id:'p6',type:'wh',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"What are the standard features in the Panther?",ar:"ما هي المميزات الأساسية الإضافية؟",a:"GPS, sunroof, tinted windows and CD player.",kw:['gps','sunroof','tinted','windows','cd','player']},
+  {id:'p7',type:'tf',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"The new Panther is really fantastic / beautiful.",ar:"السيارة النمر الجديدة رائعة وجميلة.",a:true,exp:"True — stated: 'really fantastic and beautiful.'"},
+  {id:'p8',type:'tf',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"Some young men are not very interested in its engine.",ar:"بعض الشباب غير مهتمين بالمحرك.",a:false,exp:"False — ALL the young men are very interested. (جميع الشباب، وليس بعضهم)"},
+  {id:'p9',type:'tf',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"Panther has no standard features.",ar:"السيارة النمر ليس فيها مواصفات إضافية.",a:false,exp:"False — It has GPS, sunroof, tinted windows and CD player."},
+  {id:'p10',type:'tf',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"The Panther is actually very expensive.",ar:"السيارة غالية جداً في الواقع.",a:false,exp:"False — It looks quite cheap. (رخيصة نسبياً)"},
+  {id:'p11',type:'tf',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"The Panther has seats for six people.",ar:"للسيارة مقاعد لستة أشخاص.",a:false,exp:"False — There are EIGHT seats, not six."},
+  {id:'p12',type:'tf',pass:'panther',sec:'السيارة النمر',secEn:'Panther 3.0D',q:"The Panther has a warranty for four years.",ar:"للسيارة ضمان لأربع سنوات.",a:true,exp:"True — stated directly in the text."},
+  // KAREEM
+  {id:'k1',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"Where does the story take place?",ar:"أين تجري أحداث القصة؟",a:"In Al-Mutanabbi Street.",kw:['mutanabbi','street']},
+  {id:'k2',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"Why was Kareem sad when he arrived?",ar:"لماذا كان كريم حزيناً عند وصوله؟",a:"Because there was a long queue forming outside.",kw:['queue','long','outside']},
+  {id:'k3',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"What was Kareem's dream?",ar:"ما هو حلم كريم؟",a:"To be a famous poet.",kw:['famous','poet']},
+  {id:'k4',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"Why did the shop owner give Kareem a prize?",ar:"لماذا أعطاه مالك المحل جائزة؟",a:"Because he was the 50th customer in the shop.",kw:['50','50th','customer','fiftieth']},
+  {id:'k5',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"Why was Kareem so happy with the prize?",ar:"لماذا كان كريم سعيداً بالجائزة؟",a:"Because his patience was being rewarded.",kw:['patience','rewarded']},
+  {id:'k6',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"Who will read Kareem's poems and give advice?",ar:"من سيقرأ قصائد كريم ويعطيه النصيحة؟",a:"Al-Nawab (مظفر النواب).",kw:['nawab','al-nawab']},
+  {id:'k7',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"Describe Kareem's character.",ar:"صف شخصية كريم.",a:"He was hard working, imaginative and patient.",kw:['hard','working','imaginative','patient']},
+  {id:'k8',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"What is the name of the new book?",ar:"ما اسم الكتاب الجديد؟",a:"Islands of Salt (جزر الملح).",kw:['islands','salt']},
+  {id:'k9',type:'wh',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"How many times had Kareem read Al-Nawab's poems?",ar:"كم مرة قرأ كريم قصائد النواب؟",a:"Twice (مرتان).",kw:['twice','two','2']},
+  {id:'k10',type:'tf',pass:'kareem',sec:'الزبون المحظوظ',secEn:'Lucky Customer',q:"Kareem was the first to buy the new book.",ar:"كريم كان الأول لشراء الكتاب الجديد.",a:false,exp:"False — He was the 50th customer, not the first."},
+  // ATV
+  {id:'a1',type:'wh',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"How old is Lucy?",ar:"كم عمر لوسي؟",a:"She is 16 years old.",kw:['16','sixteen']},
+  {id:'a2',type:'wh',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"What does Lucy play in the TV comedy?",ar:"من تلعب لوسي دوره؟",a:"Lucy plays Samara.",kw:['samara','plays']},
+  {id:'a3',type:'wh',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"Who is Samara?",ar:"من هي سامارا؟",a:"She is the daughter in a traditional family.",kw:['daughter','traditional','family']},
+  {id:'a4',type:'wh',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"What did Samara's brother put in his mother's tea?",ar:"ماذا وضع أخو سامارا في شاي أمه؟",a:"He put salt instead of sugar.",kw:['salt','sugar']},
+  {id:'a5',type:'wh',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"Where does Samara's brother fall?",ar:"أين سقط أخو سامارا؟",a:"He falls in the pool.",kw:['pool']},
+  {id:'a6',type:'wh',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"What does Samara's brother put on his hair?",ar:"ماذا وضع على شعره؟",a:"He puts cleaning fluid instead of gel.",kw:['cleaning','fluid','gel']},
+  {id:'a7',type:'tf',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"Lucy's brother (Samara's character) is clumsy.",ar:"أخو سامارا أخرق.",a:true,exp:"True — described as clumsy and always causing problems."},
+  {id:'a8',type:'tf',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"Samara's brother is older than her.",ar:"أخو سامارا أكبر منها.",a:false,exp:"False — He is YOUNGER than her. (أصغر منها)"},
+  {id:'a9',type:'tf',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"Samara's mother liked her tea.",ar:"أعجبت أم سامارا بشايها.",a:false,exp:"False — Salt was put instead of sugar, so she could NOT have liked it."},
+  {id:'a10',type:'tf',pass:'atv',sec:'كوميديا ATV',secEn:'ATV Comedy',q:"The brother got very wet.",ar:"أصبح الأخ مبللاً جداً.",a:true,exp:"True — He fell in the pool with all his clothes on."},
+  // FALCONS
+  {id:'f1',type:'wh',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"How do falcons attack their prey?",ar:"كيف يهاجم الصقر فريسته؟",a:"They fly high up then dive down to kill a bird or small animal.",kw:['fly','high','dive','kill','bird','animal']},
+  {id:'f2',type:'wh',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"What are the fastest things in the natural world?",ar:"ما هي أسرع الأشياء في عالم الطبيعة؟",a:"The falcons.",kw:['falcons']},
+  {id:'f3',type:'wh',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"Who are the Bedouin?",ar:"من هم البدو؟",a:"They are the people from the deserts of Arabia.",kw:['people','deserts','arabia']},
+  {id:'f4',type:'wh',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"What was the favourite bird for the Bedouin to catch?",ar:"ما الطير المفضل لدى البدو لصيده؟",a:"The large, long-legged houbara.",kw:['houbara','large','long']},
+  {id:'f5',type:'tf',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"Falcons can move faster than any other living thing.",ar:"الصقور تتحرك أسرع من أي كائن آخر.",a:true,exp:"True — stated directly at the start."},
+  {id:'f6',type:'tf',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"Before falconry, the Bedouin used to eat a lot of meat.",ar:"قبل الصيد كان البدو يأكلون الكثير من اللحوم.",a:false,exp:"False — They lived on dates, milk and bread — NOT a lot of meat."},
+  {id:'f7',type:'tf',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"The Bedouin enjoyed the food that falcons caught.",ar:"استمتع البدو بالطعام الذي صاده الصقر.",a:true,exp:"True — stated in the passage."},
+  {id:'f8',type:'tf',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"Falconry used to be just a sport.",ar:"صيد الصقور كان مجرد رياضة.",a:false,exp:"False — It was also NECESSARY for food, not just a sport."},
+  {id:'f9',type:'tf',pass:'falcons',sec:'أسرع الاشياء',secEn:'Fastest Living Things',q:"There could soon be no rare birds because of falconry.",ar:"ربما لا تبقى طيور نادرة بسبب صيد الصقور.",a:true,exp:"True — stated in the passage."},
+  // NEWS
+  {id:'n1',type:'wh',pass:'news',sec:'أخبار الصباح',secEn:'Iraqi Morning News',q:"What did the meeting in London focus on?",ar:"على ماذا ركز الاجتماع في لندن؟",a:"Discussing educational development between countries.",kw:['educational','development','countries']},
+  {id:'n2',type:'wh',pass:'news',sec:'أخبار الصباح',secEn:'Iraqi Morning News',q:"What was the minister's suggestion?",ar:"ماذا اقترح الوزير؟",a:"Opening English schools in Iraq to develop English language.",kw:['english','schools','iraq']},
+  {id:'n3',type:'wh',pass:'news',sec:'أخبار الصباح',secEn:'Iraqi Morning News',q:"What did the sports minister open in Basra?",ar:"ماذا افتتح وزير الرياضة في البصرة؟",a:"He opened a new sports city.",kw:['sports','city']},
+  // LESSON
+  {id:'l1',type:'wh',pass:'lesson',sec:'الدرس الأقوى',secEn:'Powerful Lesson',q:"What was the special offer of Al-Sabah newspaper?",ar:"ما العرض الخاص لجريدة الصباح؟",a:"Work as a reporter for a day.",kw:['reporter','work','day']},
+  {id:'l2',type:'wh',pass:'lesson',sec:'الدرس الأقوى',secEn:'Powerful Lesson',q:"Who was the lucky boy and how old was he?",ar:"من هو الصبي المحظوظ وكم عمره؟",a:"Salam Ahmed, he was 15 years old.",kw:['salam','ahmed','15','fifteen']},
+  {id:'l3',type:'wh',pass:'lesson',sec:'الدرس الأقوى',secEn:'Powerful Lesson',q:"What did Salam take with him on Tuesday?",ar:"ماذا أخذ سلام معه يوم الثلاثاء؟",a:"He took his notebook and camera.",kw:['notebook','camera']},
+  {id:'l4',type:'wh',pass:'lesson',sec:'الدرس الأقوى',secEn:'Powerful Lesson',q:"What attracted Salam's attention?",ar:"ما الشيء الذي جذب انتباه سلام؟",a:"A young boy taking his old father in a wheelchair to a restaurant.",kw:['boy','father','wheelchair','restaurant']},
+  {id:'l5',type:'wh',pass:'lesson',sec:'الدرس الأقوى',secEn:'Powerful Lesson',q:"Why was the father dropping food on his clothes?",ar:"لماذا كان والد الصبي يسكب الطعام على ملابسه؟",a:"Because he was very old and weak.",kw:['old','weak']},
+  {id:'l6',type:'tf',pass:'lesson',sec:'الدرس الأقوى',secEn:'Powerful Lesson',q:"The customers watched the old man with love and respect.",ar:"شاهد الزبائن الرجل المسن بحب واحترام.",a:false,exp:"False — The customers did NOT watch him with love and respect."},
+  {id:'l7',type:'tf',pass:'lesson',sec:'الدرس الأقوى',secEn:'Powerful Lesson',q:"The son was embarrassed when his father was eating.",ar:"الابن كان محرجاً عندما كان والده يأكل.",a:false,exp:"False — He was PROUD (فخور), NOT embarrassed. هذا فرق جوهري."},
+  // SCHOOL
+  {id:'sc1',type:'wh',pass:'school',sec:'مدرسة المستقبل',secEn:'School of Future',q:"How will teaching take place in the future?",ar:"كيف سيكون التعليم في المستقبل؟",a:"There will be much more technology.",kw:['technology','more']},
+  {id:'sc2',type:'wh',pass:'school',sec:'مدرسة المستقبل',secEn:'School of Future',q:"What is the importance of Global Education?",ar:"ما أهمية التعليم العالمي؟",a:"It connects students with other students and teachers around the world.",kw:['connect','students','teachers','world']},
+  {id:'sc3',type:'wh',pass:'school',sec:'مدرسة المستقبل',secEn:'School of Future',q:"How often will students come to school?",ar:"كم مرة سيأتي الطلاب للمدرسة؟",a:"Once or twice a week.",kw:['once','twice','week']},
+  {id:'sc4',type:'tf',pass:'school',sec:'مدرسة المستقبل',secEn:'School of Future',q:"School in the future will be very different to schools now.",ar:"المدرسة في المستقبل ستكون مختلفة جداً.",a:true,exp:"True — much more technology, students come once or twice a week."},
+  {id:'sc5',type:'tf',pass:'school',sec:'مدرسة المستقبل',secEn:'School of Future',q:"There will be more small schools in the future.",ar:"سيكون هناك مدارس صغيرة أكثر في المستقبل.",a:false,exp:"False — FEWER small schools (أقل) because students learn at home."},
+  // IBN
+  {id:'i1',type:'wh',pass:'ibn',sec:'مهنة مشهورة',secEn:'Famous Career',q:"When and where was Ibn Al-Haytham born?",ar:"أين ومتى ولد ابن الهيثم؟",a:"He was born in 965 in Basra, Iraq.",kw:['965','basra','iraq']},
+  {id:'i2',type:'wh',pass:'ibn',sec:'مهنة مشهورة',secEn:'Famous Career',q:"Where did he receive his education?",ar:"أين أنجز ابن الهيثم تعليمه؟",a:"In Basra, Baghdad and later Egypt and Spain.",kw:['basra','baghdad','egypt','spain']},
+  {id:'i3',type:'wh',pass:'ibn',sec:'مهنة مشهورة',secEn:'Famous Career',q:"What was Ibn Al-Haytham called?",ar:"بماذا كان يُلقَّب ابن الهيثم؟",a:'"Physicist" and sometimes "Al-Basri".',kw:['physicist','basri']},
+  {id:'i4',type:'wh',pass:'ibn',sec:'مهنة مشهورة',secEn:'Famous Career',q:"What was Ibn Al-Haytham known for?",ar:"بماذا كان مشهوراً؟",a:'Known as "father of optics" for his great contributions.',kw:['father','optics','contributions']},
+  {id:'i5',type:'wh',pass:'ibn',sec:'مهنة مشهورة',secEn:'Famous Career',q:"What made Ibn Al-Haytham famous?",ar:"ما الذي جعل ابن الهيثم مشهوراً؟",a:"He discovered the laws of refraction and proved many things.",kw:['refraction','discovered','laws','proved']},
+  {id:'i6',type:'wh',pass:'ibn',sec:'مهنة مشهورة',secEn:'Famous Career',q:"When and where did Ibn Al-Haytham die?",ar:"أين ومتى توفي ابن الهيثم؟",a:"He died in 1040 in Cairo.",kw:['1040','cairo']},
+  // AFRICA
+  {id:'af1',type:'tf',pass:'africa',sec:'بلدان أفريقيان',secEn:'Two African Countries',q:"Libya is mostly desert and mountain.",ar:"ليبيا في معظمها صحراء وجبال.",a:true,exp:"True — stated directly."},
+  {id:'af2',type:'tf',pass:'africa',sec:'بلدان أفريقيان',secEn:'Two African Countries',q:"It is always very hot there in Libya.",ar:"الطقس دائماً حار جداً في ليبيا.",a:false,exp:"False — The climate is VARIED (متنوع), not always very hot."},
+  {id:'af3',type:'tf',pass:'africa',sec:'بلدان أفريقيان',secEn:'Two African Countries',q:"There is no agriculture in Libya.",ar:"لا توجد زراعة في ليبيا.",a:false,exp:"False — Libya HAS some agriculture. (فيها بعض الزراعة)"},
+  {id:'af4',type:'tf',pass:'africa',sec:'بلدان أفريقيان',secEn:'Two African Countries',q:"Libya produces oil.",ar:"ليبيا تنتج النفط.",a:true,exp:"True — stated in the passage."},
+  {id:'af5',type:'tf',pass:'africa',sec:'بلدان أفريقيان',secEn:'Two African Countries',q:"Sudan gets most of its water from Blue Nile.",ar:"السودان يحصل على معظم مياهه من النيل الأزرق.",a:true,exp:"True — stated directly."},
+  {id:'af6',type:'tf',pass:'africa',sec:'بلدان أفريقيان',secEn:'Two African Countries',q:"Sudan produces cotton, sugar and gum Arabic.",ar:"السودان ينتج القطن والسكر والصمغ العربي.",a:true,exp:"True — stated directly."},
+  // ASIAN
+  {id:'as1',type:'wh',pass:'asian',sec:'الألعاب الآسيوية',secEn:'Asian Games',q:"How often do the games take place?",ar:"كم مرة تحصل الألعاب الآسيوية؟",a:"They are held every four years.",kw:['four','4','years']},
+  {id:'as2',type:'wh',pass:'asian',sec:'الألعاب الآسيوية',secEn:'Asian Games',q:"When did the Asian Games begin?",ar:"متى بدأت الألعاب الآسيوية؟",a:"After the end of the Second World War.",kw:['second','world','war']},
+  {id:'as3',type:'wh',pass:'asian',sec:'الألعاب الآسيوية',secEn:'Asian Games',q:"Where and when were the last games held?",ar:"أين ومتى حُصلت آخر الألعاب؟",a:"South Korea 2014.",kw:['south','korea','2014']}
+];
+
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
+let cur=0, answers={}, mPairs={}, mShuffle={}, mSelA={};
+let timerSecs=45*60, timerInt=null, startTime=null;
+let activeQ=Q, whScores={}, retryIds=[], curFilter='all';
+let transRemain=5, transPassInt=null, transQInt=null, curPassId=null;
+let openCat=null, activeSec=null;
+
+const $=id=>document.getElementById(id);
+function scr(id){document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');window.scrollTo(0,0);}
+function shuf(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function isAns(q){
+  if(q.type==='tf')return answers[q.id]!==undefined;
+  if(q.type==='wh')return !!(answers[q.id]&&answers[q.id].trim());
+  if(q.type==='match')return mPairs[q.id]&&Object.keys(mPairs[q.id]).length>0;
+  return false;
+}
+function cntDone(){return activeQ.filter(isAns).length;}
+
+// ── Boot ──
+window.addEventListener('DOMContentLoaded',()=>{
+  $('totalQN').textContent=Q.length;
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('.cat-nav-bar'))closeCats();
+  });
+});
+
+// ══════════════════════════════════════════
+// EXAM START / RESTART / RETRY
+// ══════════════════════════════════════════
+function startExam(){
+  answers={};mPairs={};mShuffle={};mSelA={};whScores={};retryIds=[];curFilter='all';
+  cur=0;activeQ=Q;timerSecs=45*60;startTime=Date.now();transRemain=5;
+  openCat=null;activeSec=null;curPassId=null;
+  scr('sExam');
+  buildDropdowns();renderQ(0);startTimer();refreshProgress();
+}
+function retryWrong(){
+  const ids=[...retryIds];
+  activeQ=Q.filter(q=>ids.includes(q.id));
+  ids.forEach(id=>{delete answers[id];delete mPairs[id];delete mShuffle[id];delete mSelA[id];});
+  whScores={};cur=0;
+  timerSecs=Math.max(ids.length*90,90);
+  startTime=Date.now();
+  transRemain=Math.min(transRemain+2,5);
+  curPassId=null;openCat=null;
+  scr('sExam');buildDropdowns();renderQ(0);startTimer();refreshProgress();
+}
+function restartExam(){scr('sStart');}
+
+// ══════════════════════════════════════════
+// TIMER
+// ══════════════════════════════════════════
+function startTimer(){if(timerInt)clearInterval(timerInt);tick();timerInt=setInterval(tick,1000);}
+function tick(){
+  const el=$('timerEl');if(!el)return;
+  const m=Math.floor(timerSecs/60),s=timerSecs%60;
+  el.textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  el.className='timer'+(timerSecs<=600?' danger':timerSecs<=900?' warn':'');
+  if(timerSecs<=0){clearInterval(timerInt);doSubmit();}
+  timerSecs--;
+}
+
+// ══════════════════════════════════════════
+// PROGRESS
+// ══════════════════════════════════════════
+function refreshProgress(){
+  const done=cntDone(),tot=activeQ.length;
+  const pct=tot?Math.round(done/tot*100):0;
+  $('mainFill').style.width=pct+'%';
+  $('mainTxt').textContent=done+' / '+tot+' أُجيب';
+  $('mainPct').textContent=pct+'%';
+  // reading bar
+  const rQ=activeQ.filter(q=>q.pass);
+  const rDone=rQ.filter(isAns).length;
+  const rPct=rQ.length?Math.round(rDone/rQ.length*100):0;
+  $('readPill').textContent=rDone+' / '+rQ.length;
+  $('readFill').style.width=rPct+'%';
+  // match bar
+  const mQ=activeQ.filter(q=>q.type==='match');
+  const mDone=mQ.filter(isAns).length;
+  const mPct=mQ.length?Math.round(mDone/mQ.length*100):0;
+  $('matchPill').textContent=mDone+' / '+mQ.length;
+  $('matchFill').style.width=mPct+'%';
+  if(rDone===rQ.length&&rQ.length)$('catRead').classList.add('complete');
+  if(mDone===mQ.length&&mQ.length)$('catMatch').classList.add('complete');
+  // rebuild dropdown content (status dots update)
+  refreshDropdownDots();
+}
+
+// ══════════════════════════════════════════
+// CATEGORY DROPDOWNS
+// ══════════════════════════════════════════
+function buildDropdowns(){
+  buildReadDrop();buildMatchDrop();
+}
+
+function buildReadDrop(){
+  const drop=$('dropRead');drop.innerHTML='';
+  // Group reading questions by passage
+  const passOrder=[];const passMap={};
+  activeQ.filter(q=>q.pass).forEach((q,gi)=>{
+    if(!passMap[q.pass]){passMap[q.pass]=[];passOrder.push(q.pass);}
+    passMap[q.pass].push(q);
+  });
+  passOrder.forEach(pid=>{
+    const qs=passMap[pid];
+    const p=PASS[pid];
+    const answered=qs.filter(isAns).length;
+    const sec=document.createElement('div');sec.className='drop-section';
+    sec.innerHTML=`<div class="drop-sec-header">
+      <span class="drop-sec-name">📚 ${p.lbl}</span>
+      <span class="drop-sec-count">${answered}/${qs.length}</span>
+    </div>`;
+    qs.forEach(q=>{
+      const idx=activeQ.indexOf(q);
+      const row=document.createElement('div');
+      row.className='drop-q-item'+(idx===cur?' current':'');
+      row.id='dqi-'+q.id;
+      const typeC=q.type==='tf'?'qt-tf':'qt-wh';
+      const typeL=q.type==='tf'?'T/F':'WH';
+      row.innerHTML=`<span class="drop-q-num">Q${idx+1}</span>
+        <span class="drop-q-txt">${q.q}</span>
+        <span class="drop-q-type ${typeC}">${typeL}</span>
+        <span class="drop-q-dot ${isAns(q)?'answered':'unanswered'}" id="ddot-${q.id}"></span>`;
+      row.onclick=()=>{goTo(idx);closeCats();};
+      sec.appendChild(row);
+    });
+    const div=document.createElement('div');div.className='drop-sec-divider';sec.appendChild(div);
+    drop.appendChild(sec);
+  });
+}
+
+function buildMatchDrop(){
+  const drop=$('dropMatch');drop.innerHTML='';
+  const mQ=activeQ.filter(q=>q.type==='match');
+  mQ.forEach(q=>{
+    const idx=activeQ.indexOf(q);
+    const pairsCount=mPairs[q.id]?Object.keys(mPairs[q.id]).length:0;
+    const sec=document.createElement('div');sec.className='drop-section';
+    sec.innerHTML=`<div class="drop-sec-header">
+      <span class="drop-sec-name">🔗 التمرين ${mQ.indexOf(q)+1}</span>
+      <span class="drop-sec-count">${pairsCount}/${q.listA.length} مُربوط</span>
+    </div>`;
+    const row=document.createElement('div');
+    row.className='drop-q-item'+(idx===cur?' current':'');
+    row.id='dqi-'+q.id;
+    row.innerHTML=`<span class="drop-q-num">Q${idx+1}</span>
+      <span class="drop-q-txt">${q.ar}</span>
+      <span class="drop-q-type qt-mt">Match</span>
+      <span class="drop-q-dot ${isAns(q)?'answered':'unanswered'}" id="ddot-${q.id}"></span>`;
+    row.onclick=()=>{goTo(idx);closeCats();};
+    sec.appendChild(row);drop.appendChild(sec);
+  });
+}
+
+function refreshDropdownDots(){
+  activeQ.forEach(q=>{
+    const dot=$('ddot-'+q.id);if(dot)dot.className='drop-q-dot '+(isAns(q)?'answered':'unanswered');
+    const row=$('dqi-'+q.id);if(row){row.classList.toggle('current',activeQ.indexOf(q)===cur);}
+  });
+  // update section counts in read drop
+  const passMap={};
+  activeQ.filter(q=>q.pass).forEach(q=>{if(!passMap[q.pass])passMap[q.pass]=[];passMap[q.pass].push(q);});
+}
+
+function toggleCat(id){
+  const isOpen=$('catRead').classList.contains('expanded');
+  if(isOpen){
+    $('catRead').classList.remove('expanded');
+    $('catMatch').classList.remove('expanded');
+    openCat=null;
+  } else {
+    buildReadDrop();buildMatchDrop();
+    $('catRead').classList.add('expanded');
+    $('catMatch').classList.add('expanded');
+    openCat='both';
+  }
+}
+function closeCats(){
+  $('catRead').classList.remove('expanded');
+  $('catMatch').classList.remove('expanded');
+  openCat=null;
+}
+
+// ══════════════════════════════════════════
+// TRANSLATION
+// ══════════════════════════════════════════
+function updateTransUI(){
+  const u=transRemain;
+  [$('transUsesPass')].forEach(el=>{if(el){el.textContent=u<=0?'🔒':u;el.style.background=u<=0?'rgba(255,255,255,.15)':'var(--cyan)';el.style.color=u<=0?'var(--muted)':'#06090f';}});
+  [$('btnTransPass')].forEach(btn=>{if(btn){btn.className='btn-trans'+(transRemain<=0?' out':'')+(transPassInt?' active':'');}});
+  const qb=$('btnQTrans');if(qb)qb.className='btn-q-trans'+(transRemain<=0?' out':'');
+}
+
+function stopPassTrans(){
+  if(transPassInt){clearInterval(transPassInt);transPassInt=null;}
+  const en=$('passEn'),ar=$('passAr'),cd=$('transCdPass');
+  if(en)en.classList.remove('hide');if(ar)ar.classList.remove('show');if(cd)cd.classList.remove('show');
+  updateTransUI();
+}
+function stopQTrans(){
+  if(transQInt){clearInterval(transQInt);transQInt=null;}
+  const ar=$('qTransAr'),cd=$('qTransCd');
+  if(ar)ar.classList.remove('show');if(cd)cd.classList.remove('show');
+}
+
+function doTransPass(){
+  if(transRemain<=0||transPassInt)return;
+  transRemain--;updateTransUI();
+  $('passEn').classList.add('hide');$('passAr').classList.add('show');
+  const cd=$('transCdPass');cd.classList.add('show');
+  let t=30;$('transTPass').textContent=t;
+  transPassInt=setInterval(()=>{t--;$('transTPass').textContent=t;if(t<=0)stopPassTrans();},1000);
+}
+
+function doTransQ(){
+  if(transRemain<=0||transQInt)return;
+  const ar=$('qTransAr'),cd=$('qTransCd');if(!ar)return;
+  transRemain--;updateTransUI();
+  ar.classList.add('show');if(cd)cd.classList.add('show');
+  let t=30;if(cd)cd.textContent='⏱ '+t+'ث';
+  transQInt=setInterval(()=>{t--;if(cd)cd.textContent='⏱ '+t+'ث';if(t<=0)stopQTrans();},1000);
+}
+
+// ══════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════
+function saveWH(){const q=activeQ[cur];if(q&&q.type==='wh'){const v=$('wh-inp');if(v&&v.value.trim())answers[q.id]=v.value;}}
+function goTo(i){saveWH();cur=i;renderQ(i);refreshProgress();}
+function prev(){if(cur>0)goTo(cur-1);}
+function next(){if(cur<activeQ.length-1)goTo(cur+1);}
+
+// ══════════════════════════════════════════
+// RENDER QUESTION
+// ══════════════════════════════════════════
+function renderQ(i){
+  const q=activeQ[i];
+  const pc=$('pCol'),eb=$('eBody');
+
+  // Handle passage panel
+  if(q.pass){
+    const p=PASS[q.pass];
+    pc.style.display='block';eb.classList.remove('nopass');
+    // If passage changed, stop any active translation
+    if(curPassId!==q.pass){
+      stopPassTrans();curPassId=q.pass;
+    }
+    $('pLbl').textContent=(q.pass==='external'?'🔴 External':'📘 Book')+' — '+p.lbl;
+    $('pTitleEn').textContent=p.en;$('pTitleAr').textContent=p.ar;
+    // Render passage text (3 sentences per paragraph)
+    const sents=(p.textEn.match(/[^.!?]+[.!?]+/g)||[p.textEn]);
+    let paras=[],ch=[];
+    sents.forEach((s,idx)=>{ch.push(s.trim());if(ch.length>=3||idx===sents.length-1){paras.push(ch.join(' '));ch=[];}});
+    $('passEn').innerHTML=paras.map(t=>'<p>'+t+'</p>').join('');
+    $('passEn').className='pass-en';
+    $('passAr').innerHTML='<p>'+p.textAr.split('.')
+      .filter(s=>s.trim())
+      .reduce((a,s,i,arr)=>a+(i&&i%3===0?'</p><p>':' ')+s.trim()+'.','')+
+      '</p>';
+    $('passAr').className='pass-ar';
+    const pi=$('pInstr');
+    if(p.instr){pi.textContent=p.instr;pi.style.display='block';}else pi.style.display='none';
+    updateTransUI();
+  } else {
+    pc.style.display='none';eb.classList.add('nopass');
+    stopPassTrans();curPassId=null;
+  }
+  // Stop question translation on nav
+  stopQTrans();
+
+  const isLast=i===activeQ.length-1;
+  const isMatch=q.type==='match';
+  const pillC=q.type==='tf'?'qt-pill-tf':q.type==='wh'?'qt-pill-wh':'qt-pill-mt';
+  const pillT=q.type==='tf'?'T / F':q.type==='wh'?'WH Question':'Match';
+  const qc=$('qCard');
+  qc.className='qcard'+(isMatch?' match-card':'');
+  qc.innerHTML=`
+    <div class="qhead">
+      <span class="qnum-badge">السؤال ${i+1} / ${activeQ.length}</span>
+      <span class="qtype-pill ${pillC}">${pillT}</span>
+      <span class="qsec-label">${q.secEn||''}</span>
+    </div>
+    <div style="font-family:var(--fa);font-size:.68rem;color:var(--muted);direction:rtl;text-align:right;margin-bottom:12px;">${q.sec}</div>
+    <div id="qBody"></div>
+    <div class="nav-row">
+      <button class="btn-nav btn-prev" onclick="prev()" ${i===0?'disabled':''}>← السابق</button>
+      <span class="qpos">${i+1} / ${activeQ.length}</span>
+      ${isLast
+        ?'<button class="btn-nav btn-next" onclick="confirmSubmit()">إنهاء ✓</button>'
+        :'<button class="btn-nav btn-next" onclick="next()">التالي →</button>'}
+    </div>`;
+  qc.style.animation='none';
+  requestAnimationFrame(()=>{qc.style.animation='slideR .32s cubic-bezier(.16,1,.3,1) both';});
+  const el=$('qBody');
+  if(q.type==='tf')renderTF(q,el);
+  else if(q.type==='wh')renderWH(q,el);
+  else renderMatch(q,el);
+}
+
+// TF
+function renderTF(q,el){
+  const s=answers[q.id];
+  el.innerHTML=`
+    <div class="qtxt">${q.q}</div>
+    <div class="tf-row">
+      <button class="tf-btn${s===true?' sel':''}" onclick="pickTF('${q.id}',true)">True ✓</button>
+      <button class="tf-btn${s===false?' sel':''}" onclick="pickTF('${q.id}',false)">False ✗</button>
+    </div>
+    <div class="tf-saved">${s!==undefined?'✔ تم تسجيل: '+(s?'True':'False'):''}</div>`;
+}
+function pickTF(id,v){answers[id]=v;renderTF(activeQ.find(x=>x.id===id),$('qBody'));refreshProgress();}
+
+// WH
+function renderWH(q,el){
+  const s=answers[q.id]||'';
+  el.innerHTML=`
+    <div class="qtxt">${q.q}</div>
+    <div class="q-trans-row">
+      <button class="btn-q-trans${transRemain<=0?' out':''}" id="btnQTrans" onclick="doTransQ()">🌐 <span>ترجمة السؤال</span> <span style="font-family:var(--fm);font-size:.58rem;">(${transRemain})</span></button>
+      <span class="q-trans-ar" id="qTransAr">${q.ar}</span>
+      <span class="q-trans-cd" id="qTransCd"></span>
+    </div>
+    <textarea class="wh-area" id="wh-inp" placeholder="اكتب جوابك بالإنجليزية هنا…" rows="3" oninput="answers['${q.id}']=this.value;refreshProgress();">${s}</textarea>
+    <div class="wh-hint">💡 يُقيَّم تلقائياً بالذكاء الاصطناعي بعد الإنهاء — لا تُعرض الإجابة الآن</div>
+    <div class="q-saved">${s?'✔ إجابتك محفوظة':''}</div>`;
+}
+
+// MATCH
+function renderMatch(q,el){
+  if(!mPairs[q.id])mPairs[q.id]={};
+  if(!mShuffle[q.id])mShuffle[q.id]=shuf(q.listB.map((w,i)=>({w,i})));
+  if(mSelA[q.id]===undefined)mSelA[q.id]=null;
+  const pairs=mPairs[q.id],sb=mShuffle[q.id],selA=mSelA[q.id];
+  const aH=q.listA.map((w,ai)=>{
+    const bi=pairs[ai];const paired=bi!==undefined;
+    return `<div class="mitem${selA===ai?' sel':paired?' paired':''}" onclick="mA('${q.id}',${ai})">
+      <span class="midx">${ai+1}.</span><span>${w}</span>
+      <span class="mpair-tag">${paired?'→ '+q.listB[bi]:''}</span>
+    </div>`;
+  }).join('');
+  const bH=sb.map((it,si)=>{const used=Object.values(pairs).includes(it.i);
+    return `<div class="mitem${used?' paired':''}" onclick="mB('${q.id}',${it.i})">
+      <span class="midx">${String.fromCharCode(97+si)}.</span><span>${it.w}</span>
+    </div>`;
+  }).join('');
+  const done=Object.keys(pairs).length,tot=q.listA.length;
+  el.innerHTML=`<div class="match-header"><div class="match-h-ar">${q.ar}</div><div class="match-h-en">${q.en}</div></div>
+    <div class="match-cols">
+      <div><div class="match-col-lbl">List A — القائمة أ</div>${aH}</div>
+      <div><div class="match-col-lbl">List B — القائمة ب</div>${bH}</div>
+    </div>
+    <div class="match-status">${done}/${tot} مُربوط${selA!==null?' — اضغط الآن من القائمة B':''}</div>
+    <div class="q-saved">${done?'✔ '+done+' ربط محفوظ':''}</div>`;
+}
+function mA(qid,ai){const pairs=mPairs[qid];if(pairs[ai]!==undefined){delete pairs[ai];mSelA[qid]=null;}else mSelA[qid]=(mSelA[qid]===ai)?null:ai;renderMatch(activeQ.find(x=>x.id===qid),$('qBody'));refreshProgress();}
+function mB(qid,bi){if(mSelA[qid]===null)return;const ai=mSelA[qid],pairs=mPairs[qid];Object.keys(pairs).forEach(k=>{if(pairs[k]===bi)delete pairs[k];});pairs[ai]=bi;mSelA[qid]=null;renderMatch(activeQ.find(x=>x.id===qid),$('qBody'));refreshProgress();}
+
+// ══════════════════════════════════════════
+// SUBMIT
+// ══════════════════════════════════════════
+function confirmSubmit(){
+  saveWH();
+  const done=cntDone(),un=activeQ.length-done;
+  $('confirmMsg').innerHTML=`<strong style="color:var(--ok);">${done} سؤال أُجيب</strong> &nbsp;·&nbsp; <strong style="color:var(--ng);">${un} لم يُجَب</strong><br><span style="font-size:.8rem;opacity:.7;">بعد الإنهاء لن تتمكن من تعديل الإجابات.</span>`;
+  $('confirmOverlay').classList.add('on');
+}
+function closeConfirm(){$('confirmOverlay').classList.remove('on');}
+function doSubmit(){
+  closeConfirm();clearInterval(timerInt);
+  stopPassTrans();stopQTrans();
+  buildResults();scr('sResults');
+}
+
+// ══════════════════════════════════════════
+// SMART WH SCORING (auto, no self-mark)
+// ══════════════════════════════════════════
+function scoreWH(q){
+  const raw=answers[q.id]||'';
+  if(!raw.trim())return{v:'sk',conf:0,note:'لم تكتب إجابة'};
+  const norm=s=>s.toLowerCase().replace(/[.,!?'"؟،()[\]]/g,' ').replace(/\s+/g,' ').trim();
+  const u=norm(raw),m=norm(q.a);
+  // Exact match
+  if(u===m||u.includes(m)||m.includes(u))return{v:'ok',conf:1,note:'إجابة مطابقة تماماً ✓'};
+  // Yes/No fast check
+  if(/^yes/.test(m)&&/\byes\b/.test(u))return{v:'ok',conf:1,note:'إجابة صحيحة ✓'};
+  if(/^no/.test(m)&&/\bno[,. ]/.test(u+' '))return{v:'ok',conf:1,note:'إجابة صحيحة ✓'};
+  // Keyword matching
+  const kw=q.kw||[];
+  if(!kw.length)return{v:u.length>3?'ok':'sk',conf:.6,note:'تحقق مع النموذج'};
+  const matched=kw.filter(k=>u.includes(k.toLowerCase())).length;
+  const ratio=matched/kw.length;
+  if(ratio>=0.55)return{v:'ok',conf:ratio,note:`${Math.round(ratio*100)}% تطابق بالكلمات المفتاحية — صحيح ✓`};
+  return{v:'ng',conf:ratio,note:`${Math.round(ratio*100)}% تطابق فقط — راجع الإجابة النموذجية`};
+}
+
+// ══════════════════════════════════════════
+// BUILD RESULTS
+// ══════════════════════════════════════════
+function buildResults(){
+  whScores={};retryIds=[];
+  let autoOk=0,autoNg=0,autoTot=0,whOk=0,whNg=0,whTot=0;
+
+  activeQ.forEach(q=>{
+    if(q.type==='tf'){
+      autoTot++;const a=answers[q.id];
+      if(a===undefined){autoNg++;retryIds.push(q.id);}
+      else if(a===q.a)autoOk++;else{autoNg++;retryIds.push(q.id);}
+    } else if(q.type==='match'){
+      const pairs=mPairs[q.id]||{};let allOk=true;
+      q.listA.forEach((_,ai)=>{autoTot++;const ui=pairs[ai];
+        if(ui===undefined){autoNg++;allOk=false;}
+        else if(ui===q.ans[ai])autoOk++;else{autoNg++;allOk=false;}
+      });
+      if(!allOk&&!retryIds.includes(q.id))retryIds.push(q.id);
+    } else {
+      whTot++;const sc=scoreWH(q);whScores[q.id]=sc;
+      if(sc.v==='ok')whOk++;else{whNg++;if(sc.v!=='sk')retryIds.push(q.id);}
+      if(sc.v==='sk'&&!retryIds.includes(q.id))retryIds.push(q.id);
+    }
+  });
+
+  const totOk=autoOk+whOk, totAll=autoTot+whTot;
+  const pct=totAll?Math.round(totOk/totAll*100):0;
+  const circ=2*Math.PI*70; // 439.82
+  setTimeout(()=>{$('ringC').style.strokeDashoffset=circ*(1-pct/100);},120);
+  $('rPct').textContent=pct+'%';$('rFrac').textContent=totOk+' / '+totAll;
+
+  const autoPct=autoTot?Math.round(autoOk/autoTot*100):0;
+  const whPct=whTot?Math.round(whOk/whTot*100):0;
+  $('rAutoN').textContent=autoOk+' / '+autoTot;$('rAutoS').textContent='دقة '+autoPct+'%';
+  $('rWhN').textContent=whOk+' / '+whTot;$('rWhS').textContent='دقة '+whPct+'%';
+  $('rTotN').textContent=totOk+' / '+totAll;$('rTotS').textContent=pct+'% النسبة الكلية';
+
+  let g,c,n;
+  if(pct>=90){g='ممتاز 🏆';c='var(--ok)';n='أداء استثنائي — حافظ على هذا المستوى!';}
+  else if(pct>=75){g='جيد جداً ⭐';c='var(--gold)';n='أداء رائع — أنت على الطريق الصحيح!';}
+  else if(pct>=60){g='جيد 👍';c='var(--indigo)';n='أداء جيد — راجع الأسئلة الخاطئة.';}
+  else if(pct>=50){g='مقبول';c='var(--cyan)';n='تحتاج مزيداً من المراجعة.';}
+  else{g='بحاجة لمراجعة';c='var(--ng)';n='لا تيأس! راجع القطع وأعد المحاولة.';}
+  const gt=$('rGrade');gt.textContent=g;gt.style.cssText=`background:${c}20;color:${c};border:1px solid ${c}44;`;
+  $('rNote').textContent=n;
+
+  const el=Math.round((Date.now()-startTime)/1000);
+  $('rTime').textContent='مدة الامتحان: '+Math.floor(el/60)+' دقيقة و '+(el%60)+' ثانية';
+
+  const wc=retryIds.filter(id=>{const q=Q.find(x=>x.id===id);return q&&(q.type!=='wh'||answers[id]?.trim()||whScores[id]?.v==='ng');}).length;
+  const rb=$('retryBtn');
+  if(wc>0){rb.style.display='inline-flex';rb.textContent=`🔁 إعادة ${wc} خاطئ (${Math.ceil(wc*1.5)} دقيقة)`;}
+  else rb.style.display='none';
+
+  buildSecCards();buildReview('all');
+}
+
+// ══════════════════════════════════════════
+// SECTION ACCORDION
+// ══════════════════════════════════════════
+function getSt(q){
+  if(q.type==='tf'){const a=answers[q.id];if(a===undefined)return'sk';return a===q.a?'ok':'ng';}
+  if(q.type==='match'){const p=mPairs[q.id]||{};if(!Object.keys(p).length)return'sk';return q.listA.every((_,ai)=>p[ai]===q.ans[ai])?'ok':'ng';}
+  return(whScores[q.id]||{v:'sk'}).v==='ok'?'ok':(whScores[q.id]||{v:'sk'}).v==='ng'?'ng':'sk';
+}
+
+function buildSecCards(){
+  const secs={};
+  activeQ.forEach(q=>{
+    if(!secs[q.sec])secs[q.sec]={lbl:q.sec,ok:0,ng:0,sk:0,tot:0,qs:[]};
+    const s=secs[q.sec];s.qs.push(q);
+    if(q.type==='match'){const p=mPairs[q.id]||{};q.listA.forEach((_,ai)=>{s.tot++;const ui=p[ai];if(ui===undefined)s.sk++;else if(ui===q.ans[ai])s.ok++;else s.ng++;});}
+    else if(q.type==='tf'){s.tot++;const a=answers[q.id];if(a===undefined)s.sk++;else if(a===q.a)s.ok++;else s.ng++;}
+    else{s.tot++;const v=getSt(q);if(v==='ok')s.ok++;else if(v==='ng')s.ng++;else s.sk++;}
+  });
+  const wrap=$('secCards');wrap.innerHTML='';
+  Object.values(secs).forEach(s=>{
+    const pct=s.tot?Math.round(s.ok/s.tot*100):0;
+    const bc=pct>=75?'var(--ok)':pct>=50?'var(--gold)':'var(--ng)';
+    const card=document.createElement('div');
+    card.className='sec-card';
+    card.innerHTML=`<div class="sec-name" style="border-right:2px solid ${bc};">${s.lbl}</div>
+      <div class="sec-mini-bar"><div class="sec-mini-fill" style="width:${pct}%;background:${bc};"></div></div>
+      <div class="sec-stats-row"><span class="ss-ok">✅ ${s.ok}</span><span class="ss-ng">❌ ${s.ng}</span><span class="ss-pct">${pct}%</span></div>`;
+    card.onclick=()=>toggleSec(s.lbl,s,card,bc);
+    wrap.appendChild(card);
+  });
+}
+
+function toggleSec(lbl,s,cardEl,bc){
+  const detail=$('secDetail');
+  document.querySelectorAll('.sec-card').forEach(c=>c.classList.remove('active'));
+  if(activeSec===lbl){detail.classList.remove('show');detail.innerHTML='';activeSec=null;return;}
+  activeSec=lbl;cardEl.classList.add('active');
+  let html=`<div class="sdp-title">تفاصيل: ${lbl}</div>`;
+  s.qs.forEach(q=>{
+    const st=getSt(q);const icon=st==='ok'?'✅':st==='ng'?'❌':'⭕';
+    const pillC=q.type==='tf'?'qt-tf':q.type==='wh'?'qt-wh':'qt-mt';
+    html+=`<div class="sdp-item"><span class="sdp-icon">${icon}</span><span class="sdp-q">${q.q||q.en}</span><span class="drop-q-type ${pillC} sdp-type">${q.type.toUpperCase()}</span></div>`;
+  });
+  detail.innerHTML=html;detail.classList.add('show');
+  detail.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ══════════════════════════════════════════
+// REVIEW
+// ══════════════════════════════════════════
+function filterR(f,btn){curFilter=f;document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');buildReview(f);}
+
+function buildReview(f){
+  const list=$('reviewList');list.innerHTML='';let i=0;
+  activeQ.forEach((q,qi)=>{
+    const st=getSt(q);
+    if(f!=='all'&&f!==st)return;
+    const card=document.createElement('div');
+    card.className='rc '+st;card.style.animationDelay=(i++*.022)+'s';
+    card.innerHTML=makeCard(q,qi,st);list.appendChild(card);
+  });
+  if(!list.children.length)
+    list.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted);font-family:var(--fa);">لا توجد أسئلة في هذا التصنيف</div>';
+}
+
+function makeCard(q,qi,st){
+  const bm={ok:'<span class="rc-badge ok">✅ صحيح</span>',ng:'<span class="rc-badge ng">❌ خطأ</span>',sk:'<span class="rc-badge sk">⭕ لم يُجَب</span>'};
+  const badge=bm[st]||bm.sk;
+  const pillC=q.type==='match'?'qt-mt':q.type==='tf'?'qt-tf':'qt-wh';
+  const pillT=q.type==='match'?'Match':q.type==='tf'?'T/F':'WH';
+
+  if(q.type==='match'){
+    const pairs=mPairs[q.id]||{};
+    const rows=q.listA.map((w,ai)=>{const ui=pairs[ai],ri=q.ans[ai],ok=ui===ri;
+      return `<div class="mrp ${ok?'ok':'ng'}"><span class="mra">${ai+1}. ${w}</span><span style="color:var(--muted);margin:0 4px;">→</span><span class="mrb">${ui!==undefined?q.listB[ui]:'—'}</span>${!ok?`<span class="mrc">✓ ${q.listB[ri]}</span>`:''}</div>`;
+    }).join('');
+    return `<div class="rc-top"><div class="rc-meta"><span class="rc-num">Q${qi+1}</span><span class="drop-q-type ${pillC}">${pillT}</span><span class="rc-sec">${q.secEn}</span></div>${badge}</div>
+      <div class="rc-q">${q.en}</div><div class="mr-grid">${rows}</div>`;
+  }
+
+  if(q.type==='tf'){
+    const ua=answers[q.id],ok=ua===q.a;
+    const uTxt=ua===true?'True ✓':ua===false?'False ✗':'<em style="opacity:.5;">لم تختر</em>';
+    return `<div class="rc-top"><div class="rc-meta"><span class="rc-num">Q${qi+1}</span><span class="drop-q-type ${pillC}">${pillT}</span><span class="rc-sec">${q.secEn}</span></div>${badge}</div>
+      <div class="rc-q">${q.q}</div>
+      <div class="rc-ans">
+        <div class="rc-user">إجابتك: <span class="${ok?'ok':'ng'}">${uTxt}</span></div>
+        <div class="rc-model">الجواب الصحيح: ${q.a?'True ✓':'False ✗'}</div>
+      </div>
+      ${q.exp?`<div class="rc-exp">${q.exp}</div>`:''}`;
+  }
+
+  // WH — auto scored, no self-mark
+  const raw=answers[q.id]||'';
+  const sc=whScores[q.id]||scoreWH(q);
+  const conf=Math.round(sc.conf*100);
+  const barC=sc.v==='ok'?'var(--ok)':'var(--ng)';
+  return `<div class="rc-top"><div class="rc-meta"><span class="rc-num">Q${qi+1}</span><span class="drop-q-type ${pillC}">${pillT}</span><span class="rc-sec">${q.secEn}</span></div>${badge}</div>
+    <div class="rc-q">${q.q}</div>
+    <div class="rc-ans" style="margin-bottom:9px;">
+      <div class="rc-user" style="margin-bottom:5px;">إجابتك: <span style="color:var(--cream);font-weight:500;">${raw||'<em style="opacity:.5;">لم تكتب شيئاً</em>'}</span></div>
+      <div class="rc-model">الإجابة النموذجية: ${q.a}</div>
+    </div>
+    <div class="wh-eval">
+      <div class="whe-row">
+        <span class="whe-lbl">تطابق الكلمات:</span>
+        <div class="whe-track"><div class="whe-fill" style="width:${conf}%;background:${barC};"></div></div>
+        <span class="whe-pct" style="color:${barC};">${conf}%</span>
+      </div>
+      <div class="whe-note" style="color:${barC};">${sc.note}</div>
+    </div>`;
+}
+
+// ══════════════════════════════════════════
+// PRINT
+// ══════════════════════════════════════════
+function printResults(){
+  const win=window.open('','_blank','width=920,height=700');
+  let rows='';
+  activeQ.forEach((q,qi)=>{
+    const st=getSt(q);const icon=st==='ok'?'✅':st==='ng'?'❌':'⭕';
+    let uA='',mA='';
+    if(q.type==='tf'){uA=answers[q.id]===true?'True':answers[q.id]===false?'False':'—';mA=q.a?'True':'False';}
+    else if(q.type==='wh'){uA=answers[q.id]||'—';mA=q.a;}
+    else{const p=mPairs[q.id]||{};uA=q.listA.map((w,ai)=>w+'→'+(p[ai]!==undefined?q.listB[p[ai]]:'—')).join(' | ');mA=q.listA.map((w,ai)=>w+'→'+q.listB[q.ans[ai]]).join(' | ');}
+    const bg=st==='ok'?'#f0fdf4':st==='ng'?'#fef2f2':'#fffbeb';
+    rows+=`<tr style="background:${bg}"><td>${icon} Q${qi+1}<br><small>${q.secEn||q.sec}</small></td><td>${q.q||q.en}</td><td>${uA}</td><td style="color:#059669;font-weight:600;">${mA}</td></tr>`;
+  });
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>نتيجة الامتحان</title>
+  <style>*{box-sizing:border-box;}body{font-family:Arial,sans-serif;padding:24px;direction:rtl;}h1{font-size:20px;}p{font-size:13px;margin:3px 0;}table{width:100%;border-collapse:collapse;margin-top:16px;}th{background:#1f2937;color:#fff;padding:9px;font-size:12px;text-align:right;}td{padding:7px 9px;border:1px solid #e5e7eb;font-size:12px;vertical-align:top;}small{color:#6b7280;font-size:10px;}.btn{padding:9px 20px;background:#f5b53c;border:none;border-radius:7px;font-weight:700;cursor:pointer;font-size:13px;margin:12px 0;display:inline-block;}@media print{.btn{display:none;}}</style>
+  </head><body>
+  <h1>📋 نتيجة امتحان اللغة الإنجليزية — الثالث المتوسط</h1>
+  <p>${$('rTime').textContent}</p>
+  <p>النسبة: <b>${$('rPct').textContent}</b> | التقدير: <b>${$('rGrade').textContent}</b></p>
+  <p>T/F + توصيلات: ${$('rAutoN').textContent} | WH: ${$('rWhN').textContent} | المجموع: ${$('rTotN').textContent}</p>
+  <button class="btn" onclick="window.print()">🖨 طباعة</button>
+  <table><thead><tr><th>رقم</th><th>السؤال</th><th>إجابتك</th><th>الإجابة الصحيحة</th></tr></thead><tbody>${rows}</tbody></table>
+  </body></html>`);
+  win.document.close();
+}
+
+</script>
+</body>
+</html>

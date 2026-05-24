@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>راند آب — Round Up · الثالث المتوسط</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+</style>
+</head><style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+.page{max-width:800px;margin:0 auto;padding:24px 20px 80px;position:relative;z-index:1;}
+.ru-k{display:inline-flex;align-items:center;gap:7px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.28);border-radius:50px;padding:5px 16px;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#f97316;margin-bottom:16px;}
+.sc{background:var(--s1);border:1px solid rgba(249,115,22,.18);border-radius:16px;padding:24px;margin-bottom:20px;position:relative;overflow:hidden;}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f97316,#ea580c,transparent 75%);}
+.sc-title{font-family:var(--fe);font-size:1.1rem;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.sc-ar{font-family:var(--fa);font-size:.82rem;color:var(--muted);direction:rtl;text-align:right;margin-bottom:16px;}
+.dr{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.dr:last-child{border-bottom:none;}
+.dl{font-family:var(--fm);font-size:.7rem;color:#f97316;background:rgba(249,115,22,.12);border-radius:5px;padding:3px 8px;flex-shrink:0;}
+.dt{font-family:var(--fb);font-size:.87rem;color:var(--txt);flex:1;}
+.di{background:rgba(255,255,255,.05);border:1.5px solid var(--b2);border-radius:8px;padding:8px 12px;color:var(--cream);font-family:var(--fb);font-size:.87rem;outline:none;transition:all .2s;width:150px;}
+.di:focus{border-color:#f97316;background:rgba(249,115,22,.05);}
+.di.ck{border-color:var(--ok);background:rgba(16,185,129,.07);color:var(--ok);}
+.di.ck2{border-color:var(--ng);background:rgba(239,68,68,.07);color:var(--ng);}
+.mi{margin-bottom:14px;padding:13px;background:rgba(255,255,255,.03);border-radius:10px;border:1px solid var(--b2);}
+.mq{font-family:var(--fb);font-size:.9rem;color:var(--cream);margin-bottom:10px;}
+.mopts{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.mo{padding:9px 13px;border-radius:8px;border:1.5px solid var(--b2);background:transparent;font-family:var(--fb);font-size:.83rem;cursor:pointer;transition:all .17s;color:var(--txt);text-align:left;}
+.mo:hover{border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.07);color:var(--cream);}
+.mo.sel{border-color:#f97316;background:rgba(249,115,22,.1);color:#f97316;}
+.mo.c{border-color:var(--ok);background:rgba(16,185,129,.1);color:var(--ok);pointer-events:none;}
+.mo.w{border-color:var(--ng);background:rgba(239,68,68,.1);color:var(--ng);pointer-events:none;}
+.fi{background:rgba(255,255,255,.05);border:1.5px solid var(--b2);border-radius:8px;padding:7px 11px;color:var(--cream);font-family:var(--fb);font-size:.86rem;outline:none;transition:all .2s;min-width:140px;display:inline-block;}
+.fi:focus{border-color:#f97316;} .fi.ck{border-color:var(--ok);background:rgba(16,185,129,.07);color:var(--ok);} .fi.ck2{border-color:var(--ng);background:rgba(239,68,68,.07);color:var(--ng);}
+.boxwords{background:rgba(255,255,255,.03);border:1px solid var(--b2);border-radius:9px;padding:11px 15px;margin-bottom:14px;font-family:var(--fm);font-size:.73rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:14px;}
+.rres{display:none;text-align:center;background:var(--s1);border:1px solid var(--b1);border-radius:16px;padding:28px;margin-top:22px;}
+.rres.on{display:block;}
+.rbig{font-family:var(--fe);font-size:3.5rem;font-weight:900;color:#f97316;}
+.grade-tag{display:inline-block;padding:7px 26px;border-radius:50px;font-family:var(--fa);font-weight:900;font-size:.97rem;margin:10px 0;}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
+@media(max-width:560px){.dr{flex-wrap:wrap;}.di{width:100%;}.mopts{grid-template-columns:1fr;}}
+</style><body>
+<div class="top-nav"><div class="top-nav-inner">
+  <a class="nav-logo" href="index.html">◈ <span>English Exam</span></a>
+  <a class="nav-back" href="index.html">← الرئيسية</a>
+</div></div>
+<div class="page">
+<div style="text-align:center;margin-bottom:30px;" class="rise">
+  <div class="ru-k">Unit 3 · Our World</div>
+  <h1 style="font-family:var(--fe);font-size:2.4rem;font-weight:900;color:var(--cream);margin-bottom:6px;">راند آب<br><em style="color:#f97316;">Round Up</em></h1>
+  <p style="font-family:var(--fa);font-size:.88rem;color:var(--muted);direction:rtl;">تعريفات · اختيار متعدد · تكملة فراغات</p>
+</div>
+
+<div class="sc rise d1">
+  <div class="sc-title">① Write the words to match the definitions</div>
+  <div class="sc-ar">اكتب الكلمة المناسبة لكل تعريف</div>
+  <div class="dr"><span class="dl">a</span><span class="dt">the opposite of <em>safe</em></span><input class="di" id="d0" autocomplete="off" spellcheck="false" placeholder="…"></div>
+  <div class="dr"><span class="dl">b</span><span class="dt">sit and travel on a horse or camel</span><input class="di" id="d1" autocomplete="off" spellcheck="false" placeholder="…"></div>
+  <div class="dr"><span class="dl">c</span><span class="dt">the fastest bird in the world</span><input class="di" id="d2" autocomplete="off" spellcheck="false" placeholder="…"></div>
+  <div class="dr"><span class="dl">d</span><span class="dt">rice and wheat, for example</span><input class="di" id="d3" autocomplete="off" spellcheck="false" placeholder="…"></div>
+</div>
+
+<div class="sc rise d2">
+  <div class="sc-title">② Choose the correct answer</div>
+  <div class="sc-ar">اختر الإجابة الصحيحة لإكمال كل جملة</div>
+  <div class="mi" id="m0"><div class="mq">a. Which is _____ fastest living thing?</div><div class="mopts"><button class="mo" onclick="pm(0,0)">1 more</button><button class="mo" onclick="pm(0,1)">2 the most</button><button class="mo" onclick="pm(0,2)">3 the</button><button class="mo" onclick="pm(0,3)">4 a</button></div></div>
+  <div class="mi" id="m1"><div class="mq">b. The Bedouin used _____ falcons to catch food.</div><div class="mopts"><button class="mo" onclick="pm(1,0)">1 their</button><button class="mo" onclick="pm(1,1)">2 there</button><button class="mo" onclick="pm(1,2)">3 they</button><button class="mo" onclick="pm(1,3)">4 them</button></div></div>
+  <div class="mi" id="m2"><div class="mq">c. What will happen if this change _____?</div><div class="mopts"><button class="mo" onclick="pm(2,0)">1 continue</button><button class="mo" onclick="pm(2,1)">2 continued</button><button class="mo" onclick="pm(2,2)">3 will continue</button><button class="mo" onclick="pm(2,3)">4 continues</button></div></div>
+  <div class="mi" id="m3"><div class="mq">d. If there was a spider in the room, I _____ it outside.</div><div class="mopts"><button class="mo" onclick="pm(3,0)">1 put</button><button class="mo" onclick="pm(3,1)">2 will put</button><button class="mo" onclick="pm(3,2)">3 would put</button><button class="mo" onclick="pm(3,3)">4 have put</button></div></div>
+  <div class="mi" id="m4"><div class="mq">e. What would happen if _____ fewer snakes?</div><div class="mopts"><button class="mo" onclick="pm(4,0)">1 there are</button><button class="mo" onclick="pm(4,1)">2 were</button><button class="mo" onclick="pm(4,2)">3 will be</button><button class="mo" onclick="pm(4,3)">4 there were</button></div></div>
+  <div class="mi" id="m5"><div class="mq">f. Hilla is greener than _____ be.</div><div class="mopts"><button class="mo" onclick="pm(5,0)">1 it used</button><button class="mo" onclick="pm(5,1)">2 used to</button><button class="mo" onclick="pm(5,2)">3 it used to</button><button class="mo" onclick="pm(5,3)">4 it was used</button></div></div>
+  <div class="mi" id="m6"><div class="mq">g. Many animals are useful to _____.</div><div class="mopts"><button class="mo" onclick="pm(6,0)">1 we</button><button class="mo" onclick="pm(6,1)">2 our</button><button class="mo" onclick="pm(6,2)">3 ours</button><button class="mo" onclick="pm(6,3)">4 us</button></div></div>
+</div>
+
+<div class="sc rise d3">
+  <div class="sc-title">③ Complete the information about the questionnaire</div>
+  <div class="sc-ar">أكمل المعلومات عن أجزاء الاستبيان بالكلمات في الصندوق</div>
+  <div class="boxwords"><span>answers</span><span>instructions</span><span>points</span><span>questions</span><span>scores</span><span>situations</span><span style="text-decoration:line-through;opacity:.5;">title</span><span>topic</span></div>
+  <p style="font-family:var(--fb);font-size:.9rem;color:var(--cream);margin-bottom:8px;">a. The title tells us the questionnaire's <input class="fi" id="f0" autocomplete="off" spellcheck="false" placeholder="…">.</p>
+  <p style="font-family:var(--fb);font-size:.9rem;color:var(--cream);margin-bottom:8px;">b. The introduction explains the <input class="fi" id="f1" autocomplete="off" spellcheck="false" placeholder="…">. It tells us what we will learn if we answer the <input class="fi" id="f2" autocomplete="off" spellcheck="false" placeholder="…">. It also gives <input class="fi" id="f3" autocomplete="off" spellcheck="false" placeholder="…">.</p>
+  <p style="font-family:var(--fb);font-size:.9rem;color:var(--cream);margin-bottom:8px;">c. The questions ask what we would do in five <input class="fi" id="f4" autocomplete="off" spellcheck="false" placeholder="…">. They give three possible <input class="fi" id="f5" autocomplete="off" spellcheck="false" placeholder="…">.</p>
+  <p style="font-family:var(--fb);font-size:.9rem;color:var(--cream);">d. The final part tells us how to give <input class="fi" id="f6" autocomplete="off" spellcheck="false" placeholder="…"> and explains the meaning of the possible <input class="fi" id="f7" autocomplete="off" spellcheck="false" placeholder="…">.</p>
+</div>
+
+<div class="acts rise d4">
+  <button class="btn btn-gold" onclick="checkAll()" id="chkBtn">✓ تحقق من الإجابات</button>
+  <button class="btn btn-ghost" onclick="resetAll()">↺ إعادة</button>
+</div>
+
+<div class="rres" id="rres">
+  <p style="font-family:var(--fa);font-size:.74rem;color:var(--muted);margin-bottom:10px;">نتيجة راند آب — Unit 3</p>
+  <div class="rbig" id="rscore">0/0</div>
+  <div class="grade-tag" id="rgrade">——</div>
+  <p style="font-family:var(--fa);font-size:.82rem;color:var(--muted);direction:rtl;" id="rnote"></p>
+  <div class="acts">
+    <button class="btn btn-gold" onclick="resetAll()">↺ إعادة</button>
+    <a class="btn btn-ghost" href="index.html">← الرئيسية</a>
+  </div>
+</div>
+</div>
+<script>
+const DA=['dangerous','ride','falcon','crops'];
+const MA=[2,0,3,2,3,2,3];
+const FA=['topic','title','questions','instructions','situations','answers','points','scores'];
+let mc=Array(7).fill(null);
+function pm(q,o){if(mc[q]!==null)return;mc[q]=o;const el=document.getElementById('m'+q);const bs=el.querySelectorAll('.mo');bs.forEach((b,i)=>b.className='mo'+(i===MA[q]?' c':i===o&&o!==MA[q]?' w':''));}
+function checkAll(){
+  let ok=0,tot=0;
+  DA.forEach((a,i)=>{tot++;const el=document.getElementById('d'+i);const v=el.value.trim().toLowerCase();if(v===a){ok++;el.className='di ck';}else{el.className='di ck2';el.value=a;}});
+  MA.forEach((a,i)=>{tot++;if(mc[i]===null){const el=document.getElementById('m'+i);el.querySelectorAll('.mo').forEach((b,j)=>{b.className='mo'+(j===a?' c':'');});mc[i]=-1;}if(mc[i]===a)ok++;});
+  FA.forEach((a,i)=>{tot++;const el=document.getElementById('f'+i);const v=el.value.trim().toLowerCase();if(v===a){ok++;el.className='fi ck';}else{el.className='fi ck2';el.value=a;}});
+  const pct=Math.round(ok/tot*100);
+  document.getElementById('rscore').textContent=ok+' / '+tot;
+  let g,c,n;
+  if(pct>=90){g='ممتاز 🏆';c='var(--ok)';n='أداء استثنائي!';}else if(pct>=75){g='جيد جداً ⭐';c='var(--gold)';n='واصل التميز!';}else if(pct>=60){g='جيد 👍';c='var(--indigo)';n='راجع الإجابات الخاطئة.';}else{g='تحتاج مراجعة';c='var(--ng)';n='راجع الدرس وحاول مجدداً.';}
+  const gb=document.getElementById('rgrade');gb.textContent=g;gb.style.cssText='background:'+c+'20;color:'+c+';border:1px solid '+c+'44;';
+  document.getElementById('rnote').textContent=n;
+  document.getElementById('rres').classList.add('on');
+  document.getElementById('chkBtn').style.display='none';
+  document.getElementById('rres').scrollIntoView({behavior:'smooth'});
+}
+function resetAll(){
+  DA.forEach((_,i)=>{const e=document.getElementById('d'+i);e.value='';e.className='di';});
+  MA.forEach((_,i)=>{mc[i]=null;document.getElementById('m'+i).querySelectorAll('.mo').forEach(b=>{b.className='mo';b.disabled=false;});});
+  FA.forEach((_,i)=>{const e=document.getElementById('f'+i);e.value='';e.className='fi';});
+  document.getElementById('rres').classList.remove('on');
+  document.getElementById('chkBtn').style.display='inline-flex';
+  window.scrollTo(0,0);
+}
+</script></body></html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الإنشاء — Writing · الثالث المتوسط</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+</style>
+</head><style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+.page{max-width:800px;margin:0 auto;padding:24px 20px 80px;position:relative;z-index:1;}
+.wr-k{display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.24);border-radius:50px;padding:5px 16px;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ok);margin-bottom:16px;}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;}
+.tc{background:var(--s1);border:2px solid var(--b2);border-radius:14px;padding:18px;cursor:pointer;transition:all .2s;text-align:center;}
+.tc:hover{border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.05);transform:translateY(-2px);}
+.tc.on{border-color:var(--ok);background:rgba(16,185,129,.07);}
+.tc-i{font-size:1.8rem;margin-bottom:8px;}
+.tc-t{font-family:var(--fe);font-size:.93rem;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.tc-a{font-family:var(--fa);font-size:.76rem;color:var(--muted);direction:rtl;}
+.wcard{background:var(--s1);border:1px solid rgba(16,185,129,.18);border-radius:16px;padding:24px;margin-bottom:16px;display:none;position:relative;overflow:hidden;}
+.wcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ok),#059669,transparent 75%);}
+.wcard.on{display:block;}
+.wpr{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.18);border-radius:10px;padding:13px 15px;margin-bottom:14px;}
+.wpr-t{font-family:var(--fe);font-size:.95rem;font-weight:700;color:var(--ok);margin-bottom:5px;}
+.wpr-a{font-family:var(--fa);font-size:.8rem;color:var(--muted);direction:rtl;text-align:right;}
+.pts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.pt{font-family:var(--fa);font-size:.7rem;background:rgba(245,181,60,.08);color:var(--gold);border:1px solid rgba(245,181,60,.2);border-radius:6px;padding:3px 10px;}
+.wta{width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--b2);border-radius:10px;padding:13px 15px;color:var(--cream);font-family:'Crimson Pro',serif;font-size:1rem;line-height:1.85;resize:vertical;outline:none;transition:all .2s;min-height:155px;}
+.wta:focus{border-color:var(--ok);background:rgba(16,185,129,.04);box-shadow:0 0 0 3px rgba(16,185,129,.07);}
+.wcnt{font-family:var(--fm);font-size:.67rem;color:var(--muted);text-align:right;margin-top:5px;}
+.wcnt.ok{color:var(--ok);}.wcnt.warn{color:#fb923c;}
+.ev{background:rgba(255,255,255,.03);border:1px solid var(--b1);border-radius:13px;padding:18px;margin-top:16px;display:none;}
+.ev.on{display:block;animation:fadeIn .4s ease;}
+.ev-t{font-family:var(--fa);font-size:.86rem;font-weight:700;color:var(--gold);direction:rtl;text-align:right;margin-bottom:12px;}
+.ev-row{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.ev-row:last-of-type{border-bottom:none;}
+.ev-txt{font-family:var(--fa);font-size:.8rem;color:var(--txt);direction:rtl;text-align:right;line-height:1.6;}
+.ev-sc{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--b1);}
+.es{flex:1;text-align:center;background:rgba(255,255,255,.04);border:1px solid var(--b2);border-radius:10px;padding:11px 7px;}
+.es-n{font-family:var(--fe);font-size:1.5rem;font-weight:900;}
+.es-l{font-family:var(--fa);font-size:.6rem;color:var(--muted);margin-top:3px;}
+.mw{display:none;margin-top:14px;}
+.mw.on{display:block;}
+.mwbtn{background:rgba(245,181,60,.08);border:1px solid rgba(245,181,60,.2);border-radius:8px;padding:8px 15px;font-family:var(--fa);font-size:.78rem;color:var(--gold);cursor:pointer;width:100%;text-align:right;direction:rtl;transition:background .17s;}
+.mwbtn:hover{background:rgba(245,181,60,.15);}
+.mwtxt{background:rgba(255,255,255,.03);border:1px solid var(--b2);border-radius:9px;padding:15px;margin-top:9px;font-family:'Crimson Pro',serif;font-size:1rem;line-height:1.9;color:rgba(237,229,214,.85);display:none;}
+.mwtxt.on{display:block;animation:fadeIn .4s ease;}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;}
+@media(max-width:540px){.tgrid{grid-template-columns:1fr;}}
+</style><body>
+<div class="top-nav"><div class="top-nav-inner">
+  <a class="nav-logo" href="index.html">◈ <span>English Exam</span></a>
+  <a class="nav-back" href="index.html">← الرئيسية</a>
+</div></div>
+<div class="page">
+<div style="text-align:center;margin-bottom:30px;" class="rise">
+  <div class="wr-k">Writing Practice</div>
+  <h1 style="font-family:var(--fe);font-size:2.4rem;font-weight:900;color:var(--cream);margin-bottom:6px;">الإنشاء<br><em style="color:var(--ok);">Writing</em></h1>
+  <p style="font-family:var(--fa);font-size:.88rem;color:var(--muted);direction:rtl;">اختر الموضوع واكتب فقرتك — سيتم تقييمها تلقائياً</p>
+</div>
+<div class="tgrid rise d1">
+  <div class="tc" onclick="selT(0)"><div class="tc-i">👤</div><div class="tc-t">Write about your life</div><div class="tc-a">اكتب عن حياتك</div></div>
+  <div class="tc" onclick="selT(1)"><div class="tc-i">📺</div><div class="tc-t">Write about a T.V. programme</div><div class="tc-a">اكتب عن برنامج تلفزيوني</div></div>
+  <div class="tc" onclick="selT(2)"><div class="tc-i">🦁</div><div class="tc-t">Write about an animal</div><div class="tc-a">اكتب عن حيوان</div></div>
+  <div class="tc" onclick="selT(3)"><div class="tc-i">🏙️</div><div class="tc-t">Write about your city</div><div class="tc-a">اكتب عن مدينتك</div></div>
+</div>
+<div class="wcard" id="wc0"><div class="wpr"><div class="wpr-t">Write a paragraph about your life</div><div class="wpr-a">اكتب فقرة عن حياتك</div></div><div class="pts"><span class="pt">اسمك ومكان ولادتك</span><span class="pt">عائلتك</span><span class="pt">مدرستك وأصدقاءك</span><span class="pt">مادتك المفضلة</span><span class="pt">هواياتك</span><span class="pt">طموحك المستقبلي</span></div><textarea class="wta" id="wt0" placeholder="My name is … I was born in …" oninput="cnt(0)"></textarea><div class="wcnt" id="wc0c">0 كلمة</div><div class="ev" id="ev0"></div><div class="mw" id="mw0"><button class="mwbtn" onclick="togM(0)">📄 عرض / إخفاء الإجابة النموذجية</button><div class="mwtxt" id="mt0">My name is Rami. I was born in Baghdad and I still live in it with my family. I don't have brothers and sisters. My father is a doctor and my mother is a nurse. When I went to school, I met many friends. I love science lesson but I don't like math lesson. My favourite hobbies are fishing and camping. I want to be a zoologist to study animals in different countries.</div></div><div class="acts"><button class="btn btn-ok" onclick="eval(0)">📊 تقييم إجابتي</button><button class="btn btn-ghost" onclick="clr(0)">✕ مسح</button></div></div>
+<div class="wcard" id="wc1"><div class="wpr"><div class="wpr-t">Write a paragraph about a T.V. programme</div><div class="wpr-a">اكتب عن برنامج تلفزيوني شاهدته</div></div><div class="pts"><span class="pt">اسم البرنامج</span><span class="pt">متى شاهدته</span><span class="pt">موضوع البرنامج</span><span class="pt">ما أعجبك</span><span class="pt">مشهد مضحك أو مثير</span></div><textarea class="wta" id="wt1" placeholder="I watched a T.V. programme about … last night. It was very …" oninput="cnt(1)"></textarea><div class="wcnt" id="wc1c">0 كلمة</div><div class="ev" id="ev1"></div><div class="mw" id="mw1"><button class="mwbtn" onclick="togM(1)">📄 عرض / إخفاء الإجابة النموذجية</button><div class="mwtxt" id="mt1">I watched a T.V. programme about animals last night. It was very interesting. It was about the elephant and it was very funny. The elephant was by the pool. It was very thirsty. The elephant blew water into the air and made the cameraman and the reporter very wet.</div></div><div class="acts"><button class="btn btn-ok" onclick="eval(1)">📊 تقييم إجابتي</button><button class="btn btn-ghost" onclick="clr(1)">✕ مسح</button></div></div>
+<div class="wcard" id="wc2"><div class="wpr"><div class="wpr-t">Write a paragraph about an animal</div><div class="wpr-a">اكتب عن حيوان تعرفه</div></div><div class="pts"><span class="pt">اسم الحيوان</span><span class="pt">أين يعيش</span><span class="pt">ماذا يأكل</span><span class="pt">مظهره</span><span class="pt">لماذا هو مميز</span></div><textarea class="wta" id="wt2" placeholder="The … is one of the most … animals in the world. It lives in …" oninput="cnt(2)"></textarea><div class="wcnt" id="wc2c">0 كلمة</div><div class="ev" id="ev2"></div><div class="mw" id="mw2"><button class="mwbtn" onclick="togM(2)">📄 عرض / إخفاء الإجابة النموذجية</button><div class="mwtxt" id="mt2">The falcon is one of the most amazing animals in the world. It lives in the deserts of Arabia. It eats small birds and animals. The falcon has sharp eyes and very fast wings. It can move faster than any other living thing. The Bedouin people used falcons to catch food in the desert. Today, falconry is a popular sport in many Arab countries.</div></div><div class="acts"><button class="btn btn-ok" onclick="eval(2)">📊 تقييم إجابتي</button><button class="btn btn-ghost" onclick="clr(2)">✕ مسح</button></div></div>
+<div class="wcard" id="wc3"><div class="wpr"><div class="wpr-t">Write a paragraph about your city</div><div class="wpr-a">اكتب عن مدينتك</div></div><div class="pts"><span class="pt">اسم المدينة وموقعها</span><span class="pt">شهرتها</span><span class="pt">أهم الأماكن</span><span class="pt">ما تحبه فيها</span><span class="pt">التاريخ أو المستقبل</span></div><textarea class="wta" id="wt3" placeholder="My city is … It is located in … My city is famous for …" oninput="cnt(3)"></textarea><div class="wcnt" id="wc3c">0 كلمة</div><div class="ev" id="ev3"></div><div class="mw" id="mw3"><button class="mwbtn" onclick="togM(3)">📄 عرض / إخفاء الإجابة النموذجية</button><div class="mwtxt" id="mt3">My city is Baghdad. It is located in the centre of Iraq. Baghdad is a very old and famous city. It is known for the Al-Mutanabbi Street where you can find many books and poets. My city has many museums and beautiful mosques. I love Baghdad because it has a long history and wonderful people. I hope my city will be more beautiful in the future.</div></div><div class="acts"><button class="btn btn-ok" onclick="eval(3)">📊 تقييم إجابتي</button><button class="btn btn-ghost" onclick="clr(3)">✕ مسح</button></div></div>
+</div>
+<script>
+const CR=[[['name','born','live'],['family','father','mother','brother','sister'],['school','friends'],['love','like','favourite'],['hobbies','fishing','camping','reading'],['want','become','zoologist','doctor','engineer','future']],[['watched','saw'],['programme','program','show'],['interesting','funny','exciting'],['about','animals','people','sport'],['night','yesterday','last']],[['lives','found','habitat'],['eats','food','feeds'],['looks','appearance','body','wings','eyes'],['fast','strong','beautiful','amazing'],['because','special','famous','known']],[['city','located'],['famous','known','old','beautiful'],['museum','mosque','street','market','places'],['love','like','enjoy'],['history','culture','future']]];
+const LB=[['اسمك ومكان ولادتك','عائلتك','حياتك المدرسية','مادتك المفضلة','هواياتك','طموحك'],['فعل المشاهدة','اسم البرنامج','وصفك للبرنامج','موضوع البرنامج','توقيت المشاهدة'],['مكان عيش الحيوان','غذاء الحيوان','مظهر الحيوان','صفاته المميزة','سبب أهميته'],['الموقع الجغرافي','شهرة المدينة','الأماكن المهمة','ما تحبه','التاريخ والمستقبل']];
+function selT(i){document.querySelectorAll('.tc').forEach((c,j)=>c.classList.toggle('on',j===i));document.querySelectorAll('.wcard').forEach((c,j)=>c.classList.toggle('on',j===i));document.querySelector('#wc'+i).scrollIntoView({behavior:'smooth',block:'start'});}
+function cnt(i){const v=document.getElementById('wt'+i).value;const w=v.trim().split(/\s+/).filter(x=>x.length>0).length;const el=document.getElementById('wc'+i+'c');el.textContent=w+' كلمة';el.className='wcnt'+(w>=60?' ok':w>=30?'':' warn');}
+function eval(i){
+  const txt=document.getElementById('wt'+i).value.trim().toLowerCase();
+  const wc=txt.split(/\s+/).filter(w=>w.length>0).length;
+  const cr=CR[i];const lb=LB[i];let cov=0;const items=[];
+  cr.forEach((g,gi)=>{const f=g.some(k=>txt.includes(k));if(f)cov++;items.push({l:lb[gi],f});});
+  const sc=Math.round((cov/cr.length*70)+(wc>=60?30:wc>=30?15:0));
+  const sc2=sc>100?100:sc;const c=sc2>=80?'var(--ok)':sc2>=60?'var(--gold)':'var(--ng)';
+  let html='<div class="ev-t">📊 تقييم إجابتك</div>';
+  html+=`<div class="ev-row"><span style="font-size:1rem;">${wc>=60?'✅':'⚠️'}</span><span class="ev-txt">عدد الكلمات: <strong>${wc} كلمة</strong> — ${wc>=80?'ممتاز! الفقرة مكتملة ✓':wc>=60?'جيد — حاول الوصول لـ 80+ كلمة':'حاول كتابة 60 كلمة على الأقل'}</span></div>`;
+  items.forEach(it=>{html+=`<div class="ev-row"><span style="font-size:1rem;">${it.f?'✅':'❌'}</span><span class="ev-txt">${it.l}: ${it.f?'<span style="color:var(--ok)">تم تغطيته ✓</span>':'<span style="color:var(--ng)">لم يُذكر — حاول إضافته</span>'}</span></div>`;});
+  html+=`<div class="ev-sc"><div class="es"><div class="es-n" style="color:${c};">${cov}/${cr.length}</div><div class="es-l">نقاط المحتوى</div></div><div class="es"><div class="es-n" style="color:${wc>=60?'var(--ok)':'var(--ng)'};">${wc}</div><div class="es-l">عدد الكلمات</div></div><div class="es"><div class="es-n" style="color:${c};">${sc2}%</div><div class="es-l">التقييم الكلي</div></div></div>`;
+  const ev=document.getElementById('ev'+i);ev.innerHTML=html;ev.classList.add('on');
+  document.getElementById('mw'+i).classList.add('on');
+}
+function togM(i){document.getElementById('mt'+i).classList.toggle('on');}
+function clr(i){document.getElementById('wt'+i).value='';document.getElementById('wc'+i+'c').textContent='0 كلمة';document.getElementById('ev'+i).classList.remove('on');document.getElementById('mw'+i).classList.remove('on');document.getElementById('mt'+i).classList.remove('on');}
+</script></body></html>

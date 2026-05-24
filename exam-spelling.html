@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الإملاء — Spelling Practice · الثالث المتوسط</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+</style>
+</head>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+:root{
+  --bg:#060b18;--bg2:#0c1228;--s1:rgba(255,255,255,.05);--s2:rgba(255,255,255,.08);
+  --b1:rgba(245,181,60,.16);--b2:rgba(255,255,255,.09);
+  --gold:#f5b53c;--gold2:#c48a18;--g3:rgba(245,181,60,.1);--g4:rgba(245,181,60,.06);
+  --indigo:#8b7cf8;--i2:rgba(139,124,248,.12);--cyan:#22d3ee;--c2:rgba(34,211,238,.1);
+  --ok:#10b981;--ok2:rgba(16,185,129,.12);--ng:#ef4444;--ng2:rgba(239,68,68,.12);
+  --cream:#ede5d6;--txt:#cac1b0;--muted:rgba(202,193,176,.44);
+  --r:14px;--r2:10px;--r3:8px;
+  --fa:'Tajawal',sans-serif;--fe:'Playfair Display',serif;
+  --fb:'Outfit',sans-serif;--fm:'IBM Plex Mono',monospace;
+}
+*,::before,::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--txt);min-height:100vh;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse,rgba(245,181,60,.05),transparent 60%);pointer-events:none;z-index:0;}
+body::after{content:'';position:fixed;bottom:-20%;right:-15%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,124,248,.04),transparent 60%);pointer-events:none;z-index:0;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-thumb{background:rgba(245,181,60,.2);border-radius:4px;}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes pop{0%{transform:scale(.9)}65%{transform:scale(1.04)}100%{transform:scale(1)}}
+.rise{animation:rise .6s cubic-bezier(.16,1,.3,1) both;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}
+/* COMPONENTS */
+.pill{display:inline-flex;padding:3px 10px;border-radius:6px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.pill-gold{background:var(--g3);color:var(--gold);border:1px solid rgba(245,181,60,.28);}
+.pill-indigo{background:var(--i2);color:var(--indigo);border:1px solid rgba(139,124,248,.28);}
+.pill-cyan{background:var(--c2);color:var(--cyan);border:1px solid rgba(34,211,238,.28);}
+.pill-ok{background:var(--ok2);color:var(--ok);border:1px solid rgba(16,185,129,.28);}
+.pill-ng{background:var(--ng2);color:var(--ng);border:1px solid rgba(239,68,68,.28);}
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:24px;}
+.divider{text-align:center;margin:24px 0;position:relative;}
+.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,.06);}
+.divider span{position:relative;background:var(--bg);padding:0 14px;font-size:.6rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);}
+/* BUTTONS */
+.btn{padding:11px 22px;border-radius:var(--r2);border:none;font-family:var(--fb);font-size:.86rem;font-weight:600;cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;}
+.btn:disabled{opacity:.4;pointer-events:none;}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#06090f;font-weight:700;}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,181,60,.28);}
+.btn-ghost{background:var(--s1);border:1px solid var(--b2);color:var(--txt);}
+.btn-ghost:hover{background:var(--s2);}
+.btn-ok{background:linear-gradient(135deg,var(--ok),#059669);color:#fff;}
+.btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,.28);}
+.btn-ng{background:var(--ng2);border:1px solid rgba(239,68,68,.3);color:var(--ng);}
+.btn-ng:hover{background:rgba(239,68,68,.2);}
+.btn-indigo{background:var(--i2);border:1px solid rgba(139,124,248,.28);color:var(--indigo);}
+.btn-indigo:hover{background:rgba(139,124,248,.2);}
+/* TOP NAV */
+.top-nav{position:sticky;top:0;z-index:400;background:rgba(6,11,24,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--b1);}
+.top-nav-inner{max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.nav-logo{font-family:var(--fe);font-size:1rem;font-weight:900;color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo span{font-family:var(--fa);font-size:.75rem;color:var(--muted);}
+.nav-back{font-family:var(--fa);font-size:.8rem;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .17s;}
+.nav-back:hover{color:var(--gold);}
+/* PROGRESS BAR */
+.progress-bar{background:rgba(255,255,255,.07);border-radius:3px;height:5px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+/* TIMER */
+.timer-chip{font-family:var(--fm);font-size:.95rem;font-weight:500;background:var(--g4);border:1px solid rgba(245,181,60,.26);border-radius:var(--r2);padding:7px 14px;color:var(--gold);min-width:78px;text-align:center;transition:all .35s;}
+.timer-chip.warn{color:#fb923c;background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.3);}
+.timer-chip.danger{color:var(--ng);background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3);animation:blink .7s infinite;}
+/* SCORE RING */
+.ring-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center;}
+.ring-wrap svg{filter:drop-shadow(0 0 22px rgba(245,181,60,.2));}
+.ring-inner{position:absolute;display:flex;flex-direction:column;align-items:center;}
+.ring-pct{font-family:var(--fe);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
+.ring-sub{font-family:var(--fm);font-size:.6rem;color:var(--muted);margin-top:2px;}
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(12px);z-index:900;align-items:center;justify-content:center;padding:20px;}
+.overlay.on{display:flex;}
+.dialog{background:#0d1428;border:1px solid var(--b1);border-radius:18px;padding:32px;max-width:460px;width:100%;animation:pop .28s ease both;}
+.dialog h3{font-family:var(--fe);font-size:1.4rem;font-weight:900;color:var(--cream);margin-bottom:8px;}
+.dialog p{font-family:var(--fa);font-size:.87rem;color:var(--muted);direction:rtl;line-height:1.75;margin-bottom:20px;}
+/* RESPONSIVE */
+@media(max-width:700px){.top-nav-inner{padding:10px 16px;}}
+
+.page{max-width:700px;margin:0 auto;padding:24px 20px 80px;position:relative;z-index:1;}
+.sp-kicker{display:inline-flex;align-items:center;gap:7px;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.28);border-radius:50px;padding:5px 16px;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#a78bfa;margin-bottom:16px;}
+.sp-h1{font-family:var(--fe);font-size:2.4rem;font-weight:900;color:var(--cream);margin-bottom:6px;}
+.sp-h1 em{color:#a78bfa;font-style:italic;}
+.sp-card{background:var(--s1);border:1px solid rgba(167,139,250,.2);border-radius:16px;padding:32px;text-align:center;position:relative;overflow:hidden;}
+.sp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#a78bfa,#7c3aed,transparent 75%);}
+.sp-prog{font-family:var(--fm);font-size:.7rem;color:var(--muted);margin-bottom:16px;}
+.sp-arabic{font-family:var(--fa);font-size:2rem;font-weight:900;color:var(--cream);direction:rtl;margin-bottom:8px;}
+.sp-hint{font-family:var(--fb);font-size:.9rem;font-style:italic;color:var(--muted);margin-bottom:24px;}
+.sp-inp{width:100%;max-width:400px;background:rgba(255,255,255,.05);border:2px solid rgba(167,139,250,.3);border-radius:12px;padding:14px 18px;color:var(--cream);font-family:var(--fb);font-size:1.1rem;text-align:center;outline:none;transition:all .2s;letter-spacing:2px;}
+.sp-inp:focus{border-color:#a78bfa;background:rgba(167,139,250,.06);box-shadow:0 0 0 3px rgba(167,139,250,.1);}
+.sp-inp.ok{border-color:var(--ok);background:rgba(16,185,129,.07);color:var(--ok);}
+.sp-inp.ng{border-color:var(--ng);background:rgba(239,68,68,.07);color:var(--ng);}
+.sp-fb{font-family:var(--fa);font-size:.9rem;margin-top:14px;padding:10px 16px;border-radius:8px;min-height:40px;display:none;align-items:center;justify-content:center;gap:8px;}
+.sp-fb.ok{display:flex;background:rgba(16,185,129,.1);color:var(--ok);border:1px solid rgba(16,185,129,.2);}
+.sp-fb.ng{display:flex;background:rgba(239,68,68,.1);color:var(--ng);border:1px solid rgba(239,68,68,.2);}
+.sp-pbar{background:rgba(255,255,255,.07);border-radius:3px;height:6px;overflow:hidden;margin:16px 0;}
+.sp-pfill{height:100%;background:linear-gradient(90deg,#a78bfa,#7c3aed);border-radius:3px;transition:width .5s ease;}
+.sp-acts{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap;}
+.sp-res{display:none;text-align:center;}
+.sp-big{font-family:var(--fe);font-size:3.5rem;font-weight:900;color:#a78bfa;}
+.rev-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;margin-bottom:6px;font-size:.82rem;}
+.rev-ok{background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.15);}
+.rev-ng{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.15);}
+.rev-word{font-family:var(--fm);font-weight:700;font-size:.9rem;}
+.rev-ok .rev-word{color:var(--ok);}.rev-ng .rev-word{color:var(--ng);}
+.rev-ar{font-family:var(--fa);font-size:.78rem;color:var(--muted);direction:rtl;margin-left:auto;}
+.rev-yours{font-family:var(--fm);font-size:.72rem;color:var(--ng);}
+.grade-badge{display:inline-block;padding:7px 26px;border-radius:50px;font-family:var(--fa);font-weight:900;font-size:.97rem;margin:10px 0;}
+.res-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;}
+.rs{background:rgba(255,255,255,.04);border:1px solid var(--b2);border-radius:12px;padding:14px;text-align:center;}
+.rs-n{font-family:var(--fe);font-size:1.7rem;font-weight:900;}.rs-l{font-family:var(--fa);font-size:.63rem;color:var(--muted);margin-top:3px;}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+</style>
+<body>
+<div class="top-nav">
+  <div class="top-nav-inner">
+    <a class="nav-logo" href="index.html">◈ <span>English Exam</span></a>
+    <a class="nav-back" href="index.html">← الرئيسية</a>
+  </div>
+</div>
+<div class="page">
+<div style="text-align:center;margin-bottom:32px;" class="rise">
+  <div class="sp-kicker">Spelling Practice</div>
+  <h1 class="sp-h1">الإملاء<br><em>Spelling</em></h1>
+  <p style="font-family:var(--fa);font-size:.88rem;color:var(--muted);direction:rtl;">اقرأ المعنى العربي والجملة التوضيحية واكتب الكلمة الإنجليزية الصحيحة</p>
+</div>
+
+<div id="examDiv">
+  <div class="sp-pbar rise d1"><div class="sp-pfill" id="spFill" style="width:0%"></div></div>
+  <div class="sp-card rise d2">
+    <div class="sp-prog" id="spProg">1 / 30</div>
+    <div class="sp-arabic" id="spAr">——</div>
+    <div class="sp-hint" id="spHint">——</div>
+    <input class="sp-inp" id="spInp" type="text" placeholder="اكتب الكلمة…" autocomplete="off" spellcheck="false"
+      oninput="this.className='sp-inp'" onkeydown="if(event.key==='Enter')checkSpell()">
+    <div class="sp-fb" id="spFb"></div>
+    <div class="sp-acts">
+      <button class="btn btn-gold" id="btnCheck" onclick="checkSpell()">تحقق ✓</button>
+      <button class="btn btn-ok" id="btnNext" onclick="nextWord()" style="display:none;">التالي →</button>
+      <button class="btn btn-ghost" id="btnSkip" onclick="skipWord()">تخطي ⟶</button>
+    </div>
+  </div>
+</div>
+
+<div id="resDiv" class="sp-res rise">
+  <div style="background:var(--s1);border:1px solid var(--b1);border-radius:16px;padding:28px;margin-bottom:20px;">
+    <p style="font-family:var(--fa);font-size:.75rem;color:var(--muted);margin-bottom:10px;">نتيجة اختبار الإملاء</p>
+    <div class="sp-big" id="spBig">0/0</div>
+    <div class="grade-badge" id="spGrade">——</div>
+    <div class="res-stats">
+      <div class="rs"><div class="rs-n" style="color:var(--ok);" id="spOkN">0</div><div class="rs-l">صحيح</div></div>
+      <div class="rs"><div class="rs-n" style="color:var(--ng);" id="spNgN">0</div><div class="rs-l">خطأ</div></div>
+      <div class="rs"><div class="rs-n" style="color:#a78bfa;" id="spPctN">0%</div><div class="rs-l">النسبة</div></div>
+    </div>
+  </div>
+  <div style="background:var(--s1);border:1px solid var(--b2);border-radius:14px;padding:18px;margin-bottom:20px;">
+    <p style="font-family:var(--fa);font-size:.86rem;font-weight:700;color:var(--gold);direction:rtl;text-align:right;margin-bottom:12px;">مراجعة الكلمات</p>
+    <div id="revList"></div>
+  </div>
+  <div class="acts">
+    <button class="btn btn-gold" onclick="retryAll()">↺ إعادة الكل</button>
+    <button class="btn btn-ng" id="btnRetryWrong" onclick="retryWrong()" style="display:none;">🔁 إعادة الخاطئة</button>
+    <a class="btn btn-ghost" href="index.html">← الرئيسية</a>
+  </div>
+</div>
+</div>
+<script>
+const W=[["dangerous", "خطير", "The road is very dangerous."], ["interesting", "ممتع", "The book was very interesting."], ["beautiful", "جميل", "She has a beautiful voice."], ["favourite", "المفضّل", "What is your favourite subject?"], ["imaginative", "مبدع", "Kareem is very imaginative."], ["patient", "صبور", "You must be patient."], ["famous", "مشهور", "He wants to be a famous poet."], ["expensive", "غالي", "The car looks expensive."], ["education", "تعليم", "Education is very important."], ["discover", "يكتشف", "He discovered the laws of refraction."], ["contributions", "إسهامات", "His contributions to science were great."], ["traditional", "تقليدي", "Samara"s family is traditional."], ["embarrassed", "محرج", "The son was not embarrassed."], ["wheelchair", "كرسي متحرك", "The old man was in a wheelchair."], ["photography", "تصوير", "He took his camera for photography."], ["championship", "بطولة", "The championship was exciting."], ["tournament", "بطولة رياضية", "The Asian Games is a big tournament."], ["environment", "البيئة", "We must protect our environment."], ["agriculture", "زراعة", "Libya has some agriculture."], ["comfortable", "مريح", "The seats are comfortable."], ["entertainment", "ترفيه", "The mall has entertainment."], ["unfortunately", "لسوء الحظ", "Unfortunately, she was still ugly."], ["refraction", "انكسار", "He discovered the laws of refraction."], ["population", "عدد السكان", "The population of Iraq is large."], ["necessary", "ضروري", "Falconry was necessary for food."], ["competition", "منافسة", "Friendly competition is good."], ["information", "معلومات", "We need more information."], ["imagination", "خيال", "Use your imagination to write."], ["development", "تطوير", "Educational development is important."], ["contributions", "إسهامات", "Ibn Haytham"s contributions are great."]];
+let cur=0,results=[],active=[...W],answered=false;
+function shuf(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function $(i){return document.getElementById(i);}
+function load(){
+  if(cur>=active.length){showRes();return;}
+  const w=active[cur];answered=false;
+  $('spProg').textContent=(cur+1)+' / '+active.length;
+  $('spAr').textContent=w[1];
+  $('spHint').textContent='"'+w[2]+'"';
+  $('spInp').value='';$('spInp').className='sp-inp';$('spInp').disabled=false;
+  $('spFb').className='sp-fb';
+  $('btnCheck').style.display='inline-flex';$('btnNext').style.display='none';$('btnSkip').style.display='inline-flex';
+  $('spFill').style.width=(cur/active.length*100)+'%';
+  setTimeout(()=>$('spInp').focus(),50);
+}
+function checkSpell(){
+  if(answered)return;
+  const w=active[cur];const v=$('spInp').value.trim().toLowerCase();const ok=v===w[0].toLowerCase();
+  answered=true;results.push({word:w[0],ar:w[1],yours:v,ok});
+  $('spInp').className='sp-inp '+(ok?'ok':'ng');$('spInp').disabled=true;
+  const fb=$('spFb');
+  if(ok){fb.className='sp-fb ok';fb.innerHTML='✅ صحيح! — <strong style="font-family:var(--fm);">'+w[0]+'</strong>';}
+  else{fb.className='sp-fb ng';fb.innerHTML='❌ الصحيح: <strong style="font-family:var(--fm);letter-spacing:2px;">'+w[0]+'</strong>';}
+  $('btnCheck').style.display='none';$('btnNext').style.display='inline-flex';$('btnSkip').style.display='none';
+}
+function nextWord(){cur++;load();}
+function skipWord(){results.push({word:active[cur][0],ar:active[cur][1],yours:'',ok:false});cur++;load();}
+function showRes(){
+  const ok=results.filter(r=>r.ok).length,ng=results.length-ok,pct=results.length?Math.round(ok/results.length*100):0;
+  $('spBig').textContent=ok+' / '+results.length;
+  $('spOkN').textContent=ok;$('spNgN').textContent=ng;$('spPctN').textContent=pct+'%';
+  let g,c;
+  if(pct>=90){g='ممتاز 🏆';c='var(--ok)';}else if(pct>=75){g='جيد جداً ⭐';c='var(--gold)';}else if(pct>=60){g='جيد 👍';c='var(--indigo)';}else{g='تحتاج مراجعة';c='var(--ng)';}
+  const gb=$('spGrade');gb.textContent=g;gb.style.cssText='background:'+c+'20;color:'+c+';border:1px solid '+c+'44;';
+  const rl=$('revList');rl.innerHTML='';
+  results.forEach(r=>{
+    const d=document.createElement('div');d.className='rev-item '+(r.ok?'rev-ok':'rev-ng');
+    d.innerHTML=(r.ok?'✅':'❌')+'<span class="rev-word">'+r.word+'</span><span class="rev-ar">'+r.ar+'</span>'+((!r.ok&&r.yours)?'<span class="rev-yours">كتبت: '+r.yours+'</span>':'');
+    rl.appendChild(d);
+  });
+  const hasWrong=results.some(r=>!r.ok);
+  $('btnRetryWrong').style.display=hasWrong?'inline-flex':'none';
+  $('examDiv').style.display='none';$('resDiv').style.display='block';window.scrollTo(0,0);
+}
+function retryAll(){cur=0;results=[];active=shuf([...W]);$('resDiv').style.display='none';$('examDiv').style.display='block';load();}
+function retryWrong(){const wrong=results.filter(r=>!r.ok).map(r=>W.find(w=>w[0]===r.word)).filter(Boolean);cur=0;results=[];active=shuf(wrong);$('resDiv').style.display='none';$('examDiv').style.display='block';load();}
+active=shuf([...W]);load();
+</script></body></html>
